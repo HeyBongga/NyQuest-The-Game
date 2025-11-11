@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bm7cmjdtrrfoi"
+path="res://.godot/imported/Background_Pattern.aseprite-9ac2c8fcf3df17c273f4e9e580dc6d04.res"
+
+[deps]
+
+source_file="res://Sprites/Menu/Menu_Background/Background_Pattern.aseprite"
+dest_files=["res://.godot/imported/Background_Pattern.aseprite-9ac2c8fcf3df17c273f4e9e580dc6d04.res"]
+
+[params]
+

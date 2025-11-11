@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://cb2ghg6488ip"]
+
+[ext_resource type="Script" uid="uid://vk0mi76nnb1f" path="res://Scripts/main_menu.gd" id="1_trj04"]
+[ext_resource type="Shader" uid="uid://biao613he0htl" path="res://Animations/scroll.gdshader" id="2_16hvj"]
+[ext_resource type="Texture2D" uid="uid://cro5adivtpep6" path="res://Sprites/Menu/Menu_Background/RepeatingPatternt.png" id="3_vr1f0"]
+[ext_resource type="Texture2D" uid="uid://c6a720i8l5y34" path="res://Sprites/Menu/Buttons normal/Start_button_normal.png" id="4_t1dhk"]
+[ext_resource type="Texture2D" uid="uid://vw31cl4a5at6" path="res://Sprites/Menu/Button highlighted/start_button_highlighted.png" id="5_5egv6"]
+[ext_resource type="Texture2D" uid="uid://bbqpoiw2d8kgm" path="res://Sprites/Menu/Buttons normal/options_button_normal.png" id="6_vtepg"]
+[ext_resource type="Texture2D" uid="uid://brsxhcftfj84k" path="res://Sprites/Menu/Button highlighted/options_button_highlighted.png" id="7_8dnnj"]
+[ext_resource type="Texture2D" uid="uid://d4ftrh774lsja" path="res://Sprites/Menu/Buttons normal/quit_button_normal.png" id="8_m3bi6"]
+[ext_resource type="Texture2D" uid="uid://dct6cfiivk3rp" path="res://Sprites/Menu/Button highlighted/quit_button_highlighted.png" id="9_wyh8j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trj04"]
+shader = ExtResource("2_16hvj")
+shader_parameter/speed = 0.1
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource("1_trj04")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 256.0
+offset_bottom = 144.0
+color = Color(0, 0.25098, 0.333333, 1)
+
+[node name="Pattern" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_trj04")
+offset_right = 257.0
+offset_bottom = 144.0
+texture = ExtResource("3_vr1f0")
+stretch_mode = 1
+
+[node name="Button_manager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="TextureButton" parent="Button_manager"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 28.0
+offset_right = 179.0
+offset_bottom = 60.0
+texture_normal = ExtResource("4_t1dhk")
+texture_hover = ExtResource("5_5egv6")
+
+[node name="Options" type="TextureButton" parent="Button_manager"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 65.0
+offset_right = 217.0
+offset_bottom = 97.0
+texture_normal = ExtResource("6_vtepg")
+texture_hover = ExtResource("7_8dnnj")
+
+[node name="Beenden" type="TextureButton" parent="Button_manager"]
+layout_mode = 0
+offset_left = 89.0
+offset_top = 101.0
+offset_right = 205.0
+offset_bottom = 133.0
+texture_normal = ExtResource("8_m3bi6")
+texture_hover = ExtResource("9_wyh8j")
+
+[connection signal="pressed" from="Button_manager/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Button_manager/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Button_manager/Beenden" to="." method="_on_beenden_pressed"]
