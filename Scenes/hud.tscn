@@ -1,15 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://2ngcpcue2qx0"]
+[gd_scene load_steps=12 format=3 uid="uid://2ngcpcue2qx0"]
 
 [ext_resource type="Texture2D" uid="uid://dp2ywmrbmqagm" path="res://Sprites/HUD.png" id="1_e0onf"]
 [ext_resource type="Script" uid="uid://ctj0idbr3rpmb" path="res://Scenes/hud.gd" id="1_fccik"]
+[ext_resource type="Script" uid="uid://cn81abuqd8uem" path="res://Scripts/popup_menu.gd" id="2_t1xeu"]
+[ext_resource type="Texture2D" uid="uid://bbqpoiw2d8kgm" path="res://Sprites/Menu/Buttons normal/options_button_normal.png" id="3_6fbih"]
+[ext_resource type="Texture2D" uid="uid://brsxhcftfj84k" path="res://Sprites/Menu/Button highlighted/options_button_highlighted.png" id="5_t1xeu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fccik"]
-atlas = ExtResource("1_e0onf")
-region = Rect2(4, 1, 54, 62)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36asn"]
+texture = ExtResource("3_6fbih")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bjfho"]
-atlas = ExtResource("1_e0onf")
-region = Rect2(68, 0, 56, 64)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8jye8"]
+texture = ExtResource("5_t1xeu")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4f5kr"]
+texture = ExtResource("1_e0onf")
+region_rect = Rect2(0, 64, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_43w4t"]
+texture = ExtResource("1_e0onf")
+region_rect = Rect2(64, 64, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7gr8i"]
+texture = ExtResource("1_e0onf")
+region_rect = Rect2(0, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ep0j"]
+texture = ExtResource("1_e0onf")
+region_rect = Rect2(64, 0, 64, 64)
 
 [node name="inGameUI" type="Control"]
 layout_mode = 3
@@ -20,7 +37,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fccik")
 
-[node name="PopupMenu" type="MarginContainer" parent="."]
+[node name="UIContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 1
 anchors_preset = 15
@@ -28,43 +45,61 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PopupMenu"]
+[node name="PopupMenu" type="MarginContainer" parent="UIContainer"]
+custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-size_flags_stretch_ratio = 0.0
+theme_override_constants/margin_left = 124
+theme_override_constants/margin_bottom = 70
+script = ExtResource("2_t1xeu")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PopupMenu/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-size_flags_stretch_ratio = 5.0
-theme_override_constants/separation = 0
-
-[node name="VSpacer" type="Control" parent="PopupMenu/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="PopupMenu/HBoxContainer/VBoxContainer"]
+[node name="PopupContainer" type="MarginContainer" parent="UIContainer/PopupMenu"]
+custom_minimum_size = Vector2(250, 200)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-focus_next = NodePath("toggleButtonUI")
+theme_override_constants/margin_left = 0
 
-[node name="toggleButtonUI" type="TextureButton" parent="PopupMenu/HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="OptionsContainer" type="MarginContainer" parent="UIContainer/PopupMenu/PopupContainer"]
+custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture_normal = SubResource("AtlasTexture_fccik")
-texture_hover = SubResource("AtlasTexture_bjfho")
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="HSpacer" type="Control" parent="PopupMenu/HBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+[node name="optionsbutton" type="Button" parent="UIContainer/PopupMenu/PopupContainer/OptionsContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_36asn")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8jye8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_8jye8")
+
+[node name="QuitContainer" type="MarginContainer" parent="UIContainer/PopupMenu/PopupContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="quitbutton" type="Button" parent="UIContainer/PopupMenu/PopupContainer/QuitContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_4f5kr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_43w4t")
+theme_override_styles/hover = SubResource("StyleBoxTexture_43w4t")
+
+[node name="ToggleContainer" type="MarginContainer" parent="UIContainer/PopupMenu"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[connection signal="pressed" from="PopupMenu/HBoxContainer/VBoxContainer/MarginContainer/toggleButtonUI" to="." method="_on_in_game_options_pressed"]
+[node name="togglemenubutton" type="Button" parent="UIContainer/PopupMenu/ToggleContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_7gr8i")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5ep0j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5ep0j")
+
+[connection signal="pressed" from="UIContainer/PopupMenu/ToggleContainer/togglemenubutton" to="UIContainer/PopupMenu" method="_on_togglemenubutton_pressed"]
