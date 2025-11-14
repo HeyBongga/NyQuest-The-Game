@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://dobxp8i6xj2no"]
+
+[ext_resource type="PackedScene" uid="uid://2ngcpcue2qx0" path="res://Scenes/inGameUI.tscn" id="2_47rga"]
+[ext_resource type="PackedScene" uid="uid://4epow0munt6q" path="res://Scenes/quest_dialogue.tscn" id="2_yyxd1"]
+[ext_resource type="Script" uid="uid://siwxjihs0civ" path="res://Scripts/autoCamera.gd" id="3_47rga"]
+[ext_resource type="Script" uid="uid://ccah1c0lrrvva" path="res://Scripts/game_manager.gd" id="3_yyxd1"]
+[ext_resource type="PackedScene" uid="uid://un32vc3l15s3" path="res://Scenes/island_tile_1.tscn" id="4_0vbqt"]
+[ext_resource type="PackedScene" uid="uid://7cjdqmiyhfw3" path="res://Scenes/island_tile_2.tscn" id="5_w1dup"]
+
+[node name="mainScene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="inGameUI" parent="CanvasLayer" instance=ExtResource("2_47rga")]
+
+[node name="questDialogue" parent="CanvasLayer" instance=ExtResource("2_yyxd1")]
+
+[node name="autoCamera" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("3_47rga")
+
+[node name="gameManager" type="Node2D" parent="."]
+script = ExtResource("3_yyxd1")
+
+[node name="islandRoot" type="Node2D" parent="."]
+position = Vector2(640, 360)
+
+[node name="islandTile1" parent="islandRoot" instance=ExtResource("4_0vbqt")]
+
+[node name="islandTile2" parent="islandRoot" instance=ExtResource("5_w1dup")]
+position = Vector2(-272, -136)

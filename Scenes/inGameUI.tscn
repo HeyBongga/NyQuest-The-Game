@@ -1,0 +1,161 @@
+[gd_scene load_steps=14 format=3 uid="uid://2ngcpcue2qx0"]
+
+[ext_resource type="Texture2D" uid="uid://dp2ywmrbmqagm" path="res://Sprites/UI.png" id="1_e0onf"]
+[ext_resource type="Script" uid="uid://cn81abuqd8uem" path="res://Scripts/popupMenu.gd" id="2_t1xeu"]
+[ext_resource type="FontFile" uid="uid://bhxhywac85s24" path="res://Fonds/Bagura Font Pack v1.5/Basal.ttf" id="5_36asn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6fbih"]
+bg_color = Color(0.5372549, 0.3764706, 0, 0.627451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.27450982)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 20
+shadow_color = Color(0, 0, 0, 0.47058824)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36asn"]
+bg_color = Color(0.25390625, 0.17910701, 0.003967285, 0.627451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.27450982)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 1, 0, 0.27450982)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1xeu"]
+bg_color = Color(0.5372549, 0.3764706, 0, 0.627451)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.27450982)
+border_blend = true
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(1, 1, 0, 0.27450982)
+shadow_size = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1xeu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4f5kr"]
+texture = ExtResource("1_e0onf")
+region_rect = Rect2(0, 64, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_43w4t"]
+texture = ExtResource("1_e0onf")
+region_rect = Rect2(64, 64, 64, 64)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_36asn"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7gr8i"]
+texture = ExtResource("1_e0onf")
+region_rect = Rect2(0, 0, 64, 64)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ep0j"]
+texture = ExtResource("1_e0onf")
+region_rect = Rect2(64, 0, 64, 64)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6fbih"]
+
+[node name="inGameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UIContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+
+[node name="PopupMenu" type="MarginContainer" parent="UIContainer"]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_left = 124
+theme_override_constants/margin_bottom = 70
+script = ExtResource("2_t1xeu")
+
+[node name="PopupContainer" type="MarginContainer" parent="UIContainer/PopupMenu"]
+custom_minimum_size = Vector2(250, 200)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 0
+
+[node name="OptionsContainer" type="MarginContainer" parent="UIContainer/PopupMenu/PopupContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="optionsbutton" type="Button" parent="UIContainer/PopupMenu/PopupContainer/OptionsContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("5_36asn")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_6fbih")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_36asn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t1xeu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t1xeu")
+text = "Options"
+icon_alignment = 1
+
+[node name="QuitContainer" type="MarginContainer" parent="UIContainer/PopupMenu/PopupContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="quitbutton" type="Button" parent="UIContainer/PopupMenu/PopupContainer/QuitContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_4f5kr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_43w4t")
+theme_override_styles/hover = SubResource("StyleBoxTexture_43w4t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_36asn")
+
+[node name="ToggleContainer" type="MarginContainer" parent="UIContainer/PopupMenu"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="togglemenubutton" type="Button" parent="UIContainer/PopupMenu/ToggleContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_7gr8i")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5ep0j")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5ep0j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6fbih")
+
+[connection signal="pressed" from="UIContainer/PopupMenu/PopupContainer/OptionsContainer/optionsbutton" to="UIContainer/PopupMenu" method="_on_optionsbutton_pressed"]
+[connection signal="pressed" from="UIContainer/PopupMenu/PopupContainer/QuitContainer/quitbutton" to="UIContainer/PopupMenu" method="_on_quitbutton_pressed"]
+[connection signal="pressed" from="UIContainer/PopupMenu/ToggleContainer/togglemenubutton" to="UIContainer/PopupMenu" method="_on_togglemenubutton_pressed"]
