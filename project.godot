@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Signalverarbeitung Game"
+config/name="NyQuest"
 run/main_scene="uid://cb2ghg6488ip"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 

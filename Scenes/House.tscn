@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq5vo6ldhg5kw"]
+
+[ext_resource type="Script" uid="uid://bdbnw2f1ea52y" path="res://Scripts/house.gd" id="1_ftrsn"]
+[ext_resource type="Texture2D" uid="uid://doirb81p24u44" path="res://Sprites/House.png" id="2_q8l06"]
+
+[node name="House" type="Area2D"]
+script = ExtResource("1_ftrsn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_q8l06")
+offset = Vector2(0, -40)
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0.80000186, -36)
+scale = Vector2(6.45, 6)
+polygon = PackedVector2Array(-5.085272, 10, 6.2499995, 10, 10, 8.666667, 10, -2, 3.7499998, -10, -6.2500005, -7.333334, -10.046513, -0.666667, -10.046513, 8.666667)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -13,7 +13,7 @@ func _ready():
 	quit_button.visible = false
 
 	# Signal verbinden
-	toggle_menu_button.pressed.connect(_on_togglemenubutton_pressed)
+	# toggle_menu_button.pressed.connect(_on_togglemenubutton_pressed)
 
 func _on_togglemenubutton_pressed():
 	# Sichtbarkeit umschalten
@@ -21,6 +21,14 @@ func _on_togglemenubutton_pressed():
 
 	options_button.visible = menu_visible
 	quit_button.visible = menu_visible
+
+func _on_optionsbutton_pressed():
+	get_tree().change_scene_to_file("res://Scenes/options.tscn")
+	
+	
+	
+func _on_quitbutton_pressed() -> void:
+	get_tree().quit()
 
 #@export var toggle_screen: MarginContainer
 #@export var popup_screen: MarginContainer
