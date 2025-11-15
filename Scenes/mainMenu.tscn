@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://cb2ghg6488ip"]
 
-[ext_resource type="Shader" uid="uid://biao613he0htl" path="res://Animations/scroll.gdshader" id="2_qmf6k"]
+[ext_resource type="Shader" uid="uid://biao613he0htl" path="res://Shaders/scroll.gdshader" id="2_qmf6k"]
 [ext_resource type="Texture2D" uid="uid://bctayu6rqh7vu" path="res://Sprites/Menu/Menu_Background/clouds.png" id="2_rn1t7"]
 [ext_resource type="Texture2D" uid="uid://cd4r70vxm4htd" path="res://Sprites/Menu/Menu_Background/kitesurfer.png" id="2_yij4q"]
-[ext_resource type="Shader" uid="uid://bp4x0b0n4f7ey" path="res://Animations/kite.gdshader" id="3_rn1t7"]
+[ext_resource type="Shader" uid="uid://bp4x0b0n4f7ey" path="res://Shaders/kite.gdshader" id="3_rn1t7"]
 [ext_resource type="Script" uid="uid://8f6r4qicsp4k" path="res://Scripts/mainMenuManager.gd" id="3_wofhc"]
 [ext_resource type="Texture2D" uid="uid://c6a720i8l5y34" path="res://Sprites/Menu/Buttons normal/Start_button_normal.png" id="4_yij4q"]
 [ext_resource type="Texture2D" uid="uid://vw31cl4a5at6" path="res://Sprites/Menu/Button highlighted/start_button_highlighted.png" id="5_o8ral"]
@@ -33,6 +33,7 @@ scale = Vector2(5, 5)
 color = Color(0, 0.25098, 0.333333, 1)
 
 [node name="Pattern" type="TextureRect" parent="."]
+texture_filter = 2
 texture_repeat = 2
 material = SubResource("ShaderMaterial_trj04")
 layout_mode = 0
