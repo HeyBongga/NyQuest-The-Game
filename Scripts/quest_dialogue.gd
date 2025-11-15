@@ -1,6 +1,9 @@
 extends Control
 
-signal quest_finished
+signal dialog_finished
+
+func _ready():
+	self.visible=false
 
 func start_dialog(text):
 	$MarginContainer/MarginContainer/Label.text = text
@@ -8,4 +11,4 @@ func start_dialog(text):
 
 func _on_button_pressed():
 	visible = false
-	emit_signal("quest_finished")
+	emit_signal("dialog_finished")
