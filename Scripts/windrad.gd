@@ -1,6 +1,6 @@
 extends Area2D
 
-signal house_clicked
+signal windrad_clicked
 
 @onready var sprite := $Sprite2D
 var zoom_scale := Vector2(1.2, 1.2)  # Zielgröße beim Hover
@@ -20,5 +20,5 @@ func _on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int):
 	print("Input erkannt:", event)
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		print("House wurde angeklickt!")
-		emit_signal("house_clicked")
+		emit_signal("windrad_clicked")
 		$CollisionShape2D.disabled=true

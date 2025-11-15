@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c676hl1fep4oq"]
+
+[ext_resource type="PackedScene" uid="uid://dq5vo6ldhg5kw" path="res://Scenes/House.tscn" id="1_uqdpp"]
+[ext_resource type="Script" uid="uid://bfigk6lyygor5" path="res://Scripts/windrad.gd" id="2_4xja0"]
+
+[node name="Windrad" instance=ExtResource("1_uqdpp")]
+script = ExtResource("2_4xja0")
+
+[node name="CollisionShape2D" parent="." index="1"]
+texture_filter = 2

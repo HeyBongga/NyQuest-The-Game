@@ -1,20 +1,42 @@
 extends Camera2D
 
-func focus_on_island(island_root: Node2D):
-	if island_root.get_child_count() == 0:
-		return
+@export var zoomSpeed : float = 5
+@export var minZoom : float = 0.5
+@export var maxZoom : float = 2.5
 
-	# Bounding Box starten mit erstem Inselteil
-	var first_child := island_root.get_child(0)
-	var bbox = Rect2(first_child.position, Vector2.ZERO)
+var zoomTarget : Vector2
+var dragStartMousePos = Vector2.ZERO
+var dragStartCameraPos = Vector2.ZERO
+var isDragging : bool = false
 
-	# Alle Inselteile abtasten
-	for child in island_root.get_children():
-		bbox = bbox.expand_to(child.position)
+func _ready():
+	zoomTarget = zoom
+	pass
 
-	# Mittelpunkt finden
-	var center = bbox.get_center()
+func _process(delta):
+	Zoom(delta)
+	ClickAndDrag()
+	
+func Zoom(delta):
+	if Input.is_action_just_pressed("camera_zoom_in"):
+		zoomTarget *= 1.25
+	if Input.is_action_just_pressed("camera_zoom_out"):
+		zoomTarget *= 0.75
+	# --- Zoom limits (clamp) ---
+	zoomTarget.x = clamp(zoomTarget.x, minZoom, maxZoom)
+	zoomTarget.y = clamp(zoomTarget.y, minZoom, maxZoom)
+	#zoom = zoomTarget
+	zoom = zoom.lerp(zoomTarget, zoomSpeed * delta)
 
-	# Kamera animiert zur neuen Mitte bewegen
-	var tween = create_tween()
-	tween.tween_property(self, "position", center, 0.8).set_ease(Tween.EASE_OUT)
+func ClickAndDrag():
+	if !isDragging and Input.is_action_just_pressed("camera_move"):
+		dragStartMousePos = get_viewport().get_mouse_position()
+		dragStartCameraPos = position
+		isDragging = true
+		
+	if isDragging and Input.is_action_just_released("camera_move"):
+		isDragging = false
+		
+	if isDragging:
+		var moveVector = get_viewport().get_mouse_position() - dragStartMousePos
+		position = dragStartCameraPos - moveVector * 1/zoom.x
