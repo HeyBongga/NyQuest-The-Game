@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cb2ghg6488ip"]
+[gd_scene load_steps=14 format=3 uid="uid://cb2ghg6488ip"]
 
 [ext_resource type="Shader" uid="uid://biao613he0htl" path="res://Animations/scroll.gdshader" id="2_qmf6k"]
-[ext_resource type="Texture2D" uid="uid://cro5adivtpep6" path="res://Sprites/Menu/Menu_Background/RepeatingPatternt.png" id="3_rn1t7"]
+[ext_resource type="Texture2D" uid="uid://bctayu6rqh7vu" path="res://Sprites/Menu/Menu_Background/clouds.png" id="2_rn1t7"]
+[ext_resource type="Texture2D" uid="uid://cd4r70vxm4htd" path="res://Sprites/Menu/Menu_Background/kitesurfer.png" id="2_yij4q"]
+[ext_resource type="Shader" uid="uid://bp4x0b0n4f7ey" path="res://Animations/kite.gdshader" id="3_rn1t7"]
 [ext_resource type="Script" uid="uid://8f6r4qicsp4k" path="res://Scripts/mainMenuManager.gd" id="3_wofhc"]
 [ext_resource type="Texture2D" uid="uid://c6a720i8l5y34" path="res://Sprites/Menu/Buttons normal/Start_button_normal.png" id="4_yij4q"]
 [ext_resource type="Texture2D" uid="uid://vw31cl4a5at6" path="res://Sprites/Menu/Button highlighted/start_button_highlighted.png" id="5_o8ral"]
@@ -12,7 +14,12 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_trj04"]
 shader = ExtResource("2_qmf6k")
-shader_parameter/speed = 0.1
+shader_parameter/speed = 0.05
+shader_parameter/amplitude = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rn1t7"]
+shader = ExtResource("3_rn1t7")
+shader_parameter/speed = 0.05
 
 [node name="mainMenu" type="Control"]
 layout_mode = 3
@@ -22,16 +29,54 @@ anchors_preset = 0
 layout_mode = 0
 offset_right = 256.0
 offset_bottom = 144.0
+scale = Vector2(5, 5)
 color = Color(0, 0.25098, 0.333333, 1)
 
 [node name="Pattern" type="TextureRect" parent="."]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_trj04")
 layout_mode = 0
-offset_right = 257.0
-offset_bottom = 144.0
-texture = ExtResource("3_rn1t7")
-stretch_mode = 1
+offset_right = 1280.0
+offset_bottom = 360.0
+scale = Vector2(1, 2)
+texture = ExtResource("2_rn1t7")
+expand_mode = 1
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"output_section": false,
+"pending_changes": {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 0,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "",
+"source_uid": -1
+},
+"slice_section": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 1
+material = SubResource("ShaderMaterial_rn1t7")
+layout_mode = 0
+offset_left = 2.0
+offset_right = 1280.0
+offset_bottom = 727.0
+texture = ExtResource("2_yij4q")
+expand_mode = 1
+stretch_mode = 2
 
 [node name="mainMenuManager" type="Control" parent="."]
 anchors_preset = 0
@@ -41,28 +86,31 @@ script = ExtResource("3_wofhc")
 
 [node name="start" type="TextureButton" parent="mainMenuManager"]
 layout_mode = 0
-offset_left = 89.0
-offset_top = 28.0
-offset_right = 179.0
-offset_bottom = 60.0
+offset_left = 540.0
+offset_top = 140.0
+offset_right = 630.0
+offset_bottom = 172.0
+scale = Vector2(3, 3)
 texture_normal = ExtResource("4_yij4q")
 texture_hover = ExtResource("5_o8ral")
 
 [node name="options" type="TextureButton" parent="mainMenuManager"]
 layout_mode = 0
-offset_left = 89.0
-offset_top = 65.0
-offset_right = 217.0
-offset_bottom = 97.0
+offset_left = 540.0
+offset_top = 280.0
+offset_right = 668.0
+offset_bottom = 312.0
+scale = Vector2(3, 3)
 texture_normal = ExtResource("6_urxp8")
 texture_hover = ExtResource("7_j8oe5")
 
 [node name="quit" type="TextureButton" parent="mainMenuManager"]
 layout_mode = 0
-offset_left = 89.0
-offset_top = 101.0
-offset_right = 205.0
-offset_bottom = 133.0
+offset_left = 540.0
+offset_top = 420.0
+offset_right = 656.0
+offset_bottom = 452.0
+scale = Vector2(3, 3)
 texture_normal = ExtResource("8_0gbn6")
 texture_hover = ExtResource("9_nyik7")
 
