@@ -1,9 +1,13 @@
 shader_type canvas_item;
 
-uniform float speed = .1;
-
+uniform float speed = 0.05;
+uniform float amplitude = 0.5; // Stärke der Wellenbewegung
 
 void vertex() {
-	UV.x += TIME * speed;
-	UV.y += TIME * speed;
+    // X weiterscrollen
+    UV.x += TIME * speed;
+
+    // Sinus sorgt für hoch/runter Bewegung
+    UV.y += sin(TIME * speed) * amplitude;
 }
+
