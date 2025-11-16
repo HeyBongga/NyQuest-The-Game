@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://bt1vbrut872mp"]
+
+[ext_resource type="Script" uid="uid://btuwui751l7s1" path="res://Scripts/dialogWindow.gd" id="1_xp5rm"]
+[ext_resource type="Texture2D" uid="uid://q4wnovew1ow" path="res://Sprites/speech_bubble.png" id="2_tepax"]
+[ext_resource type="FontFile" uid="uid://bhxhywac85s24" path="res://Fonds/Bagura Font Pack v1.5/Basal.ttf" id="3_rxrr8"]
+[ext_resource type="Texture2D" uid="uid://bm4chxueoaar7" path="res://Sprites/continue_button.png" id="4_ht8p1"]
+[ext_resource type="Texture2D" uid="uid://cdc1yeigjii47" path="res://Sprites/dialogChar.png" id="5_tr2j6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l0qdm"]
+texture = ExtResource("4_ht8p1")
+
+[node name="dialogWindow" type="MarginContainer"]
+custom_minimum_size = Vector2(500, 200)
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+script = ExtResource("1_xp5rm")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_tepax")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 390.0
+offset_bottom = 160.0
+rotation = -0.010048625
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_rxrr8")
+theme_override_font_sizes/font_size = 25
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(30, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_l0qdm")
+
+[node name="DialogChar" type="Sprite2D" parent="."]
+position = Vector2(-100, 100)
+texture = ExtResource("5_tr2j6")
+
+[node name="letterDisplayTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="letterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]

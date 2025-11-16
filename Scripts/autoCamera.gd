@@ -28,6 +28,12 @@ func Zoom(delta):
 	#zoom = zoomTarget
 	zoom = zoom.lerp(zoomTarget, zoomSpeed * delta)
 
+func get_visible_world_rect() -> Rect2:
+	var screen_size = get_viewport_rect().size
+	var half = screen_size * zoom * 0.5
+	return Rect2(global_position - half, screen_size * zoom)
+
+
 func ClickAndDrag():
 	if !isDragging and Input.is_action_just_pressed("camera_move"):
 		dragStartMousePos = get_viewport().get_mouse_position()

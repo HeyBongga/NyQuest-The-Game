@@ -1,67 +1,55 @@
 extends Node
 
-var tile_scenes = []
-var tile_index = 1
-var house
-var windrad1
-var windrad2
-var windrad3
-var windrad4
+#Tiles und Index
+var tile_scenes : Array = []
+var tile_index : int = 1
+
+#Signalobjekte
+var interactables : Array = []
 
 func _ready():
-	call_deferred("_setup_after_scene_loaded")
-	
-func _setup_after_scene_loaded():
-	var current_scene = get_tree().get_current_scene()
-	if current_scene == null:
-		push_error("Keine aktuelle Szene gefunden!")
-		return
+	call_deferred("setup_after_scene_loaded")
 
-	var island_root = current_scene.get_node_or_null("islandRoot")
-	if island_root == null:
-		push_error("islandRoot wurde noch nicht instanziert!")
-		return
+func setup_after_scene_loaded():
+	var island_root = get_tree().get_current_scene().get_node_or_null("islandRoot")
 	
-	print("island_root gefunden:", island_root)
-	print("Kinder von island_root:")
+	# Alle Tiles automatisch sammeln...
+	for islandTile in island_root.get_children(): # islandTile1 bis islandTile5
+		tile_scenes.append(islandTile)
 	
+	# Interaktives Objekt im Tile suchen...
 	for child in island_root.get_children():
-		print(" - ", child.name)
-	
-	tile_scenes = [
-		island_root.get_node("islandTile1"),
-		island_root.get_node("islandTile2"),
-		island_root.get_node("islandTile3"),
-		island_root.get_node("islandTile4"),
-		island_root.get_node("islandTile5"),
+		if child.name.begins_with("islandTile"):
+			for object in child.get_children():
+				if object.has_signal("clicked"):
+					object.clicked.connect(on_object_clicked)
+					interactables.append(object)
+
+func on_object_clicked(object):
+	match object.objectType:
+		"house":
+			handle_house_clicked()
+		"windrad":
+			handle_windrad_clicked()
+		_:
+			print("Unbekannter Objekt-Typ:", object.objectType)
+
+func handle_house_clicked():
+	var dialogLines : Array[String] = [
+	"Hallo",
+	"Du Trottel",
+	"LERN ENDLICH WAS EINE FREQUENZ IST",
+	"oder Exmatrikulier dich",
 	]
-	house = island_root.get_node("islandTile1/House")
-	house.house_clicked.connect(_on_object_clicked)
-	
-	windrad1 = island_root.get_node("islandTile2/Windrad")
-	windrad1.windrad_clicked.connect(_on_object_clicked)
-	
-	windrad2 = island_root.get_node("islandTile3/Windrad")
-	windrad2.windrad_clicked.connect(_on_object_clicked)
+	var my_label = $"../UI/questDialogue/MarginContainer/dialogWindow/NinePatchRect/Label"
+	var my_Window = $"../UI/questDialogue"
+	DialogManager.set_label(my_label)
+	DialogManager.set_window(my_Window)
+	DialogManager.start_dialog(dialogLines)
+	#dialog.dialog_done.connect(Callable(self, "spawn_next_tile"))
 
-	windrad3 = island_root.get_node("islandTile4/Windrad")
-	windrad3.windrad_clicked.connect(_on_object_clicked)
-	
-	windrad4 = island_root.get_node("islandTile5/Windrad")
-	windrad4.windrad_clicked.connect(_on_object_clicked)
-	
-	
-	
-func _on_object_clicked():
-	var ui = get_node("../UI/questDialogue")
-	ui.start_dialog("Willkommen! Löse diese Aufgabe...")
-	ui.dialog_finished.connect(_on_dialog_finished)
-
-
-func _on_dialog_finished():
-	var ui = get_node("../UI/questDialogue")
-	ui.dialog_finished.disconnect(_on_dialog_finished)
-	spawn_next_tile()
+func handle_windrad_clicked():
+	get_tree().change_scene_to_file("res://Scenes/cloudBackground.tscn")
 
 func spawn_next_tile():
 	if tile_index >= tile_scenes.size():

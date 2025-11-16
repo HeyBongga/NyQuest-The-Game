@@ -23,6 +23,7 @@ layer = 2
 [node name="inGameUI" parent="UI" instance=ExtResource("2_47rga")]
 
 [node name="questDialogue" parent="UI" instance=ExtResource("2_yyxd1")]
+z_index = 2
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
@@ -40,10 +41,12 @@ size_flags_vertical = 3
 color = Color(0.19215687, 0.7529412, 0.9843137, 1)
 
 [node name="cloudBackground" parent="Background" instance=ExtResource("4_uvydw")]
+visible = false
 
 [node name="Foreground" type="CanvasLayer" parent="."]
 
-[node name="cloudForeground" parent="Foreground" instance=ExtResource("5_mhr8t")]
+[node name="cloudForeground" parent="Foreground" node_paths=PackedStringArray("camera") instance=ExtResource("5_mhr8t")]
+camera = NodePath("../../autoCamera")
 
 [node name="autoCamera" type="Camera2D" parent="."]
 position = Vector2(640, 360)

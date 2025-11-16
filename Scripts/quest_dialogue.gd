@@ -1,14 +1,15 @@
 extends Control
 
-signal dialog_finished
+signal dialog_done
 
 func _ready():
 	self.visible=false
 
-func start_dialog(text):
-	$MarginContainer/MarginContainer/Label.text = text
-	visible = true
+func visibility():
+	if visible:
+		visible = false
+	else:
+		visible = true
 
-func _on_button_pressed():
-	visible = false
-	emit_signal("dialog_finished")
+func on_button_pressed():
+	emit_signal("dialog_done")

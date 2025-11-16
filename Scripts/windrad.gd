@@ -1,24 +1,21 @@
 extends Area2D
 
-signal windrad_clicked
+@export var objectType := "windrad"
+signal clicked(this_object)
 
 @onready var sprite := $Sprite2D
 var zoom_scale := Vector2(1.2, 1.2)  # Zielgröße beim Hover
 
 func _ready():
-	print("House ready – warte auf Input")
+	print("Windrad ready – warte auf Input")
 
-func _on_mouse_entered():
-	print("Maus ist über House!")
+func on_mouse_entered():
 	sprite.scale = zoom_scale
 
-func _on_mouse_exited():
-	print("Maus hat House verlassen!")
+func on_mouse_exited():
 	sprite.scale = Vector2.ONE
 
-func _on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int):
-	print("Input erkannt:", event)
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		print("House wurde angeklickt!")
-		emit_signal("windrad_clicked")
+func on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int):
+	if event.is_action_pressed("click_left_mouse"):
+		clicked.emit(self)
 		$CollisionShape2D.disabled=true

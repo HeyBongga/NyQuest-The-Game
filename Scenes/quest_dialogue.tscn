@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://4epow0munt6q"]
+[gd_scene load_steps=3 format=3 uid="uid://4epow0munt6q"]
 
 [ext_resource type="Script" uid="uid://cegf4i6c4d8ow" path="res://Scripts/quest_dialogue.gd" id="1_tvq1l"]
-[ext_resource type="FontFile" uid="uid://bhxhywac85s24" path="res://Fonds/Bagura Font Pack v1.5/Basal.ttf" id="2_h4c4t"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvq1l"]
-bg_color = Color(0.48046875, 0.48046875, 0.48046875, 1)
+[ext_resource type="PackedScene" uid="uid://bt1vbrut872mp" path="res://Scenes/dialog_window.tscn" id="2_h4c4t"]
 
 [node name="questDialogue" type="Control"]
 z_index = -1
@@ -29,22 +26,5 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
-custom_minimum_size = Vector2(200, 200)
+[node name="dialogWindow" parent="MarginContainer" instance=ExtResource("2_h4c4t")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-mouse_filter = 2
-
-[node name="Button" type="Button" parent="MarginContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_h4c4t")
-theme_override_styles/normal = SubResource("StyleBoxFlat_tvq1l")
-
-[connection signal="pressed" from="MarginContainer/MarginContainer/Button" to="." method="_on_button_pressed"]

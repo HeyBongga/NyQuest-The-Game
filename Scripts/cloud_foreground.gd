@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var camera : Camera2D
 @export var cloud_speeds_foreground := {
 	"cloud5": 40, 
 	"cloud6": 45,
@@ -16,11 +17,11 @@ func _ready():
 
 func _process(delta):
 	for cloudname in cloud_speeds_foreground.keys():
-		var cloud := $".".get_node(cloudname)
-		cloud.position.x += cloud_speeds_foreground[cloudname] * delta
-		var cloud_width = cloud.texture.get_width() * cloud.scale.x
-		
-		var right_limit = screen_width + cloud_width
-		
-		if cloud.position.x > right_limit:
-			cloud.position.x = -cloud_width
+			var cloud := $".".get_node(cloudname)
+			cloud.position.x += cloud_speeds_foreground[cloudname] * delta
+			var cloud_width = cloud.texture.get_width() * cloud.scale.x
+			
+			var right_limit = screen_width + cloud_width
+			
+			if cloud.position.x > right_limit:
+				cloud.position.x = -cloud_width

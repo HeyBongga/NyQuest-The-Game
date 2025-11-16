@@ -42,3 +42,5 @@ tile_set = SubResource("TileSet_wrm1d")
 
 [node name="House" parent="." instance=ExtResource("3_t7t6b")]
 texture_filter = 1
+
+[connection signal="clicked" from="House" to="." method="on_object_clicked"]
