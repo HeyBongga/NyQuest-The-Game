@@ -53,13 +53,13 @@ func _setup_after_scene_loaded():
 	
 	
 func _on_object_clicked():
-	var ui = get_node("../CanvasLayer/questDialogue")
+	var ui = get_node("../UI/questDialogue")
 	ui.start_dialog("Willkommen! Löse diese Aufgabe...")
 	ui.dialog_finished.connect(_on_dialog_finished)
 
 
 func _on_dialog_finished():
-	var ui = get_node("../CanvasLayer/questDialogue")
+	var ui = get_node("../UI/questDialogue")
 	ui.dialog_finished.disconnect(_on_dialog_finished)
 	spawn_next_tile()
 
