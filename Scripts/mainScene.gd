@@ -1,6 +1,13 @@
-extends Node2D
+extends Node
 
+signal Game_ready
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _ready():
+	# sendet ein Signal, dass die Szene fertig aufgebaut ist
+	if GameState.first_boot:
+		await get_tree().process_frame
+		get_tree().change_scene_to_file("res://Scenes/mainMenu.tscn")
+		GameState.first_boot = false
+		emit_signal("Game_ready")
+	else:
+		emit_signal("Game_ready")

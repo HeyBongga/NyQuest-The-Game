@@ -1,5 +1,7 @@
 extends Node
 
+@export var world: Node
+
 #Tiles und Index
 var tile_scenes : Array = []
 var tile_index : int = 1
@@ -8,10 +10,10 @@ var tile_index : int = 1
 var interactables : Array = []
 
 func _ready():
-	call_deferred("setup_after_scene_loaded")
-
-func setup_after_scene_loaded():
-	var island_root = get_tree().get_current_scene().get_node_or_null("islandRoot")
+	var island_root = world.get_node("islandRoot")
+	print("islandRoot =", island_root)
+	
+	#var island_root = world.get_node("islandRoot")
 	
 	# Alle Tiles automatisch sammeln...
 	for islandTile in island_root.get_children(): # islandTile1 bis islandTile5
@@ -35,18 +37,12 @@ func on_object_clicked(object):
 			print("Unbekannter Objekt-Typ:", object.objectType)
 
 func handle_house_clicked():
-	var dialogLines : Array[String] = [
+	var _dialogLines : Array[String] = [
 	"Hallo",
 	"Du Trottel",
 	"LERN ENDLICH WAS EINE FREQUENZ IST",
 	"oder Exmatrikulier dich",
 	]
-	var my_label = $"../UI/questDialogue/MarginContainer/dialogWindow/NinePatchRect/Label"
-	var my_Window = $"../UI/questDialogue"
-	DialogManager.set_label(my_label)
-	DialogManager.set_window(my_Window)
-	DialogManager.start_dialog(dialogLines)
-	#dialog.dialog_done.connect(Callable(self, "spawn_next_tile"))
 
 func handle_windrad_clicked():
 	get_tree().change_scene_to_file("res://Scenes/cloudBackground.tscn")
