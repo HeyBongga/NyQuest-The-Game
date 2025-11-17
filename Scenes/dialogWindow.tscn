@@ -4,12 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://q4wnovew1ow" path="res://Sprites/speech_bubble.png" id="2_vishp"]
 [ext_resource type="FontFile" uid="uid://bhxhywac85s24" path="res://Fonds/Bagura Font Pack v1.5/Basal.ttf" id="3_1tjdv"]
 
-[node name="dialogWindow" type="MarginContainer"]
+[node name="dialogWindow" type="MarginContainer" node_paths=PackedStringArray("textBox")]
 custom_minimum_size = Vector2(500, 200)
 size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
 script = ExtResource("1_qiqvy")
+textBox = NodePath("NinePatchRect")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2

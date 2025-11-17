@@ -1,6 +1,7 @@
 extends Node
 
-@export var world: Node
+@export var world : Node
+@export var dialogScene : Control
 
 #Tiles und Index
 var tile_scenes : Array = []
@@ -43,6 +44,10 @@ func handle_house_clicked():
 	"LERN ENDLICH WAS EINE FREQUENZ IST",
 	"oder Exmatrikulier dich",
 	]
+	
+	dialogScene.visibility()
+	dialogScene.dialogWindow.display_text("Tschau Kakao")
+
 
 func handle_windrad_clicked():
 	get_tree().change_scene_to_file("res://Scenes/cloudBackground.tscn")

@@ -1,10 +1,11 @@
 extends Control
 
 @export var button : Button
+@export var dialogWindow : MarginContainer
 
 signal dialog_finished
 
-func _ready() -> void:
+func _ready():
 	self.visible = false
 
 func visibility():

@@ -41,13 +41,13 @@ layer = 2
 [node name="inGameUI" parent="UI" instance=ExtResource("2_47rga")]
 
 [node name="DialogScene" parent="UI" instance=ExtResource("2_yyxd1")]
-script = null
 
 [node name="World" parent="." instance=ExtResource("6_0vbqt")]
 
-[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("world")]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("world", "dialogScene")]
 script = ExtResource("3_yyxd1")
 world = NodePath("../World")
+dialogScene = NodePath("../UI/DialogScene")
 
 [node name="DialogManager" type="Node" parent="."]
 script = ExtResource("8_w1dup")
