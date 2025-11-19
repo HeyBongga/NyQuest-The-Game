@@ -1,51 +1,56 @@
-[gd_scene load_steps=9 format=3 uid="uid://dobxp8i6xj2no"]
+[gd_scene load_steps=10 format=3 uid="uid://dobxp8i6xj2no"]
 
-[ext_resource type="Shader" uid="uid://cku2yi4knc8xa" path="res://Shaders/Smooth-Pixels-main/smooth_pixels.gdshader" id="1_0vbqt"]
+[ext_resource type="Script" uid="uid://blx3x1t6xfk7h" path="res://Scripts/mainScene.gd" id="1_w1dup"]
 [ext_resource type="PackedScene" uid="uid://2ngcpcue2qx0" path="res://Scenes/inGameUI.tscn" id="2_47rga"]
-[ext_resource type="PackedScene" uid="uid://4epow0munt6q" path="res://Scenes/quest_dialogue.tscn" id="2_yyxd1"]
-[ext_resource type="Script" uid="uid://siwxjihs0civ" path="res://Scripts/autoCamera.gd" id="3_47rga"]
-[ext_resource type="Script" uid="uid://ccah1c0lrrvva" path="res://Scripts/game_manager.gd" id="3_yyxd1"]
-[ext_resource type="PackedScene" uid="uid://un32vc3l15s3" path="res://Scenes/island_tile_1.tscn" id="4_0vbqt"]
-[ext_resource type="PackedScene" uid="uid://7cjdqmiyhfw3" path="res://Scenes/island_tile_2.tscn" id="5_w1dup"]
+[ext_resource type="PackedScene" uid="uid://4epow0munt6q" path="res://Scenes/dialogScene.tscn" id="2_yyxd1"]
+[ext_resource type="Script" uid="uid://ccah1c0lrrvva" path="res://Scripts/GameManager.gd" id="3_yyxd1"]
+[ext_resource type="PackedScene" uid="uid://halj0lpbah5x" path="res://Scenes/cloudBackground.tscn" id="4_uvydw"]
+[ext_resource type="PackedScene" uid="uid://tx1imnimjg3v" path="res://Scenes/cloudForeground.tscn" id="5_mhr8t"]
+[ext_resource type="PackedScene" uid="uid://5l32asmp38g" path="res://Scenes/world.tscn" id="6_0vbqt"]
+[ext_resource type="Script" uid="uid://bhiflfryufuci" path="res://Scripts/DialogManager.gd" id="8_w1dup"]
+[ext_resource type="Script" uid="uid://bx0okbj2l4t50" path="res://Scripts/GameState.gd" id="9_uvydw"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w1dup"]
-shader = ExtResource("1_0vbqt")
+[node name="mainScene" type="Node"]
+script = ExtResource("1_w1dup")
 
-[node name="mainScene" type="Node2D"]
-material = SubResource("ShaderMaterial_w1dup")
-use_parent_material = true
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Background"]
+z_index = -10
+y_sort_enabled = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.19215687, 0.7529412, 0.9843137, 1)
+
+[node name="cloudBackground" parent="Background" instance=ExtResource("4_uvydw")]
+visible = false
+
+[node name="Foreground" type="CanvasLayer" parent="."]
+
+[node name="cloudForeground" parent="Foreground" instance=ExtResource("5_mhr8t")]
+
+[node name="UI" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="inGameUI" parent="CanvasLayer" instance=ExtResource("2_47rga")]
+[node name="inGameUI" parent="UI" instance=ExtResource("2_47rga")]
 
-[node name="questDialogue" parent="CanvasLayer" instance=ExtResource("2_yyxd1")]
+[node name="DialogScene" parent="UI" instance=ExtResource("2_yyxd1")]
 
-[node name="autoCamera" type="Camera2D" parent="."]
-visible = false
-position = Vector2(640, 360)
-script = ExtResource("3_47rga")
+[node name="World" parent="." instance=ExtResource("6_0vbqt")]
 
-[node name="gameManager" type="Node2D" parent="."]
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("world", "dialogScene")]
 script = ExtResource("3_yyxd1")
+world = NodePath("../World")
+dialogScene = NodePath("../UI/DialogScene")
 
-[node name="islandRoot" type="Node2D" parent="."]
-use_parent_material = true
-position = Vector2(640, 360)
+[node name="DialogManager" type="Node" parent="."]
+script = ExtResource("8_w1dup")
 
-[node name="islandTile1" parent="islandRoot" instance=ExtResource("4_0vbqt")]
-
-[node name="islandTile2" parent="islandRoot" instance=ExtResource("5_w1dup")]
-position = Vector2(-272, -136)
-
-[node name="islandTile3" parent="islandRoot" instance=ExtResource("5_w1dup")]
-z_index = -2
-position = Vector2(-544, -272)
-
-[node name="islandTile4" parent="islandRoot" instance=ExtResource("5_w1dup")]
-position = Vector2(-544, 0)
-
-[node name="islandTile5" parent="islandRoot" instance=ExtResource("5_w1dup")]
-z_index = -3
-position = Vector2(-272, -408)
+[node name="GameState" type="Node" parent="."]
+script = ExtResource("9_uvydw")

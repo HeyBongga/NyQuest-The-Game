@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://4epow0munt6q"]
+
+[ext_resource type="Script" uid="uid://dt4p22ehfeved" path="res://Scripts/dialogScene.gd" id="1_655ow"]
+[ext_resource type="PackedScene" uid="uid://bt1vbrut872mp" path="res://Scenes/dialogWindow.tscn" id="2_h4c4t"]
+[ext_resource type="Texture2D" uid="uid://bm4chxueoaar7" path="res://Sprites/continue_button.png" id="3_bs08y"]
+[ext_resource type="Texture2D" uid="uid://cdc1yeigjii47" path="res://Sprites/dialogChar.png" id="3_p5ijb"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o44vb"]
+texture = ExtResource("3_bs08y")
+
+[node name="DialogScene" type="Control" node_paths=PackedStringArray("button", "dialogWindow")]
+z_index = -1
+y_sort_enabled = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_655ow")
+button = NodePath("MarginContainer/Button")
+dialogWindow = NodePath("dialogWindow")
+
+[node name="dialogWindow" parent="." instance=ExtResource("2_h4c4t")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -254.0
+offset_top = -211.0
+offset_right = 246.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_left = 827.0
+offset_top = 597.0
+offset_right = 857.0
+offset_bottom = 627.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(30, 10)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_o44vb")
+
+[node name="DialogChar" type="Sprite2D" parent="."]
+position = Vector2(210, 562)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_p5ijb")
+
+[connection signal="pressed" from="MarginContainer/Button" to="." method="on_button_pressed"]
