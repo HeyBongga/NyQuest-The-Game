@@ -1,7 +1,9 @@
 extends MarginContainer
 
-@export var textBox : NinePatchRect
+signal finished_all_lines
+#signal finished_displaying
 
+@export var textBox : NinePatchRect
 @onready var label = $NinePatchRect/Label
 @onready var timer = $letterDisplayTimer
 
@@ -12,7 +14,7 @@ var letter_time = 0.03
 var space_time = 0.06
 var punctuation_time = 0.2
 
-signal finished_displaying
+
 
 # -----------------------------
 # Mehrzeilen-Variablen
@@ -53,7 +55,7 @@ func display_letter():
 	letter_index += 1
 	
 	if letter_index >= text.length():
-		finished_displaying.emit()
+		#finished_displaying.emit()
 		is_animating = false
 		return
 		
@@ -87,7 +89,9 @@ func next_line():
 	if current_index < dialog_lines.size():
 		display_text(dialog_lines[current_index])
 	else:
-		hide()
+		#finished_displaying.emit()
+		finished_all_lines.emit()
+		
 
 # -----------------------------
 # Taste zum Weitermachen

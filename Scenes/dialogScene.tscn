@@ -57,5 +57,3 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_o44vb")
 position = Vector2(210, 562)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_p5ijb")
-
-[connection signal="pressed" from="MarginContainer/Button" to="." method="on_button_pressed"]

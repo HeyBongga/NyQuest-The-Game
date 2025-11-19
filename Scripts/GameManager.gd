@@ -45,7 +45,7 @@ func handle_house_clicked():
 	"oder Exmatrikulier dich",
 	]
 	
-	dialogScene.visibility()
+	dialogScene.show_dialog()
 	dialogScene.dialogWindow.start_dialog(_dialogLines)
 
 
