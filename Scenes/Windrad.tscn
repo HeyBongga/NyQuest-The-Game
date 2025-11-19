@@ -1,25 +1,79 @@
-[gd_scene load_steps=3 format=3 uid="uid://c676hl1fep4oq"]
+[gd_scene load_steps=8 format=3 uid="uid://c676hl1fep4oq"]
 
 [ext_resource type="Script" uid="uid://bfigk6lyygor5" path="res://Scripts/windrad.gd" id="2_4xja0"]
-[ext_resource type="Texture2D" uid="uid://doirb81p24u44" path="res://Sprites/House.png" id="2_uqdpp"]
+[ext_resource type="Texture2D" uid="uid://phcothlb8k4q" path="res://Sprites/windrad_animation.png" id="2_uqdpp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xja0"]
+atlas = ExtResource("2_uqdpp")
+region = Rect2(0, 0, 176, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_np62n"]
+atlas = ExtResource("2_uqdpp")
+region = Rect2(176, 0, 176, 240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_euprr"]
+atlas = ExtResource("2_uqdpp")
+region = Rect2(352, 0, 176, 240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yvkqj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xja0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_np62n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_euprr")
+}],
+"loop": true,
+"name": &"Windrad_idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uqdpp"]
+radius = 6.1538463
+height = 31.751282
 
 [node name="Windrad" type="Area2D"]
 texture_filter = 2
 use_parent_material = true
 script = ExtResource("2_4xja0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 2
 use_parent_material = true
-texture = ExtResource("2_uqdpp")
+position = Vector2(-8, -72)
+sprite_frames = SubResource("SpriteFrames_yvkqj")
+animation = &"Windrad_idle"
+autoplay = "Windrad_idle"
 offset = Vector2(0, -40)
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"pending_changes": {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://Sprites/windrad_animation.aseprite",
+"source_uid": -1
+},
+"slice_section": false
+}
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 texture_filter = 2
 use_parent_material = true
-position = Vector2(0.80000186, -36)
-scale = Vector2(6.45, 6)
-polygon = PackedVector2Array(-5.085272, 10, 6.2499995, 10, 10, 8.666667, 10, -2, 3.7499998, -10, -6.2500005, -7.333334, -10.046513, -0.666667, -10.046513, 8.666667)
+position = Vector2(-1.4210855e-14, -88)
+scale = Vector2(6.5, 6.047)
+shape = SubResource("CapsuleShape2D_uqdpp")
 
 [connection signal="input_event" from="." to="." method="on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="on_mouse_entered"]
