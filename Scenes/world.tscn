@@ -19,14 +19,3 @@ position = Vector2(640, 360)
 
 [node name="islandTile2" parent="islandRoot" instance=ExtResource("3_fo5ed")]
 position = Vector2(-272, -136)
-
-[node name="islandTile3" parent="islandRoot" instance=ExtResource("3_fo5ed")]
-z_index = -2
-position = Vector2(-544, -272)
-
-[node name="islandTile4" parent="islandRoot" instance=ExtResource("3_fo5ed")]
-position = Vector2(-544, 0)
-
-[node name="islandTile5" parent="islandRoot" instance=ExtResource("3_fo5ed")]
-z_index = -3
-position = Vector2(-272, -408)
