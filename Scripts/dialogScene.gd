@@ -11,8 +11,10 @@ func _ready():
 func visibility():
 	if visible:
 		visible = false
+		
 	else:
 		visible = true
+		
 
 func on_button_pressed() -> void:
 	self.visible = false

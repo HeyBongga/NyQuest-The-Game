@@ -39,14 +39,14 @@ func on_object_clicked(object):
 
 func handle_house_clicked():
 	var _dialogLines : Array[String] = [
-	"Hallo",
-	"Du Trottel",
+	"Hallo du kleiner süßer Trottel! \n , ! wir schauen mal ob das klappt",
+	"Du Trottel hehehe??ß",
 	"LERN ENDLICH WAS EINE FREQUENZ IST",
 	"oder Exmatrikulier dich",
 	]
 	
 	dialogScene.visibility()
-	dialogScene.dialogWindow.display_text("Tschau Kakao")
+	dialogScene.dialogWindow.start_dialog(_dialogLines)
 
 
 func handle_windrad_clicked():
