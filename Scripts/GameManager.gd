@@ -14,19 +14,20 @@ func _ready():
 	var island_root = world.get_node("islandRoot")
 	print("islandRoot =", island_root)
 	
-	#var island_root = world.get_node("islandRoot")
-	
 	# Alle Tiles automatisch sammeln...
 	for islandTile in island_root.get_children(): # islandTile1 bis islandTile5
 		tile_scenes.append(islandTile)
 	
 	# Interaktives Objekt im Tile suchen...
 	for child in island_root.get_children():
+		
 		if child.name.begins_with("islandTile"):
 			for object in child.get_children():
 				if object.has_signal("clicked"):
 					object.clicked.connect(on_object_clicked)
 					interactables.append(object)
+	
+	dialogScene.finished_dialog.connect(spawn_next_tile)
 
 func on_object_clicked(object):
 	match object.objectType:
@@ -39,14 +40,13 @@ func on_object_clicked(object):
 
 func handle_house_clicked():
 	var _dialogLines : Array[String] = [
-	"Hallo du kleiner süßer Trottel! \n , ! wir schauen mal ob das klappt",
-	"Du Trottel hehehe??ß",
-	"LERN ENDLICH WAS EINE FREQUENZ IST",
-	"oder Exmatrikulier dich",
+	"Willkommen auf Nyquest! \n Gut dass du da bist...",
+	"Hier gibt es eine Menge zutun \n und wir brauchen dringend deine Hilfe...",
+	"Erkunde einfach mal die Insel \n und schaue wo dein Wissen von Nöten ist...",
+	"Bis zum nächsten Mal!",
 	]
 	
-	dialogScene.show_dialog()
-	dialogScene.dialogWindow.start_dialog(_dialogLines)
+	dialogScene.show_dialog(_dialogLines)
 
 
 func handle_windrad_clicked():

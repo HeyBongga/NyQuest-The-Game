@@ -16,7 +16,6 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 
 [autoload]
 
-DialogManager="*res://Scripts/DialogManager.gd"
 GameState="*res://Scripts/GameState.gd"
 
 [display]

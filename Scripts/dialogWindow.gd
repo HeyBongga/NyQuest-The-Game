@@ -1,7 +1,6 @@
 extends MarginContainer
 
 signal finished_all_lines
-#signal finished_displaying
 
 @export var textBox : NinePatchRect
 @onready var label = $NinePatchRect/Label
@@ -14,8 +13,6 @@ var letter_time = 0.03
 var space_time = 0.06
 var punctuation_time = 0.2
 
-
-
 # -----------------------------
 # Mehrzeilen-Variablen
 # -----------------------------
@@ -26,7 +23,6 @@ var is_animating := false
 # -----------------------------
 # Dialog starten (Array übergeben)
 # -----------------------------
-
 func start_dialog(lines: Array[String]):
 	dialog_lines = lines
 	current_index = 0
@@ -35,7 +31,6 @@ func start_dialog(lines: Array[String]):
 	is_animating = true
 	display_text(dialog_lines[current_index])
 	show()
-
 
 # -----------------------------
 # Einzelne Zeile anzeigen
@@ -46,7 +41,9 @@ func display_text(text_to_display: String):
 	label.text = ""
 	letter_index = 0
 	display_letter()
-	
+	if current_index == (dialog_lines.size()-1):
+		finished_all_lines.emit()
+
 # -----------------------------
 # Buchstabenweise anzeigen
 # -----------------------------
@@ -55,7 +52,6 @@ func display_letter():
 	letter_index += 1
 	
 	if letter_index >= text.length():
-		#finished_displaying.emit()
 		is_animating = false
 		return
 		
@@ -81,17 +77,13 @@ func next_line():
 		letter_index = text.length()
 		is_animating = false
 		return
-
+	
 	# Nächste Zeile
 	current_index += 1
-
+	
 	# Gibt es noch Zeilen?
 	if current_index < dialog_lines.size():
 		display_text(dialog_lines[current_index])
-	else:
-		#finished_displaying.emit()
-		finished_all_lines.emit()
-		
 
 # -----------------------------
 # Taste zum Weitermachen
@@ -103,9 +95,3 @@ func _input(event):
 		
 	elif event.is_action_pressed("click_left_mouse"):
 		next_line()	
-	
-		
-		
-	
-	
-		

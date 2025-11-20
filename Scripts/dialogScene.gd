@@ -3,27 +3,27 @@ extends Control
 @export var button : Button
 @export var dialogWindow : MarginContainer
 
-#signal dialog_finished
+@onready var dialog_lines : Array[String]
+
+signal finished_dialog
 
 func _ready():
 	visible = false
 	button.visible = false
 	
 	#Signal verbinden
-	dialogWindow.finished_all_lines.connect(finish_dialog)
+	dialogWindow.finished_all_lines.connect(finish_all_lines)
 	button.pressed.connect(on_button_pressed)
 
-func show_dialog():
+func show_dialog(lines):
+	dialogWindow.start_dialog(lines)
 	visible = true
 	button.visible = false  # Button erst später anzeigen
 
 # Wird aufgerufen, wenn der Dialog *komplett* fertig ist
-func finish_dialog():
+func finish_all_lines():
 	button.visible = true  # Jetzt darf man schließen drücken
 
-		
-
 func on_button_pressed() -> void:
-	visible = false		# ganze Szene verstecken
-	button.visible = false
-	#dialog_finished.emit()
+	self.visible = false # ganze Szene verstecken
+	finished_dialog.emit()

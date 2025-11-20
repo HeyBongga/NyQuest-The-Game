@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dobxp8i6xj2no"]
+[gd_scene load_steps=9 format=3 uid="uid://dobxp8i6xj2no"]
 
 [ext_resource type="Script" uid="uid://blx3x1t6xfk7h" path="res://Scripts/mainScene.gd" id="1_w1dup"]
 [ext_resource type="PackedScene" uid="uid://2ngcpcue2qx0" path="res://Scenes/inGameUI.tscn" id="2_47rga"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://halj0lpbah5x" path="res://Scenes/cloudBackground.tscn" id="4_uvydw"]
 [ext_resource type="PackedScene" uid="uid://tx1imnimjg3v" path="res://Scenes/cloudForeground.tscn" id="5_mhr8t"]
 [ext_resource type="PackedScene" uid="uid://5l32asmp38g" path="res://Scenes/world.tscn" id="6_0vbqt"]
-[ext_resource type="Script" uid="uid://bhiflfryufuci" path="res://Scripts/DialogManager.gd" id="8_w1dup"]
 [ext_resource type="Script" uid="uid://bx0okbj2l4t50" path="res://Scripts/GameState.gd" id="9_uvydw"]
 
 [node name="mainScene" type="Node"]
@@ -48,9 +47,6 @@ layer = 2
 script = ExtResource("3_yyxd1")
 world = NodePath("../World")
 dialogScene = NodePath("../UI/DialogScene")
-
-[node name="DialogManager" type="Node" parent="."]
-script = ExtResource("8_w1dup")
 
 [node name="GameState" type="Node" parent="."]
 script = ExtResource("9_uvydw")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://4epow0munt6q"]
+[gd_scene load_steps=8 format=3 uid="uid://4epow0munt6q"]
 
 [ext_resource type="Script" uid="uid://dt4p22ehfeved" path="res://Scripts/dialogScene.gd" id="1_655ow"]
 [ext_resource type="PackedScene" uid="uid://bt1vbrut872mp" path="res://Scenes/dialogWindow.tscn" id="2_h4c4t"]
@@ -7,6 +7,12 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o44vb"]
 texture = ExtResource("3_bs08y")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_655ow"]
+texture = ExtResource("3_bs08y")
+modulate_color = Color(0, 0, 0, 0.47058824)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_655ow"]
 
 [node name="DialogScene" type="Control" node_paths=PackedStringArray("button", "dialogWindow")]
 z_index = -1
@@ -40,10 +46,10 @@ grow_vertical = 0
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 0
-offset_left = 827.0
-offset_top = 597.0
-offset_right = 857.0
-offset_bottom = 627.0
+offset_left = 830.0
+offset_top = 660.0
+offset_right = 860.0
+offset_bottom = 690.0
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
@@ -52,6 +58,9 @@ custom_minimum_size = Vector2(30, 10)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_o44vb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_655ow")
+theme_override_styles/hover = SubResource("StyleBoxTexture_655ow")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_655ow")
 
 [node name="DialogChar" type="Sprite2D" parent="."]
 position = Vector2(210, 562)
