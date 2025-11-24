@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://un32vc3l15s3" path="res://Scenes/island_tile_1.tscn" id="2_8j60k"]
 [ext_resource type="PackedScene" uid="uid://7cjdqmiyhfw3" path="res://Scenes/island_tile_2.tscn" id="3_fo5ed"]
 
-[node name="World" type="Node"]
+[node name="World" type="Node2D"]
 
 [node name="autoCamera" type="Camera2D" parent="."]
 position = Vector2(640, 360)

@@ -23,10 +23,11 @@ func _on_togglemenubutton_pressed():
 	quit_button.visible = menu_visible
 
 func _on_optionsbutton_pressed():
-	get_tree().change_scene_to_file("res://Scenes/options.tscn")
-	
-	
-	
+	$"../../../optionsMenu".visible = true
+	$"../../../../World".visible = false
+	$"../..".visible = false
+	_on_togglemenubutton_pressed()
+
 func _on_quitbutton_pressed() -> void:
 	get_tree().quit()
 

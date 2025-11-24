@@ -1,13 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://cb2ghg6488ip"]
+[gd_scene load_steps=13 format=3 uid="uid://dpwouibyvwjgm"]
 
-[ext_resource type="Shader" uid="uid://cku2yi4knc8xa" path="res://Shaders/smooth_pixels.gdshader" id="1_v10og"]
-[ext_resource type="Script" uid="uid://dbjeio68byhva" path="res://Scripts/mainMenu.gd" id="2_kqm77"]
-[ext_resource type="Texture2D" uid="uid://cd4r70vxm4htd" path="res://Sprites/Menu/Menu_Background/kitesurfer.png" id="2_yij4q"]
-[ext_resource type="Script" uid="uid://c7r8sjs8lfiw2" path="res://Scripts/Kiteman.gd" id="5_qmf6k"]
-[ext_resource type="FontFile" uid="uid://bhxhywac85s24" path="res://Fonds/Bagura Font Pack v1.5/Basal.ttf" id="7_kqm77"]
+[ext_resource type="Shader" uid="uid://cku2yi4knc8xa" path="res://Shaders/smooth_pixels.gdshader" id="1_0yuq2"]
+[ext_resource type="Script" uid="uid://dmvdiy048udub" path="res://Scripts/optionsMenu.gd" id="2_0yuq2"]
+[ext_resource type="Script" uid="uid://c7r8sjs8lfiw2" path="res://Scripts/Kiteman.gd" id="3_hgx53"]
+[ext_resource type="Texture2D" uid="uid://cd4r70vxm4htd" path="res://Sprites/Menu/Menu_Background/kitesurfer.png" id="4_4awdg"]
+[ext_resource type="FontFile" uid="uid://bhxhywac85s24" path="res://Fonds/Bagura Font Pack v1.5/Basal.ttf" id="5_xdoqj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rn1t7"]
-shader = ExtResource("1_v10og")
+shader = ExtResource("1_0yuq2")
 
 [sub_resource type="Curve2D" id="Curve2D_yij4q"]
 _data = {
@@ -16,7 +16,7 @@ _data = {
 point_count = 4
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o8ral"]
-atlas = ExtResource("2_yij4q")
+atlas = ExtResource("4_4awdg")
 region = Rect2(1143, 14, 114, 170)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_snj4n"]
@@ -67,11 +67,11 @@ shadow_size = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rn1t7"]
 
-[node name="mainMenu" type="Control"]
+[node name="optionsMenu" type="Control"]
 material = SubResource("ShaderMaterial_rn1t7")
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("2_kqm77")
+script = ExtResource("2_0yuq2")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_yij4q")
@@ -80,7 +80,7 @@ curve = SubResource("Curve2D_yij4q")
 position = Vector2(1064, -88)
 rotation = 1.9756881
 rotates = false
-script = ExtResource("5_qmf6k")
+script = ExtResource("3_hgx53")
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
 z_index = -1
@@ -90,51 +90,53 @@ texture = SubResource("AtlasTexture_o8ral")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 540.0
-offset_top = 280.0
-offset_right = 740.0
-offset_bottom = 360.0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 328.0
+offset_bottom = 208.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Startbutton" type="Button" parent="MarginContainer"]
+[node name="Levelbutton" type="Button" parent="MarginContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("7_kqm77")
+theme_override_fonts/font = ExtResource("5_xdoqj")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_snj4n")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wofhc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qmf6k")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rn1t7")
-text = "Start"
+text = "Level"
 icon_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 540.0
-offset_top = 440.0
-offset_right = 740.0
-offset_bottom = 520.0
+offset_left = 1000.0
+offset_top = 560.0
+offset_right = 1200.0
+offset_bottom = 640.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Quitbutton" type="Button" parent="MarginContainer2"]
+[node name="Backbutton" type="Button" parent="MarginContainer2"]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(1, 1, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 1, 0, 1)
 theme_override_constants/outline_size = 5
-theme_override_fonts/font = ExtResource("7_kqm77")
+theme_override_fonts/font = ExtResource("5_xdoqj")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_snj4n")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wofhc")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qmf6k")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_rn1t7")
-text = "Quit"
+text = "Back"
 icon_alignment = 1
 
-[connection signal="pressed" from="MarginContainer/Startbutton" to="." method="_on_startbutton_pressed"]
-[connection signal="pressed" from="MarginContainer2/Quitbutton" to="." method="_on_quitbutton_pressed"]
+[connection signal="pressed" from="MarginContainer/Levelbutton" to="." method="_on_startbutton_pressed"]
+[connection signal="pressed" from="MarginContainer/Levelbutton" to="." method="_on_levelbutton_pressed"]
+[connection signal="pressed" from="MarginContainer2/Backbutton" to="." method="_on_quitbutton_pressed"]
+[connection signal="pressed" from="MarginContainer2/Backbutton" to="." method="_on_backbutton_pressed"]
