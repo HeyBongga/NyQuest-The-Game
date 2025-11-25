@@ -49,7 +49,7 @@ func handle_house_clicked():
 	dialogScene.show_dialog(_dialogLines)
 
 func handle_windrad_clicked():
-	get_tree().change_scene_to_file("res://Scenes/cloudBackground.tscn")
+	get_tree().change_scene_to_file("res://Scenes/level1.tscn")
 
 func spawn_next_tile():
 	if tile_index >= tile_scenes.size():
