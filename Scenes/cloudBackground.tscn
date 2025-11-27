@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://halj0lpbah5x"]
+[gd_scene load_steps=9 format=3 uid="uid://halj0lpbah5x"]
 
 [ext_resource type="Texture2D" uid="uid://bgmbg0tvrnenh" path="res://Sprites/Wolken_Sprites.png" id="1_4qd31"]
-[ext_resource type="Script" uid="uid://ct62dq4huub45" path="res://Scripts/cloud_background.gd" id="1_jbk1q"]
+[ext_resource type="Shader" path="res://Shaders/smooth_pixels.gdshader" id="1_5v367"]
+[ext_resource type="Script" path="res://Scripts/cloud_background.gd" id="1_jbk1q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ib3gy"]
+shader = ExtResource("1_5v367")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jrb1r"]
 atlas = ExtResource("1_4qd31")
@@ -22,6 +26,7 @@ region = Rect2(242, 122, 167, 50)
 [node name="cloudBackground" type="Node2D"]
 z_index = -5
 y_sort_enabled = true
+material = SubResource("ShaderMaterial_ib3gy")
 use_parent_material = true
 script = ExtResource("1_jbk1q")
 

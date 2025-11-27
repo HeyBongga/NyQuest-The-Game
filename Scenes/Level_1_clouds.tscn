@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://chxwhf3pcqpt6"]
+
+[ext_resource type="Script" uid="uid://cty5sq10sfp6k" path="res://Scripts/Level_1_cloud_background.gd" id="1_0ax34"]
+[ext_resource type="Shader" path="res://Shaders/smooth_pixels.gdshader" id="1_p8v52"]
+[ext_resource type="Texture2D" uid="uid://bgmbg0tvrnenh" path="res://Sprites/Wolken_Sprites.png" id="2_p8v52"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n6wy0"]
+shader = ExtResource("1_p8v52")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrb1r"]
+atlas = ExtResource("2_p8v52")
+region = Rect2(1, 1, 177, 74)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n5e8"]
+atlas = ExtResource("2_p8v52")
+region = Rect2(422, 133, 143, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hple7"]
+atlas = ExtResource("2_p8v52")
+region = Rect2(5, 104, 171, 85)
+
+[node name="Level_1_Clouds" type="Node2D"]
+z_index = -5
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_n6wy0")
+use_parent_material = true
+script = ExtResource("1_0ax34")
+
+[node name="cloud1" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(-331.0354, 168.5)
+scale = Vector2(3.601871, 3.527027)
+texture = SubResource("AtlasTexture_jrb1r")
+
+[node name="cloud2" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(288, 277)
+scale = Vector2(3.0621471, 3)
+texture = SubResource("AtlasTexture_6n5e8")
+
+[node name="cloud3" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(901.99994, 51.99991)
+scale = Vector2(4.0192537, 3.0819483)
+texture = SubResource("AtlasTexture_hple7")

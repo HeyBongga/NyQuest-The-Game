@@ -57,7 +57,7 @@ func activate_windmill(idx):
 		windmills[i].set_active_state(i == idx)
 
 func show_error_flash():
-	feedback_rect.color = Color(1,0,0,0.35)
+	feedback_rect.color = Color(1.0, 0.368, 0.3, 0.35)  
 	feedback_rect.visible = true
 	feedback_rect.modulate = Color.WHITE
 	

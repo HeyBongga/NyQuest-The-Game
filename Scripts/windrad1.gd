@@ -1,6 +1,7 @@
 extends Node2D
 
-@export var rotation_speed = 180.0  # Grad pro Sekunde
+@onready var speed = 1.5
+@onready var rotation_speed = 360*speed# Grad pro Sekunde
 
 var is_active = false
 var can_hit = false
@@ -9,7 +10,16 @@ var can_hit = false
 @onready var marker_area = $Rotor/Marker/Area2D
 @onready var arrow_area = $Pfeil/Area2D
 
+@onready var pfeil_normal = $Pfeil
+@onready var pfeil_highlight = $Pfeil2
+@onready var marker_normal = $Rotor/Marker
+@onready var marker_highlight = $Rotor/Marker2
+
 func _ready():
+	pfeil_normal.visible = true
+	pfeil_highlight.visible = false
+	marker_normal.visible = true
+	marker_highlight.visible = false
 	marker_area.connect("area_entered", Callable(self, "is_aligned"))
 	marker_area.connect("area_exited", Callable(self, "is_not_aligned"))
 
@@ -19,10 +29,18 @@ func _process(delta):
 
 func is_aligned(area):
 	if area == arrow_area:
+		pfeil_normal.visible = false
+		pfeil_highlight.visible = true
+		marker_normal.visible = false
+		marker_highlight.visible = true
 		can_hit = true
 
 func is_not_aligned(area):
 	if area == arrow_area:
+		pfeil_normal.visible = true
+		pfeil_highlight.visible = false
+		marker_normal.visible = true
+		marker_highlight.visible = false
 		can_hit = false
 
 func can_check() -> bool:

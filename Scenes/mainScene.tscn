@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://5l32asmp38g" path="res://Scenes/world.tscn" id="6_0vbqt"]
 [ext_resource type="PackedScene" uid="uid://cb2ghg6488ip" path="res://Scenes/mainMenu.tscn" id="6_uvydw"]
 [ext_resource type="PackedScene" uid="uid://dpwouibyvwjgm" path="res://Scenes/optionsMenu.tscn" id="7_mhr8t"]
-[ext_resource type="Script" uid="uid://bx0okbj2l4t50" path="res://Scripts/GameState.gd" id="9_uvydw"]
+[ext_resource type="Script" path="res://Scripts/GameState.gd" id="9_uvydw"]
 
 [node name="mainScene" type="Node"]
 script = ExtResource("1_w1dup")

@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://c6i7sm1p5kdfn"]
+
+[ext_resource type="Shader" path="res://Shaders/smooth_pixels.gdshader" id="1_kebhs"]
+[ext_resource type="Script" uid="uid://b2yyoxsmpv8b1" path="res://Scripts/Level_1_cloud_foreground.gd" id="2_kebhs"]
+[ext_resource type="Texture2D" uid="uid://bgmbg0tvrnenh" path="res://Sprites/Wolken_Sprites.png" id="3_k125q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5ugt"]
+shader = ExtResource("1_kebhs")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fgmn"]
+atlas = ExtResource("3_k125q")
+region = Rect2(182, 1, 226, 99)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kt4y7"]
+atlas = ExtResource("3_k125q")
+region = Rect2(3, 4, 174, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir4an"]
+atlas = ExtResource("3_k125q")
+region = Rect2(521, 83, 55, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahou8"]
+atlas = ExtResource("3_k125q")
+region = Rect2(419, 4, 154, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmuui"]
+atlas = ExtResource("3_k125q")
+region = Rect2(6, 106, 168, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oai1"]
+atlas = ExtResource("3_k125q")
+region = Rect2(6, 106, 168, 81)
+
+[node name="Level_1_clouds2" type="Node2D"]
+modulate = Color(1, 1, 1, 0.60784316)
+z_index = -1
+material = SubResource("ShaderMaterial_w5ugt")
+use_parent_material = true
+script = ExtResource("2_kebhs")
+
+[node name="cloud5" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(-60, 194)
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_1fgmn")
+
+[node name="cloud6" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(965, 298)
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_kt4y7")
+
+[node name="cloud7" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(200, 397)
+scale = Vector2(2.3604708, 1.6023381)
+texture = SubResource("AtlasTexture_ir4an")
+
+[node name="cloud8" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(431, 412)
+scale = Vector2(1.7713252, 2.152042)
+texture = SubResource("AtlasTexture_ahou8")
+
+[node name="cloud9" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.39215687)
+use_parent_material = true
+position = Vector2(173, -81)
+scale = Vector2(4.968238, 5.0648055)
+texture = SubResource("AtlasTexture_fmuui")
+
+[node name="cloud10" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.39215687)
+use_parent_material = true
+position = Vector2(1222, -73)
+scale = Vector2(4.968238, 5.0648055)
+texture = SubResource("AtlasTexture_2oai1")
