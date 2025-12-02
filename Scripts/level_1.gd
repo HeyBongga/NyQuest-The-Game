@@ -4,11 +4,13 @@ var current_windmill_index = 0
 var progress = 0
 const MAX_PROGRESS = 5
 
+@onready var loadingScreen = $LoadingScreen
 @onready var windmills = $Windraeder.get_children()
 @onready var checks = $UI/CheckContainer.get_children()
 @onready var feedback_rect = $UI/Feedback
 
 func _ready():
+	loadingScreen.show_level_text()
 	activate_windmill(0)
 	reset_checks()
 	feedback_rect.visible = false

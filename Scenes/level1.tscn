@@ -1,11 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://b1cscmejnwcb3"]
+[gd_scene load_steps=29 format=3 uid="uid://b1cscmejnwcb3"]
 
-[ext_resource type="Shader" path="res://Shaders/smooth_pixels.gdshader" id="1_didp7"]
+[ext_resource type="Shader" uid="uid://cku2yi4knc8xa" path="res://Shaders/smooth_pixels.gdshader" id="1_didp7"]
 [ext_resource type="Script" uid="uid://cpn5hpe44sfdo" path="res://Scripts/level_1.gd" id="2_2a60c"]
 [ext_resource type="Texture2D" uid="uid://dyxw0uf03xy0s" path="res://Sprites/windrad_level_basis.png" id="2_lyd6k"]
 [ext_resource type="Texture2D" uid="uid://bq1k7ganyiujk" path="res://Sprites/Grass_scape.png" id="3_d1mwp"]
+[ext_resource type="Script" uid="uid://4esbmhihkrec" path="res://Scripts/loadingScreen.gd" id="3_u1b78"]
 [ext_resource type="Texture2D" uid="uid://6ljupcl4bwfy" path="res://Sprites/Windrad_level.png" id="3_y4dr7"]
 [ext_resource type="Script" uid="uid://cpy1grdglbnk3" path="res://Scripts/windrad1.gd" id="4_4iphx"]
+[ext_resource type="FontFile" uid="uid://bhxhywac85s24" path="res://Fonds/Bagura Font Pack v1.5/Basal.ttf" id="4_bdr3p"]
+[ext_resource type="Shader" uid="uid://doyc0e2gwkn5g" path="res://Shaders/blurr.gdshader" id="5_wwu6c"]
 [ext_resource type="Texture2D" uid="uid://bcld8ijhldf00" path="res://Sprites/Marker.png" id="7_cpkqv"]
 [ext_resource type="Script" uid="uid://b43u4u8la7210" path="res://Scripts/windrad2.gd" id="8_4iphx"]
 [ext_resource type="Texture2D" uid="uid://dbwg73q0xqlk3" path="res://Sprites/Pfeile_Level_1.png" id="8_rqhku"]
@@ -16,6 +19,12 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2a60c"]
 shader = ExtResource("1_didp7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yymuf"]
+shader = ExtResource("5_wwu6c")
+shader_parameter/radius = 6.0
+shader_parameter/samples = 3
+shader_parameter/milk_alpha = 0.6
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wwu6c"]
 atlas = ExtResource("7_cpkqv")
@@ -68,6 +77,39 @@ animations = [{
 material = SubResource("ShaderMaterial_2a60c")
 use_parent_material = true
 script = ExtResource("2_2a60c")
+
+[node name="LoadingScreen" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("3_u1b78")
+
+[node name="ColorRect" type="ColorRect" parent="LoadingScreen"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="LoadingScreen/ColorRect"]
+layout_mode = 0
+offset_left = 473.0
+offset_top = 306.0
+offset_right = 806.0
+offset_bottom = 406.0
+theme_override_fonts/font = ExtResource("4_bdr3p")
+theme_override_font_sizes/font_size = 100
+text = "LEVEL - 1"
+
+[node name="ColorRect2" type="ColorRect" parent="LoadingScreen"]
+visible = false
+material = SubResource("ShaderMaterial_yymuf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -2
@@ -129,9 +171,9 @@ scale = Vector2(1.014, 1.01)
 texture = SubResource("AtlasTexture_wwu6c")
 
 [node name="Area2D" type="Area2D" parent="Windraeder/Windrad1/Rotor/Marker"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Windraeder/Windrad1/Rotor/Marker/Area2D"]
-visible = false
 shape = SubResource("CircleShape2D_didp7")
 
 [node name="Marker2" type="Sprite2D" parent="Windraeder/Windrad1/Rotor"]
@@ -154,7 +196,6 @@ visible = false
 shape = SubResource("CapsuleShape2D_2a60c")
 
 [node name="Pfeil2" type="Sprite2D" parent="Windraeder/Windrad1"]
-visible = false
 self_modulate = Color(1, 0.9529412, 0, 1)
 use_parent_material = true
 position = Vector2(263.74997, 94.99999)
@@ -188,9 +229,9 @@ scale = Vector2(1.014, 1.01)
 texture = SubResource("AtlasTexture_wwu6c")
 
 [node name="Area2D" type="Area2D" parent="Windraeder/Windrad2/Rotor/Marker"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Windraeder/Windrad2/Rotor/Marker/Area2D"]
-visible = false
 shape = SubResource("CircleShape2D_didp7")
 
 [node name="Marker2" type="Sprite2D" parent="Windraeder/Windrad2/Rotor"]
@@ -213,7 +254,6 @@ visible = false
 shape = SubResource("CapsuleShape2D_2a60c")
 
 [node name="Pfeil2" type="Sprite2D" parent="Windraeder/Windrad2"]
-visible = false
 self_modulate = Color(1, 0.9529412, 0, 1)
 use_parent_material = true
 position = Vector2(263.74997, 94.99999)
@@ -247,9 +287,9 @@ scale = Vector2(1.014, 1.01)
 texture = SubResource("AtlasTexture_wwu6c")
 
 [node name="Area2D" type="Area2D" parent="Windraeder/Windrad3/Rotor/Marker"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Windraeder/Windrad3/Rotor/Marker/Area2D"]
-visible = false
 shape = SubResource("CircleShape2D_didp7")
 
 [node name="Marker2" type="Sprite2D" parent="Windraeder/Windrad3/Rotor"]
@@ -272,7 +312,6 @@ visible = false
 shape = SubResource("CapsuleShape2D_2a60c")
 
 [node name="Pfeil2" type="Sprite2D" parent="Windraeder/Windrad3"]
-visible = false
 self_modulate = Color(1, 0.9529412, 0, 1)
 use_parent_material = true
 position = Vector2(263.74997, 94.99999)
@@ -290,6 +329,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CheckContainer" type="HBoxContainer" parent="UI"]
+visible = false
 use_parent_material = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -311,22 +351,32 @@ material = SubResource("ShaderMaterial_cpkqv")
 use_parent_material = true
 layout_mode = 2
 theme_override_colors/checkbox_checked_color = Color(0, 1, 0.203125, 1)
+disabled = true
+button_mask = 0
 
 [node name="CheckBox2" type="CheckBox" parent="UI/CheckContainer"]
 layout_mode = 2
 theme_override_colors/checkbox_checked_color = Color(0, 1, 0, 1)
+disabled = true
+button_mask = 0
 
 [node name="CheckBox3" type="CheckBox" parent="UI/CheckContainer"]
 layout_mode = 2
 theme_override_colors/checkbox_checked_color = Color(0, 1, 0, 1)
+disabled = true
+button_mask = 0
 
 [node name="CheckBox4" type="CheckBox" parent="UI/CheckContainer"]
 layout_mode = 2
 theme_override_colors/checkbox_checked_color = Color(0, 1, 0, 1)
+disabled = true
+button_mask = 0
 
 [node name="CheckBox5" type="CheckBox" parent="UI/CheckContainer"]
 layout_mode = 2
 theme_override_colors/checkbox_checked_color = Color(0, 1, 0, 1)
+disabled = true
+button_mask = 0
 
 [node name="Button" type="Button" parent="UI"]
 custom_minimum_size = Vector2(40, 20)
@@ -343,6 +393,7 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI"]
+visible = false
 position = Vector2(646, 361)
 sprite_frames = SubResource("SpriteFrames_bdr3p")
 animation = &"Camera_on"
