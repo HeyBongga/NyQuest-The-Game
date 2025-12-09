@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal finished_loading
+
 
 func show_level_text():
 	var label = $ColorRect
@@ -16,3 +18,5 @@ func show_level_text():
 	var tween2 = create_tween()
 	tween2.tween_property(label, "modulate:a", 0.0, 1.0) # 1 Sekunde ausblenden
 	await tween2.finished
+	
+	emit_signal("finished_loading")

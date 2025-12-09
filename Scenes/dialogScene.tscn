@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dt4p22ehfeved" path="res://Scripts/dialogScene.gd" id="1_655ow"]
 [ext_resource type="PackedScene" uid="uid://bt1vbrut872mp" path="res://Scenes/dialogWindow.tscn" id="2_h4c4t"]
 [ext_resource type="Texture2D" uid="uid://bm4chxueoaar7" path="res://Sprites/continue_button.png" id="3_bs08y"]
-[ext_resource type="Texture2D" uid="uid://cdc1yeigjii47" path="res://Sprites/dialogChar.png" id="3_p5ijb"]
+[ext_resource type="Texture2D" uid="uid://df0sn8b3vqc55" path="res://Sprites/Sigfried_Signal.png" id="4_655ow"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o44vb"]
 texture = ExtResource("3_bs08y")
@@ -62,6 +62,27 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_655ow")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_655ow")
 
 [node name="DialogChar" type="Sprite2D" parent="."]
-position = Vector2(208.00002, 576)
+texture_filter = 1
+position = Vector2(196, 566)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_p5ijb")
+texture = ExtResource("4_655ow")
+region_enabled = true
+region_rect = Rect2(0, 0, 208, 224)
+
+[node name="DialogChar2" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(192, 564.5)
+scale = Vector2(1.4903846, 1.4951924)
+texture = ExtResource("4_655ow")
+region_enabled = true
+region_rect = Rect2(0, 448, 208, 208)
+
+[node name="DialogChar3" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(192, 564.5)
+scale = Vector2(1.4903846, 1.4951924)
+texture = ExtResource("4_655ow")
+region_enabled = true
+region_rect = Rect2(224, 0, 224, 224)

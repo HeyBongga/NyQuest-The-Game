@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b1cscmejnwcb3"]
+[gd_scene load_steps=33 format=3 uid="uid://b1cscmejnwcb3"]
 
 [ext_resource type="Shader" uid="uid://cku2yi4knc8xa" path="res://Shaders/smooth_pixels.gdshader" id="1_didp7"]
 [ext_resource type="Script" uid="uid://cpn5hpe44sfdo" path="res://Scripts/level_1.gd" id="2_2a60c"]
@@ -16,6 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://53l0vedukois" path="res://Sprites/camera view-sheet.png" id="10_bs12r"]
 [ext_resource type="PackedScene" uid="uid://chxwhf3pcqpt6" path="res://Scenes/Level_1_clouds.tscn" id="12_d1mwp"]
 [ext_resource type="PackedScene" uid="uid://c6i7sm1p5kdfn" path="res://Scenes/Level_1_cloud_foreground.tscn" id="13_u1b78"]
+[ext_resource type="Texture2D" uid="uid://d2iswoc6ln5i0" path="res://Sprites/camera_icon.png" id="16_nolpu"]
+[ext_resource type="Script" path="res://Scripts/camera_switch.gd" id="16_yymuf"]
+[ext_resource type="Texture2D" uid="uid://or202vh8f880" path="res://Sprites/camera_icon_hover.png" id="17_mcj63"]
+[ext_resource type="PackedScene" uid="uid://4epow0munt6q" path="res://Scenes/dialogScene.tscn" id="19_nolpu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2a60c"]
 shader = ExtResource("1_didp7")
@@ -80,15 +84,16 @@ script = ExtResource("2_2a60c")
 
 [node name="LoadingScreen" type="CanvasLayer" parent="."]
 layer = 2
+visible = false
 script = ExtResource("3_u1b78")
 
 [node name="ColorRect" type="ColorRect" parent="LoadingScreen"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="LoadingScreen/ColorRect"]
@@ -378,7 +383,8 @@ theme_override_colors/checkbox_checked_color = Color(0, 1, 0, 1)
 disabled = true
 button_mask = 0
 
-[node name="Button" type="Button" parent="UI"]
+[node name="Button" type="TextureButton" parent="UI"]
+texture_filter = 1
 custom_minimum_size = Vector2(40, 20)
 anchors_preset = 3
 anchor_left = 1.0
@@ -386,15 +392,20 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -102.0
-offset_top = -80.0
+offset_top = -100.0
 offset_right = -62.0
 offset_bottom = -60.0
 grow_horizontal = 0
 grow_vertical = 0
+focus_mode = 0
+texture_normal = ExtResource("16_nolpu")
+texture_hover = ExtResource("17_mcj63")
+script = ExtResource("16_yymuf")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI"]
-visible = false
-position = Vector2(646, 361)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI/Button"]
+light_mask = 512
+visibility_layer = 512
+position = Vector2(-532, -279)
 sprite_frames = SubResource("SpriteFrames_bdr3p")
 animation = &"Camera_on"
 metadata/_aseprite_wizard_interface_config_ = {
@@ -413,3 +424,48 @@ metadata/_aseprite_wizard_interface_config_ = {
 },
 "slice_section": false
 }
+
+[node name="ColorRect2" type="ColorRect" parent="UI/Button/AnimatedSprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -649.0
+offset_top = -361.0
+offset_right = -647.0
+offset_bottom = -361.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0.2, 0, 0.11764706)
+
+[node name="ColorRect" type="ColorRect" parent="UI/Button/AnimatedSprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -645.0
+offset_top = -360.0
+offset_right = -646.0
+offset_bottom = -360.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.40420002, 0.86, 0.44218332, 0.09803922)
+
+[node name="ColorRect3" type="ColorRect" parent="UI/Button/AnimatedSprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -645.0
+offset_top = -344.0
+offset_right = -642.0
+offset_bottom = -344.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.100000024, 1, 0, 0.05882353)
+
+[node name="DialogScene" parent="." instance=ExtResource("19_nolpu")]
+z_index = 1
+offset_top = 1.0
+offset_right = 1282.0
+offset_bottom = 721.0

@@ -8,12 +8,30 @@ const MAX_PROGRESS = 5
 @onready var windmills = $Windraeder.get_children()
 @onready var checks = $UI/CheckContainer.get_children()
 @onready var feedback_rect = $UI/Feedback
+@onready var DialogScene = $DialogScene
+
+var _dialogLineslevel1 : Array[String] = [
+	"Schön du hast hierhergefunden,\nfür eine optimale Energieversorgung \nmüssen die Windräder richtig eingestellt sein...",
+	"das erreicht man, indem man zum richtigen\n Zeitpunkt die Windräder abtastet!\n Insgesamt brauche ich 5 hintereinander\n saubere Abtastungen...\n",
+	"Denkst du, du schaffst das?"
+	]
+	
+	
 
 func _ready():
 	loadingScreen.show_level_text()
-	activate_windmill(0)
+	loadingScreen.finished_loading.connect(_on_loading_finished)
+	DialogScene.finished_dialog.connect(_on_dialog_finished)
+	
 	reset_checks()
 	feedback_rect.visible = false
+	
+func _on_loading_finished():
+  # Erst wenn LoadingScreen fertig ist, Dialog starten
+	DialogScene.show_dialog(_dialogLineslevel1)
+	
+func _on_dialog_finished():
+	activate_windmill(0)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept") and current_windmill_index < windmills.size():

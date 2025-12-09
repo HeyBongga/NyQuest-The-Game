@@ -2,6 +2,7 @@ extends Control
 
 @export var button : Button
 @export var dialogWindow : MarginContainer
+@onready var Sigfried_Signal = $DialogChar
 
 @onready var dialog_lines : Array[String]
 
@@ -10,7 +11,6 @@ signal finished_dialog
 func _ready():
 	visible = false
 	button.visible = false
-	
 	#Signal verbinden
 	dialogWindow.finished_all_lines.connect(finish_all_lines)
 	button.pressed.connect(on_button_pressed)
