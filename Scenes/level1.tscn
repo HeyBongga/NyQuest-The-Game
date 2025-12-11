@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://chxwhf3pcqpt6" path="res://Scenes/Level_1_clouds.tscn" id="12_d1mwp"]
 [ext_resource type="PackedScene" uid="uid://c6i7sm1p5kdfn" path="res://Scenes/Level_1_cloud_foreground.tscn" id="13_u1b78"]
 [ext_resource type="Texture2D" uid="uid://d2iswoc6ln5i0" path="res://Sprites/camera_icon.png" id="16_nolpu"]
-[ext_resource type="Script" path="res://Scripts/camera_switch.gd" id="16_yymuf"]
+[ext_resource type="Script" uid="uid://bqgm2dgsnb5qr" path="res://Scripts/camera_switch.gd" id="16_yymuf"]
 [ext_resource type="Texture2D" uid="uid://or202vh8f880" path="res://Sprites/camera_icon_hover.png" id="17_mcj63"]
 [ext_resource type="PackedScene" uid="uid://4epow0munt6q" path="res://Scenes/dialogScene.tscn" id="19_nolpu"]
 
@@ -384,6 +384,7 @@ disabled = true
 button_mask = 0
 
 [node name="Button" type="TextureButton" parent="UI"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(40, 20)
 anchors_preset = 3
@@ -429,10 +430,10 @@ metadata/_aseprite_wizard_interface_config_ = {
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -649.0
-offset_top = -361.0
-offset_right = -647.0
-offset_bottom = -361.0
+offset_left = -645.0
+offset_top = -341.0
+offset_right = -643.0
+offset_bottom = -341.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -442,10 +443,10 @@ color = Color(0, 0.2, 0, 0.11764706)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -645.0
-offset_top = -360.0
-offset_right = -646.0
-offset_bottom = -360.0
+offset_left = -646.0
+offset_top = -341.0
+offset_right = -647.0
+offset_bottom = -341.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -455,10 +456,10 @@ color = Color(0.40420002, 0.86, 0.44218332, 0.09803922)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -645.0
-offset_top = -344.0
-offset_right = -642.0
-offset_bottom = -344.0
+offset_left = -646.0
+offset_top = -340.0
+offset_right = -643.0
+offset_bottom = -340.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -466,6 +467,7 @@ color = Color(0.100000024, 1, 0, 0.05882353)
 
 [node name="DialogScene" parent="." instance=ExtResource("19_nolpu")]
 z_index = 1
-offset_top = 1.0
-offset_right = 1282.0
-offset_bottom = 721.0
+offset_left = 1.0
+offset_top = -6.0
+offset_right = 1283.0
+offset_bottom = 714.0
