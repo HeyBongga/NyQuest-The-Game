@@ -7,7 +7,7 @@ extends Control
 @onready var dialog_lines : Array[String]
 
 signal finished_dialog
-signal finished_dialog2 # für level 1 nach erster Abtastung
+#signal finished_dialog2 # für level 1 nach erster Abtastung
 
 func _ready():
 	visible = false
@@ -28,4 +28,4 @@ func finish_all_lines():
 func on_button_pressed() -> void:
 	self.visible = false # ganze Szene verstecken
 	finished_dialog.emit()
-	finished_dialog2.emit()
+	#finished_dialog2.emit()

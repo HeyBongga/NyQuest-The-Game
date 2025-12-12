@@ -3,6 +3,9 @@ extends Node2D
 var current_windmill_index = 0
 var progress = 0
 const MAX_PROGRESS = 5
+var GameplayReady  = false
+
+
 
 @onready var loadingScreen = $LoadingScreen
 @onready var windmills = $Windraeder.get_children()
@@ -16,33 +19,33 @@ const MAX_PROGRESS = 5
 @onready var Windrad3Pfeil1 = $Windraeder/Windrad3/Pfeil
 @onready var Windrad3Pfeil2 = $Windraeder/Windrad3/Pfeil2
 @onready var CameraVision = $UI/Button
+@onready var Frequenz1 = $UI/ColorRect
+@onready var Frequenz2 = $UI/ColorRect2
+@onready var Frequenz3 = $UI/ColorRect3
+@onready var modulate1 = $Windraeder/Windrad1
+@onready var modulate2 = $Windraeder/Windrad2
+@onready var modulate3 = $Windraeder/Windrad3
 
 
 var _dialogLineslevel1 : Array[String] = [
 	"Schön du hast hierhergefunden,\nfür eine optimale Energieversorgung \nmüssen die Windräder richtig eingestellt sein...",
-	"das erreicht man, indem man zum richtigen\nZeitpunkt die Windräder abtastet!\n Insgesamt brauche ich 5 hintereinander\n saubere Abtastungen...\n",
-	"Als Hilfe kannst du dich an den Pfeilen oberhalb \nder Windräder orientieren.\nDenkst du, du schaffst das?"
+	"das erreicht man, indem man zum richtigen\nZeitpunkt die Windräder aufnimmt!\n Insgesamt brauche ich 5 hintereinander\n saubere Aufnahmen...\n",
+	"Als Hilfe kannst du die Kamera Vision \nverwenden und das richtige Timing finden.\nDenkst du, du schaffst das?"
 	]
 var _dialogLines2level1 : Array[String] = [
 	"Niemand hat behauptet es wäre schwer :D\nund du hast es trotzdem geschafft!\nDas nenn ich Durchaltevermögen\nSpaß beiseite...",
-	"Nun da du weißt wie sich ein Windrad dreht :D\nschauen wir uns mal das Ganze\naus der Sicht der DIGITALEN WELT an\ndu hast sicherlich keine Lust\nden ganzen Tag auf einer Wiese zu stehen...",
-	"Das nennt sich heutzutage work life balance\n oder so...",
-	"Probiere das Ganze nochmal, aber diesmal \nschau wie das ganze in der Kamera aussieht!"
+	"Nun da du dich an die Kameraansicht gewöhnt\n hast schauen wir uns mal an\nwas für Ergebnisse wir für unsere\nWindräder haben...",
+	"Die Kamera liefert uns die Umdrehungen\npro Sekunde in Hertz oder Hz..."
 	]
 	
 	
 
 func _ready():
 	loadingScreen.show_level_text()
-	Windrad1Pfeil1.visible = false
-	Windrad1Pfeil2.visible = false
-	Windrad2Pfeil1.visible = false
-	Windrad2Pfeil2.visible = false
-	Windrad3Pfeil1.visible = false
-	Windrad3Pfeil2.visible = false
+	CameraVision.GO.connect(Camera_is_On)
+	CameraVision.TURNOFF.connect(Camera_is_Off)
 	loadingScreen.finished_loading.connect(_on_loading_finished)
 	DialogScene.finished_dialog.connect(_on_dialog_finished)
-	
 	reset_checks()
 	feedback_rect.visible = false
 	
@@ -50,14 +53,22 @@ func _on_loading_finished():
   # Erst wenn LoadingScreen fertig ist, Dialog starten
 	DialogScene.show_dialog(_dialogLineslevel1)
 	
-
-	
 func _on_dialog_finished():
 	activate_windmill(0)
-	#Windrad1Pfeil1.visible = true
-	#Windrad1Pfeil2.visible = true
+	var tween = create_tween()
+	CameraVision.visible = true
+	tween.tween_property(CameraVision, "modulate:a", 0, 0) # 0 Sekunde ausblenden
+	await tween.finished
+		
+	var tween2 = create_tween()
+	tween2.tween_property(CameraVision, "modulate:a", 1, 1.0) # 1 Sekunde einblenden
+	await tween2.finished
+	
+		
+		
+		
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_accept") and current_windmill_index < windmills.size():
+	if event.is_action_pressed("ui_accept") and current_windmill_index < windmills.size() and GameplayReady == true:
 		var wm = windmills[current_windmill_index]
 		if wm.can_check():
 			handle_correct()
@@ -90,7 +101,7 @@ func go_to_next_windmill():
 	if current_windmill_index >= windmills.size():
 		print("Level Completed!")
 		DialogScene.show_dialog(_dialogLines2level1)
-		DialogScene.finished_dialog2.connect(next_lines)
+		DialogScene.finished_dialog.connect(show_Hertz)
 		return
 	else:
 		activate_windmill(current_windmill_index)
@@ -98,18 +109,16 @@ func go_to_next_windmill():
 		progress = 0
 
 
-func next_lines():
-		current_windmill_index = 0
-		activate_windmill(0)
-		reset_checks()
-		var tween = create_tween()
-		CameraVision.visible = true
-		tween.tween_property(CameraVision, "modulate:a", 0, 0) # 0 Sekunde ausblenden
-		await tween.finished
-		
-		var tween2 = create_tween()
-		tween2.tween_property(CameraVision, "modulate:a", 1, 1.0) # 1 Sekunde einblenden
-		await tween2.finished
+func show_Hertz():
+	
+	for i in range(windmills.size()):
+		windmills[i].set_active_state(false)
+	Frequenz1.visible = true
+	Frequenz2.visible = true
+	Frequenz3.visible = true
+	modulate1 = Color(1,1,1,1) 
+	modulate2 = Color(1,1,1,1) 
+	modulate3 = Color(1,1,1,1) 
 	
 func activate_windmill(idx):
 	for i in range(windmills.size()):
@@ -123,3 +132,11 @@ func show_error_flash():
 	var tween = create_tween()
 	tween.tween_property(feedback_rect, "modulate:a", 0.0, 0.3)
 	tween.connect("finished", func(): feedback_rect.visible = false)
+	
+func Camera_is_On():
+	GameplayReady = true
+	
+func Camera_is_Off():
+	GameplayReady = false
+	
+	
