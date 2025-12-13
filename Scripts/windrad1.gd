@@ -3,7 +3,7 @@ extends Node2D
 @onready var speed = 0.5
 @onready var rotation_speed = 360*speed# Grad pro 2 Sekunden
 
-signal Modulate
+#signal Modulate
 
 var is_active = false
 var can_hit = false
@@ -19,6 +19,7 @@ var Modulatet = false
 @onready var marker_normal = $Rotor/Marker
 @onready var marker_highlight = $Rotor/Marker2
 @onready var CameraVision = $"../../UI/Button"
+@onready var CollisionShape = $Rotor/Marker/Area2D/CollisionShape2D
 
 func _ready():
 	CameraVision.GO.connect(Camera_is_On)
@@ -33,7 +34,7 @@ func _ready():
 	marker_area.connect("area_exited", Callable(self, "is_not_aligned"))
 
 func _process(delta):
-	if is_active: 
+	#if is_active: 
 		rotor.rotation_degrees += rotation_speed * delta
 
 
@@ -67,14 +68,17 @@ func set_active_state(active: bool):
 	is_active = active
 	if active:
 		modulate = Color(1,1,1,1) 
+		CollisionShape.disabled = false
 	else:
 		modulate = Color(1,1,1,0.4)
+		Modulatet = true
 		pfeil_normal.visible = false
 		pfeil_highlight.visible = false
 		marker_normal.visible = false
 		marker_highlight.visible = false
-		Modulate.emit()
-		Modulate.connect(TurnOff)
+		CollisionShape.disabled = true
+		#Modulate.emit()
+		#Modulate.connect(TurnOff)
 		
 func Camera_is_On():
 	GameplayReady = true
@@ -86,8 +90,14 @@ func Camera_is_On():
 func Camera_is_Off():
 	GameplayReady = false
 	
+	
+	
 
 func TurnOff():
-	Modulatet = true
+	#Modulatet = true
 	pfeil_normal.visible = false
 	pfeil_highlight.visible = false
+
+	
+	
+	

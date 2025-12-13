@@ -5,19 +5,11 @@ var progress = 0
 const MAX_PROGRESS = 5
 var GameplayReady  = false
 
-
-
 @onready var loadingScreen = $LoadingScreen
 @onready var windmills = $Windraeder.get_children()
 @onready var checks = $UI/CheckContainer.get_children()
 @onready var feedback_rect = $UI/Feedback
 @onready var DialogScene = $DialogScene
-@onready var Windrad1Pfeil1 = $Windraeder/Windrad1/Pfeil
-@onready var Windrad1Pfeil2 = $Windraeder/Windrad1/Pfeil2
-@onready var Windrad2Pfeil1 = $Windraeder/Windrad2/Pfeil
-@onready var Windrad2Pfeil2 = $Windraeder/Windrad2/Pfeil2
-@onready var Windrad3Pfeil1 = $Windraeder/Windrad3/Pfeil
-@onready var Windrad3Pfeil2 = $Windraeder/Windrad3/Pfeil2
 @onready var CameraVision = $UI/Button
 @onready var Frequenz1 = $UI/ColorRect
 @onready var Frequenz2 = $UI/ColorRect2

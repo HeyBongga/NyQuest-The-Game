@@ -16,6 +16,7 @@ var GameOn = false
 @onready var marker_normal = $Rotor/Marker
 @onready var marker_highlight = $Rotor/Marker2
 @onready var Camera = $"../../UI/Button"
+@onready var CollisionShape = $Rotor/Marker/Area2D/CollisionShape2D
 
 func _ready():
 	Camera.TURNOFF.connect(Vanish)
@@ -30,7 +31,7 @@ func _ready():
 	marker_area.connect("area_exited", Callable(self, "is_not_aligned"))
 
 func _process(delta):
-	if is_active:
+	#if is_active:
 		rotor.rotation_degrees += rotation_speed * delta
 
 
@@ -57,12 +58,14 @@ func set_active_state(active: bool):
 	is_active = active
 	if active:
 		modulate = Color(1,1,1,1) 
+		CollisionShape.disabled = false
 	else:
 		modulate = Color(1,1,1,0.4)
 		pfeil_normal.visible = false
 		pfeil_highlight.visible = false
 		marker_normal.visible = false
 		marker_highlight.visible = false
+		CollisionShape.disabled = true
 
 func Vanish():
 	pfeil_normal.visible = false
@@ -70,7 +73,9 @@ func Vanish():
 func Camera_is_On():
 	GameOn = true
 	
+	
 func Camera_is_Off():
 	GameOn = false
 	pfeil_normal.visible = false
 	pfeil_highlight.visible = false
+	
