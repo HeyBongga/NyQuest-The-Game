@@ -130,5 +130,3 @@ func Camera_is_On():
 	
 func Camera_is_Off():
 	GameplayReady = false
-	
-	

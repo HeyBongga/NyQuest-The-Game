@@ -4,6 +4,20 @@ extends Control
 @onready var Screenshot2 = $Screenshot2
 @onready var Screenshot3 = $Screenshot3
 
+
+var time: float = 0.0
+var seconds: int = 0
+
+func _process(delta)-> void:
+	time += delta
+	seconds = fmod(time, 60)
+	$Seconds.text = "%02d:" % seconds
+
+func _stop() ->void:
+	set_process(false)
+
+
+
 func take_screenshot():
 	# komplettes aktuelles bild
 	visible = false

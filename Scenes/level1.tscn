@@ -631,13 +631,23 @@ expand_mode = 1
 [node name="Button" type="Button" parent="ScreenShotarea"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 219.0
-offset_top = 43.999996
-offset_right = 244.0
-offset_bottom = 59.999996
-scale = Vector2(11.68, 4.679999)
+offset_left = 206.0
+offset_top = 83.0
+offset_right = 250.0
+offset_bottom = 123.0
+scale = Vector2(2.925, 1.172)
 theme_override_fonts/font = ExtResource("4_bdr3p")
 theme_override_font_sizes/font_size = 7
-text = "Photo"
+icon = ExtResource("17_mcj63")
+
+[node name="Timer" type="Timer" parent="ScreenShotarea"]
+
+[node name="Seconds" type="Label" parent="ScreenShotarea"]
+layout_mode = 0
+offset_left = 105.0
+offset_top = 92.0
+offset_right = 145.0
+offset_bottom = 115.0
+text = "00"
 
 [connection signal="pressed" from="ScreenShotarea/Button" to="ScreenShotarea" method="take_screenshot"]
