@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pv653dii7pg1"
-path="res://.godot/imported/screenshot.png-66e282e02ca301ce0dd1e5b30f8d5c7f.ctex"
+uid="uid://cnlganx11ucxo"
+path="res://.godot/imported/Camera_flash.png-caf21c69f5871c8f479e6fa859de6199.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Screenshots/screenshot.png"
-dest_files=["res://.godot/imported/screenshot.png-66e282e02ca301ce0dd1e5b30f8d5c7f.ctex"]
+source_file="res://Sprites/Camera_flash.png"
+dest_files=["res://.godot/imported/Camera_flash.png-caf21c69f5871c8f479e6fa859de6199.ctex"]
 
 [params]
 

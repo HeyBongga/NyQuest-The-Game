@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pv653dii7pg1"
-path="res://.godot/imported/screenshot.png-66e282e02ca301ce0dd1e5b30f8d5c7f.ctex"
+uid="uid://bbgtrlrdvf5br"
+path="res://.godot/imported/Rotor_lvl2.png-6d38ef77b6924cd58a1ada37d34ea6c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Screenshots/screenshot.png"
-dest_files=["res://.godot/imported/screenshot.png-66e282e02ca301ce0dd1e5b30f8d5c7f.ctex"]
+source_file="res://Sprites/Rotor_lvl2.png"
+dest_files=["res://.godot/imported/Rotor_lvl2.png-6d38ef77b6924cd58a1ada37d34ea6c2.ctex"]
 
 [params]
 

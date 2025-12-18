@@ -3,18 +3,30 @@ extends Control
 @onready var  Screenshot1 = $Screenshot1
 @onready var Screenshot2 = $Screenshot2
 @onready var Screenshot3 = $Screenshot3
+@onready var FotoOrdner = $FotoOrdner
 
 
-var time: float = 0.0
-var seconds: int = 0
+var timer_active := false
+var time := 0.0
+var seconds := 0
 
-func _process(delta)-> void:
-	time += delta
-	seconds = fmod(time, 60)
-	$Seconds.text = "%02d:" % seconds
+func _process(delta):
+	if timer_active:
+		time += delta
+		seconds = int(fmod(time, 60))
+		$Seconds.text = "%02d" % seconds
 
-func _stop() ->void:
-	set_process(false)
+# Wird vom Button (pressed()) aufgerufen
+func Toggle_Timer():
+	timer_active = not timer_active  # an/aus schalten
+	if not timer_active:
+		#Optional: Timer zurücksetzen
+		time = 0
+		seconds = 0
+		$Seconds.text = "%02d" % seconds
+		pass
+
+
 
 
 
@@ -28,11 +40,11 @@ func take_screenshot():
 	
 	# zuschneiden
 	var cropped = img.get_region(Rect2i(rect.position,rect.size))
-	cropped.save_png("res://Screenshots/screenshot.png")
+	cropped.save_png("user://screenshot.png")
 	await get_tree().create_timer(2.0,true).timeout
 	load_screenshot()
 	visible = true
 func load_screenshot():
-	var img2 = Image.load_from_file("res://Screenshots/screenshot.png")
+	var img2 = Image.load_from_file("user://screenshot.png")
 	var tex = ImageTexture.create_from_image(img2)
 	$image.texture = tex
