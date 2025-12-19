@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://d2iswoc6ln5i0" path="res://Sprites/camera_icon.png" id="15_le08w"]
 [ext_resource type="Texture2D" uid="uid://or202vh8f880" path="res://Sprites/camera_icon_hover.png" id="15_rf6tv"]
 [ext_resource type="Texture2D" uid="uid://53l0vedukois" path="res://Sprites/camera view-sheet.png" id="18_ft807"]
-[ext_resource type="Script" uid="uid://bqgm2dgsnb5qr" path="res://Scripts/camera_switch.gd" id="21_l2423"]
+[ext_resource type="Script" uid="uid://be066vwn0402x" path="res://Scripts/camera_switch2.gd" id="23_plihj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uj1pa"]
 shader = ExtResource("3_aq45b")
@@ -264,10 +264,10 @@ offset_bottom = 637.0
 
 [node name="image" type="TextureRect" parent="ScreenShotarea"]
 layout_mode = 0
-offset_left = -496.0
-offset_top = 469.0
-offset_right = -149.0
-offset_bottom = 806.0
+offset_left = 17.0
+offset_top = 157.0
+offset_right = 364.0
+offset_bottom = 494.0
 expand_mode = 1
 
 [node name="Kamera" type="TextureButton" parent="ScreenShotarea"]
@@ -305,6 +305,17 @@ offset_bottom = 713.0
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("10_t5h3c")
 texture_hover = ExtResource("10_ux455")
+
+[node name="Feedback" type="ColorRect" parent="ScreenShotarea"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 light_mask = 512
@@ -388,7 +399,7 @@ grow_vertical = 0
 focus_mode = 0
 texture_normal = ExtResource("15_le08w")
 texture_hover = ExtResource("15_rf6tv")
-script = ExtResource("21_l2423")
+script = ExtResource("23_plihj")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_niugw")

@@ -1,9 +1,9 @@
 extends TextureButton
 
-@onready var camera_overlay = $"../../AnimatedSprite2D"
-@onready var camera_filter1 = $"../../AnimatedSprite2D/ColorRect2"
-@onready var camera_filter2 = $"../../AnimatedSprite2D/ColorRect"
-@onready var camera_filter3 = $"../../AnimatedSprite2D/ColorRect3"
+@onready var camera_overlay = $"../AnimatedSprite2D"
+@onready var camera_filter1 = $"../AnimatedSprite2D/ColorRect2"
+@onready var camera_filter2 = $"../AnimatedSprite2D/ColorRect"
+@onready var camera_filter3 = $"../AnimatedSprite2D/ColorRect3"
 
 
 signal GO

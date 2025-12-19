@@ -40,11 +40,19 @@ func take_screenshot():
 	
 	# zuschneiden
 	var cropped = img.get_region(Rect2i(rect.position,rect.size))
-	cropped.save_png("user://screenshot.png")
-	await get_tree().create_timer(2.0,true).timeout
-	load_screenshot()
+	cropped.save_png("user://wildername.png")
+	$Feedback.color = Color(1.0, 0.368, 0.3, 0.35)  
+	$Feedback.visible = true
+	$Feedback.modulate = Color.WHITE
+	
+	var tween = create_tween()
+	tween.tween_property($Feedback, "modulate:a", 0.0, 0.3)
+	tween.connect("finished", func(): $Feedback.visible = false)
+	#await get_tree().create_timer(2.0,true).timeout
+	#load_screenshot()
 	visible = true
+	
 func load_screenshot():
-	var img2 = Image.load_from_file("user://screenshot.png")
+	var img2 = Image.load_from_file("user://wildername.png")
 	var tex = ImageTexture.create_from_image(img2)
 	$image.texture = tex

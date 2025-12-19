@@ -34,6 +34,7 @@ var _dialogLineslevel1 : Array[String] = [
 
 func _ready():
 	loadingScreen.show_level_text()
+	$ScreenShotarea/Feedback.visible = false
 	loadingScreen.finished_loading.connect(_on_loading_finished)
 
 	$Videokamera.GO.connect(Camera_On)
