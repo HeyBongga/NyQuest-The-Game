@@ -103,7 +103,9 @@ func _input(event):
 		locked_markers[touching_marker] = true
 		$Windrad1.get_node(touching_marker).modulate = COLOR_LOCKED
 		missed_rotations = 0   # Fortschritts-Reset zurücksetzen
-
+		# Wenn jetzt alle Marker grün sind
+		if _all_markers_locked():
+			$ScreenShotarea/Kamera.visible = true  # Kamera erscheint
 
 # ================= HELPER =================
 
@@ -138,6 +140,7 @@ func _on_full_rotation():
 
 	# Nach x verpassten Umdrehungen → alles zurücksetzen
 	if missed_rotations >= 4:
+		$ScreenShotarea/Kamera.visible = false
 		_reset_progress()
 
 
@@ -154,3 +157,9 @@ func _reset_progress():
 	for key in locked_markers.keys():
 		locked_markers[key] = false
 		$Windrad1.get_node(key).modulate = COLOR_DEFAULT
+
+func _all_markers_locked() -> bool:
+	for key in locked_markers.keys():
+		if not locked_markers[key]:
+			return false
+	return true
