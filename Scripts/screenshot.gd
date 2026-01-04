@@ -2,9 +2,6 @@ extends Control
 
 # Bereiche, die fotografiert werden
 @onready var Screenshot1 = $Screenshot1
-@onready var Screenshot2 = $Screenshot2
-@onready var Screenshot3 = $Screenshot3
-
 @onready var FotoOrdner = $FotoOrdner   # (später für Galerie)
 
 
@@ -14,8 +11,8 @@ var time := 0.0
 var seconds := 0
 
 # Screenshot-Logik
-var screenshot_index := 1          # zählt von 1–3
-const MAX_SCREENSHOTS := 3
+var screenshot_index := 1          # zählt von 1–4
+const MAX_SCREENSHOTS := 4
 var screenshot_paths := []          # merkt sich die Pfade
 
 # -------------------------

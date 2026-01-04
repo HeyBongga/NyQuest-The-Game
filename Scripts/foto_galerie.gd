@@ -3,15 +3,16 @@ extends Control
 @onready var image1 = $ScreenshotArea
 @onready var image2 = $ScreenshotArea2
 @onready var image3 = $ScreenshotArea3
+@onready var image4 = $ScreenshotArea4
 
 func _ready():
 	load_first_screenshots()
 
 
 func load_first_screenshots():
-	var images = [image1, image2, image3]  # Array mit den ImageViews
+	var images = [image1, image2, image3, image4]  # Array mit den ImageViews
 
-	for i in range(3):
+	for i in range(4):
 		var path = "user://screenshot_%d.png" % (i + 1)
 		if !FileAccess.file_exists(path):
 			continue  # überspringt, wenn Screenshot nicht existiert

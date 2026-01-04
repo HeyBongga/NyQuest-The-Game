@@ -17,7 +17,8 @@ var touching_marker := ""      # aktuell berührter Marker
 var locked_markers := {
 	"Marker1": false,
 	"Marker2": false,
-	"Marker3": false
+	"Marker3": false,
+	"Marker4": false
 }
 
 # === Umdrehungs- / Fortschritts-Logik ===
@@ -54,7 +55,7 @@ func _on_loading_finished():
 func Camera_On():
 	var tween = create_tween()
 	
-	for i in [1, 2, 3]:
+	for i in [1, 2, 3, 4]:
 		var marker = $Windrad1.get_node("Marker%d" % i)
 		marker.visible = true
 		marker.modulate = COLOR_DEFAULT
@@ -69,7 +70,7 @@ func Camera_On():
 func Camera_Off():
 	var tween = create_tween()
 
-	for i in [1, 2, 3]:
+	for i in [1, 2, 3, 4]:
 		var marker = $Windrad1.get_node("Marker%d" % i)
 		tween.tween_property(marker, "modulate:a", 0.0, 0.4)
 		tween.finished.connect(func(): marker.visible = false)
@@ -118,6 +119,7 @@ func _area_to_marker(area_name: String) -> String:
 		"MarkerArea1": return "Marker1"
 		"MarkerArea2": return "Marker2"
 		"MarkerArea3": return "Marker3"
+		"MarkerArea4": return "Marker4"
 		_: return ""
 
 

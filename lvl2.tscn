@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b8ltkksb8d0vd"]
+[gd_scene load_steps=39 format=3 uid="uid://b8ltkksb8d0vd"]
 
 [ext_resource type="Script" uid="uid://dg4gkfn6eipad" path="res://Scripts/lvl2.gd" id="1_jukch"]
 [ext_resource type="Script" uid="uid://4esbmhihkrec" path="res://Scripts/loadingScreen.gd" id="1_o0rcv"]
@@ -24,6 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://53l0vedukois" path="res://Sprites/camera view-sheet.png" id="18_ft807"]
 [ext_resource type="Texture2D" uid="uid://hrt3n331702x" path="res://Sprites/Full_Camera.png" id="18_niugw"]
 [ext_resource type="Script" uid="uid://be066vwn0402x" path="res://Scripts/camera_switch2.gd" id="23_plihj"]
+[ext_resource type="Texture2D" uid="uid://dduqj7rmhfe21" path="res://Sprites/Garbage.png" id="25_c7ys4"]
+[ext_resource type="Texture2D" uid="uid://dod35p1285w8n" path="res://Sprites/Garbage_Hover.png" id="26_1w6c6"]
+[ext_resource type="Script" uid="uid://bmornyklu2ipw" path="res://Scripts/garbage.gd" id="27_n147r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uj1pa"]
 shader = ExtResource("3_aq45b")
@@ -139,8 +142,8 @@ layer = -1
 
 [node name="Sprite0001" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(-448, 185)
-scale = Vector2(1.3484375, 0.75)
+position = Vector2(-3, 185)
+scale = Vector2(1.0007813, 0.75)
 texture = ExtResource("6_3pm5q")
 centered = false
 
@@ -198,7 +201,7 @@ position = Vector2(265, 447.49997)
 
 [node name="Marker1" type="Sprite2D" parent="Windrad1"]
 visible = false
-position = Vector2(467.5, 455)
+position = Vector2(271.25, 62.50003)
 texture = ExtResource("14_plihj")
 
 [node name="MarkerArea1" type="Area2D" parent="Windrad1/Marker1"]
@@ -208,7 +211,7 @@ shape = SubResource("CircleShape2D_plihj")
 
 [node name="Marker2" type="Sprite2D" parent="Windrad1"]
 visible = false
-position = Vector2(101.25003, 455)
+position = Vector2(516.25, 290)
 texture = ExtResource("14_plihj")
 
 [node name="MarkerArea2" type="Area2D" parent="Windrad1/Marker2"]
@@ -219,12 +222,23 @@ shape = SubResource("CircleShape2D_niugw")
 
 [node name="Marker3" type="Sprite2D" parent="Windrad1"]
 visible = false
-position = Vector2(271.25, 62.5)
+position = Vector2(267.5, 536.25)
 texture = ExtResource("14_plihj")
 
 [node name="MarkerArea3" type="Area2D" parent="Windrad1/Marker3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Windrad1/Marker3/MarkerArea3"]
+shape = SubResource("CircleShape2D_6ivlg")
+
+[node name="Marker4" type="Sprite2D" parent="Windrad1"]
+visible = false
+position = Vector2(3.75, 285)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("14_plihj")
+
+[node name="MarkerArea4" type="Area2D" parent="Windrad1/Marker4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Windrad1/Marker4/MarkerArea4"]
 shape = SubResource("CircleShape2D_6ivlg")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -248,20 +262,6 @@ offset_left = 320.0
 offset_top = 56.0
 offset_right = 908.0
 offset_bottom = 644.0
-
-[node name="Screenshot2" type="TextureRect" parent="ScreenShotarea"]
-layout_mode = 0
-offset_left = 484.0
-offset_top = 143.0
-offset_right = 831.0
-offset_bottom = 619.0
-
-[node name="Screenshot3" type="TextureRect" parent="ScreenShotarea"]
-layout_mode = 0
-offset_left = 898.0
-offset_top = 161.0
-offset_right = 1245.0
-offset_bottom = 637.0
 
 [node name="image" type="TextureRect" parent="ScreenShotarea"]
 layout_mode = 0
@@ -349,7 +349,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1084.0
+offset_left = -641.0
 offset_top = -360.0
 offset_right = -640.0
 offset_bottom = -360.0
@@ -362,7 +362,7 @@ color = Color(0, 0.2, 0, 0.11764706)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1083.0
+offset_left = -642.0
 offset_top = -358.0
 offset_right = -638.0
 offset_bottom = -358.0
@@ -376,7 +376,7 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -1087.0
+offset_left = -640.0
 offset_top = -355.0
 offset_right = -636.0
 offset_bottom = -355.0
@@ -407,6 +407,18 @@ script = ExtResource("23_plihj")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_niugw")
+
+[node name="Garbage" type="TextureButton" parent="."]
+z_index = 1
+texture_filter = 1
+offset_left = 197.0
+offset_top = 587.0
+offset_right = 244.0
+offset_bottom = 651.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("25_c7ys4")
+texture_hover = ExtResource("26_1w6c6")
+script = ExtResource("27_n147r")
 
 [connection signal="pressed" from="ScreenShotarea/Kamera" to="ScreenShotarea" method="take_screenshot"]
 [connection signal="pressed" from="ScreenShotarea/FotoOrdner" to="ScreenShotarea" method="load_last_screenshot"]
