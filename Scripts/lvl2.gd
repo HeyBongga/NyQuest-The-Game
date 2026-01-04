@@ -4,7 +4,7 @@ extends Node2D
 @onready var DialogScene = $DialogScene
 @onready var cam = $Camera2D
 
-@onready var speed = 0.5
+@onready var speed = 0.25
 @onready var rotation_speed = 360 * speed
 
 # === Farben ===
@@ -28,8 +28,12 @@ var missed_rotations := 0
 var _dialogLineslevel1 : Array[String] = [
 	"So sieht man sich wieder! Ich brauche\nwieder einmal deine Hilfe! Aber diesmal\nist es etwas...komplizierter...",
 	"Die Windräder im richtigen Moment aufnehmen\nwar einfach für dich, ich weiß :)\nJetzt machst du das auch\nABER...",
-	"Dieses Mal musst du gleichzeitig ein passendes\n Bild aufnehmen und auswerten.\n Die Auswertung der Bilder erfolgt, wenn\ndu alle Bilder gemacht hast",
-	"Zum Einstieg fangen wir mit einem Windrad an!\n Die Bilder werden im Ordner den du unten\n Rechts siehst gespeichert! Viel Erfolg Mijo!"
+	"Dieses Mal musst du gleichzeitig ein passendes\n Bild aufnehmen und auswerten.\n Die Auswertung der Bilder erfolgt, wenn\ndu alle Bilder gemacht hast...",
+	"Du kannst erst Bilder schießen, wenn du die\nMarker alle aktiviert hast...",
+	"Versuche 3 Bilder vom Windrad zu machen!\nAchte darauf, dass du das Bild dann schießt, wenn das\nleuchtende Rotorblatt auf der Höhe der jweiligen Marker ist...",
+	"Die Kamera kann insgesamt 3 Bilder aufnehmen,\nwenn du glaubst deine Bilder sind gut\n gehe in deine Fotogalerie und werte sie aus\nEntweder sie sind gut, oder du musst sie nochmal machen...", 
+	"Du kannst jederzeit, neue Bilder aufnehmen,\ndrücke einfach auf das Mülleimer Symbol,\naber es werden alle gelöscht...",
+	"Viel Erfolg!"
 ]
 
 func _ready():
