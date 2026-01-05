@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b1l758a0xo5pm"]
+[gd_scene load_steps=20 format=3 uid="uid://b1l758a0xo5pm"]
 
 [ext_resource type="Texture2D" uid="uid://cumiilsjuincu" path="res://Sprites/FotoGalerie.png" id="1_kydde"]
 [ext_resource type="Script" uid="uid://dlvo3yg1xbes7" path="res://Scripts/foto_galerie.gd" id="1_me87o"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://drjeuk8cekjnh" path="res://Sprites/continue_button_hover.png" id="15_i4x8f"]
 [ext_resource type="Texture2D" uid="uid://ci6bog61ycqt1" path="res://Sprites/Diagram.png" id="16_i4x8f"]
 [ext_resource type="FontFile" uid="uid://bhxhywac85s24" path="res://Fonds/Bagura Font Pack v1.5/Basal.ttf" id="17_ppk2u"]
+[ext_resource type="Texture2D" uid="uid://8l830l7pvm50" path="res://Sprites/Open_Diagram.png" id="18_ttyck"]
+[ext_resource type="Texture2D" uid="uid://bp8f2skqtwcyb" path="res://Sprites/Open_Diagram_Hover.png" id="19_kn40h"]
 
 [node name="FotoGalerie" type="Control"]
 layout_mode = 3
@@ -359,6 +361,8 @@ offset_left = 228.0
 offset_top = 369.0
 offset_right = 268.0
 offset_bottom = 409.0
+texture_normal = ExtResource("18_ttyck")
+texture_hover = ExtResource("19_kn40h")
 
 [connection signal="pressed" from="ScreenshotArea/Zoom_In" to="." method="start_zoom"]
 [connection signal="pressed" from="Notizblock" to="Notizblock" method="Open_Kriterien"]
