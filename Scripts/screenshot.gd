@@ -3,6 +3,9 @@ extends Control
 # Bereiche, die fotografiert werden
 @onready var Screenshot1 = $Screenshot1
 @onready var FotoOrdner = $FotoOrdner   # (später für Galerie)
+@onready var SzenenWechsel = 0
+
+
 
 
 # Timer
@@ -80,8 +83,16 @@ func take_screenshot():
 # LETZTES BILD LADEN (optional)
 # -------------------------
 func load_last_screenshot():
+	if SzenenWechsel > 0:
+		$"../FotoGalerie".visible = true
+		$FotoOrdner.visible = false
 	if screenshot_paths.is_empty():
 		return
-	get_tree().change_scene_to_file("res://foto_galerie.tscn")
+	$"../FotoGalerie".visible = true
+	$FotoOrdner.visible = false
 
+func delete_photos():
+	$Kamera.disabled = false
+	$FotoOrdner.visible = false
+	screenshot_index = 1
 	

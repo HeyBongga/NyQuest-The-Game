@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b8ltkksb8d0vd"]
+[gd_scene load_steps=40 format=3 uid="uid://b8ltkksb8d0vd"]
 
 [ext_resource type="Script" uid="uid://dg4gkfn6eipad" path="res://Scripts/lvl2.gd" id="1_jukch"]
 [ext_resource type="Script" uid="uid://4esbmhihkrec" path="res://Scripts/loadingScreen.gd" id="1_o0rcv"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dduqj7rmhfe21" path="res://Sprites/Garbage.png" id="25_c7ys4"]
 [ext_resource type="Texture2D" uid="uid://dod35p1285w8n" path="res://Sprites/Garbage_Hover.png" id="26_1w6c6"]
 [ext_resource type="Script" uid="uid://bmornyklu2ipw" path="res://Scripts/garbage.gd" id="27_n147r"]
+[ext_resource type="PackedScene" uid="uid://b1l758a0xo5pm" path="res://foto_galerie.tscn" id="28_1w6c6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uj1pa"]
 shader = ExtResource("3_aq45b")
@@ -142,15 +143,14 @@ layer = -1
 
 [node name="Sprite0001" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(-3, 185)
+position = Vector2(0, 180)
 scale = Vector2(1.0007813, 0.75)
 texture = ExtResource("6_3pm5q")
 centered = false
 
 [node name="DialogScene" parent="." instance=ExtResource("8_vcnes")]
-visible = false
 z_index = 4
-offset_right = 1284.0
+offset_right = 1280.0
 offset_bottom = 725.0
 script = ExtResource("9_3pm5q")
 
@@ -241,16 +241,11 @@ texture = ExtResource("14_plihj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Windrad1/Marker4/MarkerArea4"]
 shape = SubResource("CircleShape2D_6ivlg")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(637, 364)
-scale = Vector2(4.3600016, 2.56)
-
 [node name="ScreenShotarea" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 1.0
 offset_right = 1276.0
-offset_bottom = 717.0
+offset_bottom = 716.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
@@ -273,7 +268,7 @@ expand_mode = 1
 
 [node name="Kamera" type="TextureButton" parent="ScreenShotarea"]
 visible = false
-z_index = 1
+z_index = 2
 texture_filter = 1
 layout_mode = 0
 offset_left = 1035.0
@@ -349,10 +344,10 @@ metadata/_aseprite_wizard_interface_config_ = {
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -641.0
-offset_top = -360.0
-offset_right = -640.0
-offset_bottom = -360.0
+offset_left = -638.0
+offset_top = -358.0
+offset_right = -638.0
+offset_bottom = -358.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -362,7 +357,7 @@ color = Color(0, 0.2, 0, 0.11764706)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -642.0
+offset_left = -638.0
 offset_top = -358.0
 offset_right = -638.0
 offset_bottom = -358.0
@@ -376,10 +371,10 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -640.0
-offset_top = -355.0
-offset_right = -636.0
-offset_bottom = -355.0
+offset_left = -638.0
+offset_top = -358.0
+offset_right = -638.0
+offset_bottom = -358.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -411,15 +406,22 @@ environment = SubResource("Environment_niugw")
 [node name="Garbage" type="TextureButton" parent="."]
 z_index = 1
 texture_filter = 1
-offset_left = 197.0
-offset_top = 587.0
-offset_right = 244.0
-offset_bottom = 651.0
-scale = Vector2(1.5, 1.5)
+offset_left = 174.0
+offset_top = 577.00006
+offset_right = 221.0
+offset_bottom = 641.00006
+scale = Vector2(1.75, 1.75)
 texture_normal = ExtResource("25_c7ys4")
 texture_hover = ExtResource("26_1w6c6")
 script = ExtResource("27_n147r")
 
+[node name="FotoGalerie" parent="." instance=ExtResource("28_1w6c6")]
+visible = false
+z_index = 5
+offset_bottom = 720.0
+
 [connection signal="pressed" from="ScreenShotarea/Kamera" to="ScreenShotarea" method="take_screenshot"]
 [connection signal="pressed" from="ScreenShotarea/FotoOrdner" to="ScreenShotarea" method="load_last_screenshot"]
+[connection signal="pressed" from="ScreenShotarea/FotoOrdner" to="FotoGalerie" method="is_ready"]
 [connection signal="pressed" from="Videokamera" to="ScreenShotarea" method="Toggle_Timer"]
+[connection signal="pressed" from="Garbage" to="ScreenShotarea" method="delete_photos"]

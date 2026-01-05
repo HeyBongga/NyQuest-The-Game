@@ -2,7 +2,10 @@ extends Node2D
 
 @onready var loadingScreen = $LoadingScreen
 @onready var DialogScene = $DialogScene
-@onready var cam = $Camera2D
+
+
+
+
 
 @onready var speed = 0.25
 @onready var rotation_speed = 360 * speed
@@ -29,26 +32,25 @@ var missed_rotations := 0
 var _dialogLineslevel1 : Array[String] = [
 	"So sieht man sich wieder! Ich brauche\nwieder einmal deine Hilfe! Aber diesmal\nist es etwas...komplizierter...",
 	"Die Windräder im richtigen Moment aufnehmen\nwar einfach für dich, ich weiß :)\nJetzt machst du das auch\nABER...",
-	"Dieses Mal musst du gleichzeitig ein passendes\n Bild aufnehmen und auswerten.\n Die Auswertung der Bilder erfolgt, wenn\ndu alle Bilder gemacht hast...",
+	"Dieses Mal musst du gleichzeitig ein passendes\nBild aufnehmen und auswerten.\n Die Auswertung der Bilder erfolgt, wenn\ndu alle Bilder gemacht hast...",
 	"Du kannst erst Bilder schießen, wenn du die\nMarker alle aktiviert hast...",
-	"Versuche 3 Bilder vom Windrad zu machen!\nAchte darauf, dass du das Bild dann schießt, wenn das\nleuchtende Rotorblatt auf der Höhe der jweiligen Marker ist...",
-	"Die Kamera kann insgesamt 3 Bilder aufnehmen,\nwenn du glaubst deine Bilder sind gut\n gehe in deine Fotogalerie und werte sie aus\nEntweder sie sind gut, oder du musst sie nochmal machen...", 
-	"Du kannst jederzeit, neue Bilder aufnehmen,\ndrücke einfach auf das Mülleimer Symbol,\naber es werden alle gelöscht...",
+	"Versuche 3 Bilder vom Windrad zu machen!\nAchte darauf, dass du das Bild dann schießt,\nwenn das leuchtende Rotorblatt auf der Höhe\nder jweiligen Marker ist...",
+	"Die Kamera kann insgesamt 3 Bilder aufnehmen,\nwenn du glaubst deine Bilder sind gut\ngehe in deine Fotogalerie und werte sie aus\nEntweder sie sind gut, oder du musst sie\n eventuell nochmal machen...", 
+	"Du kannst jederzeit, neue Bilder aufnehmen,\ndrücke einfach auf die Mülltonne,\naber es werden alle gelöscht...",
 	"Viel Erfolg!"
 ]
 
 func _ready():
+	$FotoGalerie.visible = false
 	loadingScreen.show_level_text()
 	$ScreenShotarea/Feedback.visible = false
 	loadingScreen.finished_loading.connect(_on_loading_finished)
-
 	$Videokamera.GO.connect(Camera_On)
 	$Videokamera.TURNOFF.connect(Camera_Off)
-
-
+	
 func _on_loading_finished():
 	DialogScene.show_dialog(_dialogLineslevel1)
-
+	
 
 # ================= CAMERA =================
 
@@ -169,3 +171,4 @@ func _all_markers_locked() -> bool:
 		if not locked_markers[key]:
 			return false
 	return true
+	
