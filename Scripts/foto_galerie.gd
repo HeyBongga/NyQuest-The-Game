@@ -13,8 +13,31 @@ extends Control
 @onready var zoom_target3 = $Camera2D/Marker2D3
 @onready var cam = $Camera2D
 
+# Spinboxen zur Einstellung der Zeiten und Gradzahlen
 @onready var sekunden_spinbox = $Einsteller/Sekunden
-@onready var wert_label = $Diagram/RichTextLabel
+@onready var sekunden_spinbox2 = $Einsteller/Sekunden2
+@onready var sekunden_spinbox3 = $Einsteller/Sekunden3
+@onready var sekunden_spinbox4 = $Einsteller/Sekunden4
+
+@onready var grad_spinbox = $Einsteller/Grad
+@onready var grad_spinbox2 = $Einsteller/Grad2 
+@onready var grad_spinbox3 = $Einsteller/Grad3
+@onready var grad_spinbox4 = $Einsteller/Grad4
+
+
+# Anzeige der Gradzahl und der Zeitpunkte für das Diagram
+@onready var Grad1 = $Diagram/Grad1
+@onready var Grad2 = $Diagram/Grad2
+@onready var Grad3 = $Diagram/Grad3
+@onready var Grad4 = $Diagram/Grad4
+@onready var Zeitpunkt1 = $Diagram/Zeitpunkt1
+@onready var Zeitpunkt2 = $Diagram/Zeitpunkt2
+@onready var Zeitpunkt3 = $Diagram/Zeitpunkt3
+@onready var Zeitpunkt4 = $Diagram/Zeitpunkt4
+
+# für Dialog Auswahl
+var perfect_measure = 0
+
 
 # Pfade der Screenshots
 var screenshot_paths := [
@@ -30,13 +53,24 @@ var _dialogLinesFotogalerie : Array[String] = [
 ]
 
 var _dialogLinesFotogalerie2 : Array[String] = [
-	"Du bist also zufrieden mit den Bilder\nSuper! Lass sie und auswerten!\nGebe den Zeitpunkt der Messung und die\n Stellung des Rotoblatts in Grad ein...",
+	"Du bist also zufrieden mit den Bilder.\nSuper! Lass sie und auswerten!\nGebe den Zeitpunkt der Messung und die\n Stellung des Rotoblatts in Grad ein...",
 	"Verwende die DegreeLens als Hilfe!\nSchließe die Textbox und\nKlicke auf das erste Bild!"
 ]
 
 var _dialogLinesFotogalerie3 : Array[String] = [
 	"Hoffentlich hast du brauchbare Werte,\ndann schauen wir mal, ob sie was taugen\nhierfür tragen wir die Werte in ein Diagramm ein\n",
+	]
 	
+var _dialogLinesFotogalerie4 : Array[String] = [
+	"Na da sieht ja mal... interessant aus\nBei National Geographic solltest du eher nicht\narbeiten. Ich helf mal ein wenig nach..."
+	]
+var _dialogLinesFotogalerie5 : Array[String] = [
+	"Hehey Nyquist himself, das sieht sehr gut aus.\nKommen dir diese Punkte irgendwie Bekannt vor?\n Fällt dir eine bestimmte Funktion ein,\nwenn du diese Punkte miteinander verbinden\nwürdest...",
+	 "Stell es dir mal vor"
+	]
+
+var _dialogLinesFotogalerie6 : Array[String] = [
+	 "Kommen dir diese Punkte irgendwie Bekannt vor?\n Fällt dir eine bestimmte Funktion ein,\nwenn du diese Punkte miteinander verbinden würdest? Stell es dir mal vor"
 	]
 
 func is_ready():
@@ -45,7 +79,6 @@ func is_ready():
 		DialogScene.show_dialog(_dialogLinesFotogalerie)
 		Szenenwechsel += 1
 	else:
-		print("huhu")
 		load_first_screenshots()
 
 func load_first_screenshots():
@@ -136,16 +169,6 @@ func Next_Pic():
 	)
 
 func Zoom_out():
-	var Daten = [
-		$Einsteller/Sekunden,
-		$Einsteller/Grad,
-		$Einsteller/Sekunden2,
-		$Einsteller/Grad2,
-		$Einsteller/Sekunden3,
-		$Einsteller/Grad3,
-		$Einsteller/Sekunden4,
-		$Einsteller/Grad4
-	]
 	$Einsteller/GoToNextPic2.visible = false
 	var tween := create_tween()
 
@@ -155,7 +178,7 @@ func Zoom_out():
 		zoom_target3.global_position,
 		1
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-
+	 
 	tween.parallel().tween_property(
 		cam,
 		"zoom",
@@ -164,22 +187,193 @@ func Zoom_out():
 	)
 	await get_tree().create_timer(2).timeout
 	DialogScene.show_dialog(_dialogLinesFotogalerie3)
-	await get_tree().create_timer(2).timeout
-	$Diagram.visible = true
-	
-	print("",$Einsteller/Sekunden.value)
-	print("",$Einsteller/Sekunden2.value)
-	print("",$Einsteller/Sekunden3.value)
-	print("",$Einsteller/Grad4.value)
-	#Convert()
-	
+	DialogScene.finished_dialog.connect(Convert)
+
 
 
 func Convert():
+	$Diagram.visible = true
 	$Einsteller.visible = false
-	#await get_tree().create_timer(2).timeout
+	
 	sekunden_spinbox.value_changed.connect(_on_sekunden_changed)
+	sekunden_spinbox2.value_changed.connect(_on_sekunden_changed2)
+	sekunden_spinbox3.value_changed.connect(_on_sekunden_changed3)
+	sekunden_spinbox4.value_changed.connect(_on_sekunden_changed4)
+	
+	grad_spinbox.value_changed.connect(_on_grad_changed)
+	grad_spinbox2.value_changed.connect(_on_grad_changed2)
+	grad_spinbox2.value_changed.connect(_on_grad_changed3)
+	grad_spinbox2.value_changed.connect(_on_grad_changed4)
+	
 	_on_sekunden_changed(sekunden_spinbox.value)
-
+	_on_sekunden_changed2(sekunden_spinbox2.value)
+	_on_sekunden_changed3(sekunden_spinbox3.value)
+	_on_sekunden_changed4(sekunden_spinbox4.value)
+	
+	_on_grad_changed(grad_spinbox.value)
+	_on_grad_changed2(grad_spinbox2.value)
+	_on_grad_changed3(grad_spinbox3.value)
+	_on_grad_changed4(grad_spinbox4.value)
+	
+	get_distance()
+	await get_tree().create_timer(10).timeout
+	move_Diagram()
+	await get_tree().create_timer(2).timeout
+	if perfect_measure >= 3:
+		DialogScene.show_dialog(_dialogLinesFotogalerie5)
+	else:
+		DialogScene.show_dialog(_dialogLinesFotogalerie4)
+		
+	
+	
+	
+	
+# Konvertierung von Spinbox value zu text im Graphen
 func _on_sekunden_changed(value):
-	wert_label.text = str(value)
+	Zeitpunkt1.text = str(value)
+func _on_sekunden_changed2(value):
+	Zeitpunkt2.text = str(value)
+func _on_sekunden_changed3(value):
+	Zeitpunkt3.text = str(value)
+func _on_sekunden_changed4(value):
+	Zeitpunkt4.text = str(value)
+	
+func _on_grad_changed(value):
+	var Verschiebung = 0
+	Grad1.text = str(value)
+	if value < 270 and value > 90:
+		if value < 270 and value > 180:
+			Verschiebung = 270 - value  
+			Grad1.position += Vector2(0,Verschiebung+15)
+			$Diagram/Punkt1.position += Vector2(0,Verschiebung)
+		else:
+			Verschiebung = value - 90  
+			Grad1.position += Vector2(0,Verschiebung+15)
+			$Diagram/Punkt1.position += Vector2(0,Verschiebung)
+	else:
+		if value == 360:
+			Grad1.position += Vector2(0,-90-15)
+			$Diagram/Punkt1.position += Vector2(0,-90)
+		elif value >= 270:
+			Verschiebung = value - 270
+			Grad1.position += Vector2(0,-Verschiebung+15)
+			$Diagram/Punkt1.position += Vector2(0,-Verschiebung)
+	if value < 90:
+		Verschiebung = 90 - value
+		Grad1.position += Vector2(0,-Verschiebung-15)
+		$Diagram/Punkt1.position += Vector2(0,-Verschiebung)
+		
+func _on_grad_changed2(value):
+	var Verschiebung2 = 0
+	Grad2.text = str(value)
+	
+	if value < 270 and value > 90:
+		if value < 270 and value > 180:
+			Verschiebung2 = 270 - value  
+			Grad2.position += Vector2(0,Verschiebung2+15)
+			$Diagram/Punkt2.position += Vector2(0,Verschiebung2)
+		else:
+			Verschiebung2 = value - 90  
+			Grad2.position += Vector2(0,Verschiebung2+15)
+			$Diagram/Punkt2.position += Vector2(0,Verschiebung2)
+	else:
+		if value == 360:
+			Grad2.position += Vector2(0,-90-15)
+			$Diagram/Punkt2.position += Vector2(0,-90)
+		elif value >= 270:
+			Verschiebung2 = value - 270
+			Grad2.position += Vector2(0,-Verschiebung2+15)
+			$Diagram/Punkt2.position += Vector2(0,-Verschiebung2)
+	if value < 90:
+		Verschiebung2 = 90 - value
+		Grad2.position += Vector2(0,-Verschiebung2-15)
+		$Diagram/Punkt2.position += Vector2(0,-Verschiebung2)	
+			
+func _on_grad_changed3(value):
+	var Verschiebung3 = 0
+	Grad3.text = str(value)
+	if value < 270 and value > 90:
+		if value < 270 and value > 180:
+			Verschiebung3 = 270 - value  
+			Grad3.position += Vector2(0,Verschiebung3+15)
+			$Diagram/Punkt3.position += Vector2(0,Verschiebung3)
+		else:
+			Verschiebung3 = value - 90  
+			Grad3.position += Vector2(0,Verschiebung3+15)
+			$Diagram/Punkt3.position += Vector2(0,Verschiebung3)
+	else:
+		if value == 360:
+			Grad3.position += Vector2(0,-90-15)
+			$Diagram/Punkt3.position += Vector2(0,-90-15)
+		elif value >= 270:
+			Verschiebung3 = value - 270
+			Grad3.position += Vector2(0,-Verschiebung3+15)
+			$Diagram/Punkt3.position += Vector2(0,-Verschiebung3)
+	if value < 90:
+		Verschiebung3 = 90 - value
+		Grad3.position += Vector2(0,-Verschiebung3-15)	
+		$Diagram/Punkt3.position += Vector2(0,-Verschiebung3)
+			
+func _on_grad_changed4(value):
+	var Verschiebung4 = 0
+	Grad4.text = str(value)
+	if value < 270 and value > 90:
+		if value < 270 and value > 180:
+			Verschiebung4 = 270 - value  
+			Grad4.position += Vector2(0,Verschiebung4+15)
+			$Diagram/Punkt4.position += Vector2(0,Verschiebung4)
+		else:
+			Verschiebung4 = value - 90  
+			Grad4.position += Vector2(0,Verschiebung4+15)
+			$Diagram/Punkt4.position += Vector2(0,Verschiebung4)
+	else:
+		if value == 360:
+			Grad4.position += Vector2(0,-90-15)
+			$Diagram/Punkt4.position += Vector2(0,-90)
+		elif value >= 270:
+			Verschiebung4 = value - 270
+			Grad4.position += Vector2(0,-Verschiebung4+15)
+			$Diagram/Punkt4.position += Vector2(0,-Verschiebung4)
+	if value < 90:
+		Verschiebung4 = 90 - value
+		Grad4.position += Vector2(0,-Verschiebung4-15)
+		$Diagram/Punkt4.position += Vector2(0,-Verschiebung4)
+
+
+func get_distance():
+	
+	var distance_0_to_45 = abs($Einsteller/Grad.value-$Einsteller/Grad2.value)
+	print(distance_0_to_45)
+	var distance_45_to_90 = abs($Einsteller/Grad2.value-$Einsteller/Grad3.value)
+	print(distance_0_to_45)
+	var distance_180_to_270 = abs($Einsteller/Grad3.value-$Einsteller/Grad4.value)
+	print(distance_0_to_45)
+	var distance_270_to_360 = abs($Einsteller/Grad4.value-$Einsteller/Grad.value)
+	print(distance_0_to_45)
+	
+	if distance_0_to_45 > 85 or distance_0_to_45 <95:
+		perfect_measure += 1
+	else:
+		perfect_measure = 0
+	if distance_45_to_90 > 85 or distance_45_to_90 <95:
+		perfect_measure += 1
+	else:
+		perfect_measure = 0
+	if distance_180_to_270 > 85 or distance_180_to_270 < 95:
+			perfect_measure +=1
+	else:
+		perfect_measure = 0
+	if distance_270_to_360 > 85 and distance_270_to_360 < 95:
+			perfect_measure +=1
+	else:
+		perfect_measure = 0
+	print(perfect_measure)
+	
+func move_Diagram():
+	var tween := create_tween()
+	tween.tween_property(
+		$Diagram,
+		"position",
+		$Diagram.position + Vector2(0, -261),
+		0.4
+	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
