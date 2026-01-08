@@ -69,6 +69,7 @@ metadata/_aseprite_wizard_interface_config_ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 texture_filter = 2
 use_parent_material = true
 position = Vector2(-1.4210855e-14, -88)

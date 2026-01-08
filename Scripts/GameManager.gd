@@ -5,10 +5,12 @@ extends Node
 
 #Tiles und Index
 var tile_scenes : Array = []
-var tile_index : int = 1
-
 #Signalobjekte
 var interactables : Array = []
+
+func _enter_tree():
+	GameState.level_done.connect(spawn_next_tile)
+	dialogScene.finished_dialog.connect(spawn_next_tile)
 
 func _ready():
 	var island_root = world.get_node("islandRoot")
@@ -27,7 +29,11 @@ func _ready():
 					object.clicked.connect(on_object_clicked)
 					interactables.append(object)
 	
-	dialogScene.finished_dialog.connect(spawn_next_tile)
+	for i in range(GameState.tile_index+1):
+		tile_scenes[i].visible = true
+		print(i)
+	
+	
 
 func on_object_clicked(object):
 	match object.objectType:
@@ -35,6 +41,8 @@ func on_object_clicked(object):
 			handle_house_clicked()
 		"windrad":
 			handle_windrad_clicked()
+		"labor":
+			handle_labor_clicked()
 		_:
 			print("Unbekannter Objekt-Typ:", object.objectType)
 
@@ -51,14 +59,19 @@ func handle_house_clicked():
 func handle_windrad_clicked():
 	get_tree().change_scene_to_file("res://Scenes/level1.tscn")
 
+func handle_labor_clicked():
+	get_tree().change_scene_to_file("res://Scenes/lvl2.tscn")
+
 func spawn_next_tile():
-	if tile_index >= tile_scenes.size():
+	if GameState.tile_index > tile_scenes.size():
+		print("nope")
 		return  # keine weiteren Tiles
 	else:
-		var tile = tile_scenes[tile_index]
+		print("JOPE")
+		var tile = tile_scenes[GameState.tile_index+1]
 		tile.visible = true
 		animate_tile(tile)
-		tile_index += 1
+
 
 func animate_tile(tile):
 	var tween = create_tween()

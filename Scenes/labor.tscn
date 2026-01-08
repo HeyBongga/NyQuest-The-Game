@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpo14heuefi1f"]
+
+[ext_resource type="Texture2D" uid="uid://7k0v4dvjbvpt" path="res://Sprites/Labor.png" id="1_368nt"]
+[ext_resource type="Script" uid="uid://b7bdfbhqtv8bx" path="res://Scripts/labor.gd" id="2_lag65"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("2_lag65")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_368nt")
+offset = Vector2(0, -64)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+polygon = PackedVector2Array(-80, -88, -80, 0, 0, 40, 88, 8, 88, -112)

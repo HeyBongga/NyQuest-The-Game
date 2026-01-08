@@ -41,6 +41,11 @@ func _ready():
 	reset_checks()
 	feedback_rect.visible = false
 	
+	await get_tree().create_timer(3.0).timeout
+	GameState.status()
+	GameState.sig_emitten()
+	get_tree().change_scene_to_file("res://Scenes/mainScene.tscn")
+
 func _on_loading_finished():
   # Erst wenn LoadingScreen fertig ist, Dialog starten
 	DialogScene.show_dialog(_dialogLineslevel1)
@@ -55,10 +60,7 @@ func _on_dialog_finished():
 	var tween2 = create_tween()
 	tween2.tween_property(CameraVision, "modulate:a", 1, 1.0) # 1 Sekunde einblenden
 	await tween2.finished
-	
-		
-		
-		
+
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept") and current_windmill_index < windmills.size() and GameplayReady == true:
 		var wm = windmills[current_windmill_index]
@@ -102,7 +104,9 @@ func go_to_next_windmill():
 
 
 func show_Hertz():
-	
+	Camera_is_Off()
+	$UI/Button.hide()
+	$AnimatedSprite2D.hide()
 	for i in range(windmills.size()):
 		windmills[i].set_active_state(false)
 	Frequenz1.visible = true
@@ -112,6 +116,8 @@ func show_Hertz():
 	modulate2 = Color(1,1,1,1) 
 	modulate3 = Color(1,1,1,1) 
 	
+	
+
 func activate_windmill(idx):
 	for i in range(windmills.size()):
 		windmills[i].set_active_state(i == idx)

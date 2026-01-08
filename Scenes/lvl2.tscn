@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://dduqj7rmhfe21" path="res://Sprites/Garbage.png" id="25_c7ys4"]
 [ext_resource type="Texture2D" uid="uid://dod35p1285w8n" path="res://Sprites/Garbage_Hover.png" id="26_1w6c6"]
 [ext_resource type="Script" uid="uid://bmornyklu2ipw" path="res://Scripts/garbage.gd" id="27_n147r"]
-[ext_resource type="PackedScene" uid="uid://b1l758a0xo5pm" path="res://foto_galerie.tscn" id="28_1w6c6"]
+[ext_resource type="PackedScene" uid="uid://b1l758a0xo5pm" path="res://Scenes/foto_galerie.tscn" id="28_1w6c6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uj1pa"]
 shader = ExtResource("3_aq45b")
