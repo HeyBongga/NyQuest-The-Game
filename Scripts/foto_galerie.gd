@@ -594,7 +594,7 @@ func ending():
 		print(the_cross_of_holy_might)
 		DialogScene.show_dialog(_dialogLinesFotogalerie7)
 		the_cross_of_holy_might += 1
-		await get_tree().create_timer(30).timeout
+		await get_tree().create_timer(180).timeout
 		get_tree().change_scene_to_file("res://Scenes/credits.tscn")
 		
 		
