@@ -7,7 +7,7 @@ extends Node2D
 
 
 
-@onready var speed = 0.5
+@onready var speed = 0.25
 @onready var rotation_speed = 360 * speed
 
 # === Farben ===

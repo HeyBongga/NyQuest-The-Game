@@ -24,6 +24,9 @@ extends Control
 @onready var grad_spinbox3 = $Einsteller/Grad3
 @onready var grad_spinbox4 = $Einsteller/Grad4
 
+# Signal für convert wird immer getriggerd wenn Dialog finished ist deshalb convert zur überprüfung
+var converterino = 0
+var the_cross_of_holy_might = 0
 
 # Anzeige der Gradzahl und der Zeitpunkte für das Diagram
 @onready var Grad1 = $Diagram/Grad1
@@ -62,16 +65,31 @@ var _dialogLinesFotogalerie3 : Array[String] = [
 	]
 	
 var _dialogLinesFotogalerie4 : Array[String] = [
-	"Na da sieht ja mal... interessant aus\nBei National Geographic solltest du eher nicht\narbeiten. Ich helf mal ein wenig nach..."
+	"Na das sieht ja mal... interessant aus\nIch mache nur einen letzten feinschliff\n..."
 	]
 var _dialogLinesFotogalerie5 : Array[String] = [
-	"Hehey Nyquist himself, das sieht sehr gut aus.\nKommen dir diese Punkte irgendwie Bekannt vor?\n Fällt dir eine bestimmte Funktion ein,\nwenn du diese Punkte miteinander verbinden\nwürdest...",
+	"Hehey Nyquist himself, das sieht sehr gut aus.\nKommen dir diese Punkte irgendwie bekannt\nvor?\nFällt dir eine bestimmte Funktion ein,\nwenn du diese Punkte miteinander verbinden\nwürdest...",
 	 "Stell es dir mal vor"
 	]
 
 var _dialogLinesFotogalerie6 : Array[String] = [
 	 "Kommen dir diese Punkte irgendwie Bekannt vor?\n Fällt dir eine bestimmte Funktion ein,\nwenn du diese Punkte miteinander verbinden würdest? Stell es dir mal vor"
 	]
+
+
+var _dialogLinesFotogalerie7 : Array[String] = [
+	"Kommen dir diese Punkte bekannt vor?\n Fällt dir eine bestimmte Funktion ein,\nwenn du diese Punkte miteinander verbindest?\nStell es dir mal vor...",
+	"Genau so sehen periodische Signale aus.\nWenn du die Punkte weich verbindest,\nentsteht eine saubere Schwingung.\nSinus oder Cosinus – mehr braucht es\nim Grunde gar nicht...",
+	"Und jetzt kommt der spannende Teil:\nJedes noch so komplizierte Signal\nlässt sich aus Sinus- und Cosinuswellen\nzusammensetzen.\nSignalverarbeitung ist im Kern\nnur cleveres Zerlegen und Zusammensetzen.",
+	"Dahinter steckt am Anfang viel Mathematik,\naber lass dich davon nicht abschrecken\nSignalverarbeitung begegnet dir fast täglich,\nIn Musik, in Bildern, im Handy in deiner Tasche...",
+	"Überall werden Signale gemessen, zerlegt und\nwieder zusammengesetzt,meist auf Basis\neinfacher Schwingungen.",
+	"Dieses Mini-Spiel ist für all diejenigen, die\neinen falschen Eindruck von der\nSignalverarbeitung haben,\noder noch garnicht so genau wissen\nwas Signalverarbeitung eigentlich ist\n...",
+	"Und wenn ihr erst jetzt einen schlechten \nEindruck bekommen habt...",
+	"... G e r n g e s c h e h e n ♥️ "
+]
+
+
+
 
 func is_ready():
 	if $".".visible == true and Szenenwechsel == 0:
@@ -100,7 +118,6 @@ func Bilder_Lassen():
 	$Einsteller.visible = true
 	$Einsteller.modulate.a = 0.0
 	tween_fader.tween_property($Einsteller, "modulate:a", 1.0, 0.4)
-	Spawn_Evaluator()
 
 func New_Pics():
 	for path in screenshot_paths:
@@ -108,9 +125,6 @@ func New_Pics():
 			DirAccess.remove_absolute(path)
 	$Notizblock/Kriterienliste.visible = false
 	$".".visible = false
-
-func Spawn_Evaluator():
-	print("", $Einsteller/Sekunden.value)
 
 
 func start_zoom():
@@ -192,39 +206,50 @@ func Zoom_out():
 
 
 func Convert():
-	$Diagram.visible = true
-	$Einsteller.visible = false
-	
-	sekunden_spinbox.value_changed.connect(_on_sekunden_changed)
-	sekunden_spinbox2.value_changed.connect(_on_sekunden_changed2)
-	sekunden_spinbox3.value_changed.connect(_on_sekunden_changed3)
-	sekunden_spinbox4.value_changed.connect(_on_sekunden_changed4)
-	
-	grad_spinbox.value_changed.connect(_on_grad_changed)
-	grad_spinbox2.value_changed.connect(_on_grad_changed2)
-	grad_spinbox2.value_changed.connect(_on_grad_changed3)
-	grad_spinbox2.value_changed.connect(_on_grad_changed4)
-	
-	_on_sekunden_changed(sekunden_spinbox.value)
-	_on_sekunden_changed2(sekunden_spinbox2.value)
-	_on_sekunden_changed3(sekunden_spinbox3.value)
-	_on_sekunden_changed4(sekunden_spinbox4.value)
-	
-	_on_grad_changed(grad_spinbox.value)
-	_on_grad_changed2(grad_spinbox2.value)
-	_on_grad_changed3(grad_spinbox3.value)
-	_on_grad_changed4(grad_spinbox4.value)
-	
-	get_distance()
-	await get_tree().create_timer(10).timeout
-	move_Diagram()
-	await get_tree().create_timer(2).timeout
-	if perfect_measure >= 3:
-		DialogScene.show_dialog(_dialogLinesFotogalerie5)
-	else:
-		DialogScene.show_dialog(_dialogLinesFotogalerie4)
+	print("ich war hier")
+	if converterino == 0:
+		$Diagram.visible = true
+		$Einsteller.visible = false
 		
-	
+		sekunden_spinbox.value_changed.connect(_on_sekunden_changed)
+		sekunden_spinbox2.value_changed.connect(_on_sekunden_changed2)
+		sekunden_spinbox3.value_changed.connect(_on_sekunden_changed3)
+		sekunden_spinbox4.value_changed.connect(_on_sekunden_changed4)
+		
+		grad_spinbox.value_changed.connect(_on_grad_changed)
+		grad_spinbox2.value_changed.connect(_on_grad_changed2)
+		grad_spinbox2.value_changed.connect(_on_grad_changed3)
+		grad_spinbox2.value_changed.connect(_on_grad_changed4)
+		
+		_on_sekunden_changed(sekunden_spinbox.value)
+		_on_sekunden_changed2(sekunden_spinbox2.value)
+		_on_sekunden_changed3(sekunden_spinbox3.value)
+		_on_sekunden_changed4(sekunden_spinbox4.value)
+		
+		_on_grad_changed(grad_spinbox.value)
+		_on_grad_changed2(grad_spinbox2.value)
+		_on_grad_changed3(grad_spinbox3.value)
+		_on_grad_changed4(grad_spinbox4.value)
+		converterino += 1
+		get_distance()
+		await get_tree().create_timer(10).timeout
+		move_Diagram()
+		await get_tree().create_timer(2).timeout
+		#if perfect_measure >= 3:
+			#DialogScene.show_dialog(_dialogLinesFotogalerie5)
+			#DialogScene.finished_dialog.connect(ending)
+		#else:
+		DialogScene.show_dialog(_dialogLinesFotogalerie4)
+		var the_key = 0
+		the_key += 1
+		if the_key == 1:
+			DialogScene.finished_dialog.connect(TheHolyMight360_0)
+			DialogScene.finished_dialog.connect(ending)
+				
+			
+			
+	elif converterino ==	1:
+		return
 	
 	
 	
@@ -345,29 +370,38 @@ func get_distance():
 	var distance_0_to_45 = abs($Einsteller/Grad.value-$Einsteller/Grad2.value)
 	print(distance_0_to_45)
 	var distance_45_to_90 = abs($Einsteller/Grad2.value-$Einsteller/Grad3.value)
-	print(distance_0_to_45)
+	print(distance_45_to_90)
 	var distance_180_to_270 = abs($Einsteller/Grad3.value-$Einsteller/Grad4.value)
-	print(distance_0_to_45)
+	print(distance_180_to_270)
 	var distance_270_to_360 = abs($Einsteller/Grad4.value-$Einsteller/Grad.value)
-	print(distance_0_to_45)
+	print(distance_270_to_360)
 	
-	if distance_0_to_45 > 85 or distance_0_to_45 <95:
+	if distance_0_to_45 > 85 and distance_0_to_45 <95:
 		perfect_measure += 1
+		print("1 ",perfect_measure)
 	else:
-		perfect_measure = 0
-	if distance_45_to_90 > 85 or distance_45_to_90 <95:
+		perfect_measure -= 1
+		print("1! ",perfect_measure)
+	if distance_45_to_90 > 85 and distance_45_to_90 <95:
 		perfect_measure += 1
+		print("2 ",perfect_measure)
+	else:
+		perfect_measure -= 1
+		print("2! ",perfect_measure)
+	if distance_180_to_270 > 85 and distance_180_to_270 < 95:
+		perfect_measure +=1
+		print("3 ",perfect_measure)
 	else:
 		perfect_measure = 0
-	if distance_180_to_270 > 85 or distance_180_to_270 < 95:
-			perfect_measure +=1
-	else:
-		perfect_measure = 0
+		print("3 ",perfect_measure)
 	if distance_270_to_360 > 85 and distance_270_to_360 < 95:
-			perfect_measure +=1
+		perfect_measure +=1
+		print("4 ",perfect_measure)
 	else:
-		perfect_measure = 0
-	print(perfect_measure)
+		perfect_measure -= 1
+		print("4! ",perfect_measure)
+	
+	print("in welcher welt",perfect_measure)
 	
 func move_Diagram():
 	var tween := create_tween()
@@ -377,3 +411,193 @@ func move_Diagram():
 		$Diagram.position + Vector2(0, -261),
 		0.4
 	).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+func TheHolyMight360_0():
+	if the_cross_of_holy_might == 0:
+		print("the mighty came once")
+		var Data = [
+		$Einsteller/Grad.value,
+		$Einsteller/Grad2.value,
+		$Einsteller/Grad3.value,
+		$Einsteller/Grad4.value
+		]
+
+		var min_value = Data[0]
+		var winner = 0
+
+
+		for i in range(1, 4):  # bis 4, weil range-Endwert exklusiv
+				# Abstand zu 0/360 berechnen, Float-kompatibel mit fmod
+			var distance_min = min(abs(fmod(min_value, 360)), abs(360 - fmod(min_value, 360)))
+			var distance_i = min(abs(fmod(Data[i], 360)), abs(360 - fmod(Data[i], 360)))
+
+			if distance_i < distance_min:
+					min_value = Data[i]
+					winner = i
+			
+
+			print("Neuer Gewinner:", min_value)
+			
+		var node_name = "Punkt" + str(winner + 1)  # +1 weil deine Nodes Punkt1..Punkt4 heißen
+		#	var node_name2 = "Grad" + str(winner + 1)  # +1 weil deine Nodes Punkt1..Punkt4 heißen
+
+		$Diagram/Grad1.visible = false
+		$Diagram/Grad2.visible = false
+		$Diagram/Grad3.visible = false
+		$Diagram/Grad4.visible = false
+		print(min_value)
+		
+		
+	
+		
+		if winner == 3:
+				var tween2 := create_tween()
+				tween2.tween_property(
+				$Diagram/Punkt3,
+				"position",
+				 Vector2(469,152),
+				 2.2
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+			
+				var tween3 := create_tween()
+				tween3.tween_property(
+				$Diagram/Punkt2,
+				"position",
+				 Vector2(357,236),
+				 1.8
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+				
+				var tween4 := create_tween()
+				tween4.tween_property(
+				$Diagram/Punkt1,
+				"position",
+				 Vector2(248,153),
+				 1.4
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+				
+				var tween44 := create_tween()
+				tween44.tween_property(
+				$Diagram/Punkt4,
+				"position",
+				 Vector2(581,66),
+				 1.4
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+			
+
+		if winner == 2:
+				var tween5 := create_tween()
+				tween5.tween_property(
+				$Diagram/Punkt4,
+				"position",
+				 Vector2(581,152),
+				 2.2
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+			
+				var tween6 := create_tween()
+				tween6.tween_property(
+				$Diagram/Punkt2,
+				"position",
+				 Vector2(357,152),
+				 1.8
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+				
+				var tween7 := create_tween()
+				tween7.tween_property(
+				$Diagram/Punkt1,
+				"position",
+				 Vector2(248,236),
+				 1.4
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+				
+				var tween77 := create_tween()
+				tween77.tween_property(
+				$Diagram/Punkt3,
+				"position",
+				 Vector2(469,66),
+				 1.4
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+				
+
+
+		if winner == 1:
+				var tween8 := create_tween()
+				tween8.tween_property(
+				$Diagram/Punkt4,
+				"position",
+				 Vector2(581,236),
+				 2.2
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+			
+				var tween9 := create_tween()
+				tween9.tween_property(
+				$Diagram/Punkt3,
+				"position",
+				 Vector2(469,152),
+				 1.8
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+				
+				var tween10 := create_tween()
+				tween10.tween_property(
+				$Diagram/Punkt1,
+				"position",
+				 Vector2(248,236),
+				 1.4
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+			
+				var tween78 := create_tween()
+				tween78.tween_property(
+				$Diagram/Punkt3,
+				"position",
+				 Vector2(357,66),
+				 1.4
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+				
+		if winner == 0:
+				var tween11 := create_tween()
+				tween11.tween_property(
+				$Diagram/Punkt4,
+				"position",
+				 Vector2(581,152),
+				 2.2
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+			
+				var tween12 := create_tween()
+				tween12.tween_property(
+				$Diagram/Punkt2,
+				"position",
+				 Vector2(357,152),
+				 1.8
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+				
+				var tween13 := create_tween()
+				tween13.tween_property(
+				$Diagram/Punkt3,
+				"position",
+				 Vector2(469,236),
+				 1.4
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		
+		
+				var tween133 := create_tween()
+				tween133.tween_property(
+				$Diagram/Punkt1,
+				"position",
+				 Vector2(248,66),
+				 1.4
+			).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+				
+		the_cross_of_holy_might += 1
+	else:
+		return
+func ending():
+	if the_cross_of_holy_might == 1:
+		print(the_cross_of_holy_might)
+		DialogScene.show_dialog(_dialogLinesFotogalerie7)
+		the_cross_of_holy_might += 1
+		await get_tree().create_timer(30).timeout
+		get_tree().change_scene_to_file("res://Scenes/credits.tscn")
+		
+		
+	else:
+		return
+	
