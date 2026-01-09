@@ -1,9 +1,101 @@
-[gd_scene format=3 uid="uid://yqpcsv7c551x"]
+[gd_scene load_steps=6 format=3 uid="uid://yqpcsv7c551x"]
+
+[ext_resource type="Script" uid="uid://cc2khbqjbadl6" path="res://Scenes/credistwalk.gd" id="1_ccovl"]
+[ext_resource type="Shader" uid="uid://cku2yi4knc8xa" path="res://Shaders/smooth_pixels.gdshader" id="2_1bamb"]
+[ext_resource type="FontFile" uid="uid://bhxhywac85s24" path="res://Fonds/Bagura Font Pack v1.5/Basal.ttf" id="3_xelri"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_uah1q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7emq5"]
+shader = ExtResource("2_1bamb")
 
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1850.0
+offset_bottom = 1850.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="hrh" type="TextureRect" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1860.0
+offset_right = 39.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_uah1q")
+script = ExtResource("1_ccovl")
+
+[node name="Label" type="Label" parent="hrh"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_7emq5")
+layout_mode = 0
+offset_left = 337.0
+offset_top = 737.0
+offset_right = 943.0
+offset_bottom = 1779.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_xelri")
+text = "Game Design & Konzept
+Fabrice Herzog & Biagio Macchia
+
+Programmierung
+Fabrice Herzog & Biagio Macchia
+
+Art Direction & Visual Design
+Biagio Macchia & Fabrice Herzog
+
+Sound Design & Musik
+...
+
+Narrative & Dialoge
+Fabrice Herzog & Biagio Macchia
+
+Technische Umsetzung
+Fabrice Herzog & Biagio Macchia
+
+Testing & Feinschliff
+Fabrice Herzog & Biagio Macchia
+
+Während dieser Entwicklung wurden keine Signale verletzt oder
+ gegen ihren Willen verarbeitet
+
+
+
+
+
+
+
+
+
+
+THE END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?"
+horizontal_alignment = 1

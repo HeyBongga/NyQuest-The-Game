@@ -182,18 +182,15 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_plihj")
 position = Vector2(-76.5152, -34.6731)
 rotation = 0.00907232
-scale = Vector2(1, 1)
 texture = ExtResource("13_p7g2u")
 offset = Vector2(31.7221, 36.5436)
 
 [node name="MarkerGlowArea" type="Area2D" parent="Windrad1/Rotor/MarkerGlow"]
 position = Vector2(32.7216, 36.5754)
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Windrad1/Rotor/MarkerGlow/MarkerGlowArea"]
 position = Vector2(-51.5535, 0.860001)
 rotation = 1.54988
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_plihj")
 
 [node name="Marker2D" type="Marker2D" parent="Windrad1"]
@@ -233,7 +230,6 @@ shape = SubResource("CircleShape2D_6ivlg")
 [node name="Marker4" type="Sprite2D" parent="Windrad1"]
 visible = false
 position = Vector2(3.75, 285)
-scale = Vector2(1, 1)
 texture = ExtResource("14_plihj")
 
 [node name="MarkerArea4" type="Area2D" parent="Windrad1/Marker4"]
