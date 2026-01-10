@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b1l758a0xo5pm"]
+[gd_scene load_steps=23 format=3 uid="uid://b1l758a0xo5pm"]
 
 [ext_resource type="Texture2D" uid="uid://cumiilsjuincu" path="res://Sprites/FotoGalerie.png" id="1_kydde"]
 [ext_resource type="Script" uid="uid://dlvo3yg1xbes7" path="res://Scripts/foto_galerie.gd" id="1_me87o"]
@@ -18,6 +18,10 @@
 [ext_resource type="Texture2D" uid="uid://ci6bog61ycqt1" path="res://Sprites/Diagram.png" id="16_i4x8f"]
 [ext_resource type="FontFile" uid="uid://bhxhywac85s24" path="res://Fonds/Bagura Font Pack v1.5/Basal.ttf" id="17_ppk2u"]
 [ext_resource type="Texture2D" uid="uid://dkv83xx4a5epa" path="res://Sprites/Punkt.png" id="18_8juwy"]
+[ext_resource type="Texture2D" uid="uid://lofgyqo0dscs" path="res://Sprites/Sinus.png" id="19_a8481"]
+[ext_resource type="Texture2D" uid="uid://exj7vwuyip8a" path="res://Sprites/Cosinus.png" id="20_2csjj"]
+[ext_resource type="Texture2D" uid="uid://cnrpymvh4cerx" path="res://Sprites/Option3.png" id="21_xb1mg"]
+[ext_resource type="Texture2D" uid="uid://bn2cdp4soqq7x" path="res://Sprites/Option4.png" id="22_l3sdf"]
 
 [node name="FotoGalerie" type="Control"]
 layout_mode = 3
@@ -119,7 +123,6 @@ offset_bottom = 173.0
 texture_hover = ExtResource("9_3hhh4")
 
 [node name="Einsteller" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -127,86 +130,122 @@ offset_bottom = 40.0
 [node name="Sekunden" type="SpinBox" parent="Einsteller"]
 texture_filter = 2
 layout_mode = 0
-offset_left = 57.0
+offset_left = 50.0
 offset_top = 336.0
-offset_right = 175.563
+offset_right = 193.0
 offset_bottom = 367.0
 max_value = 60.0
 suffix = "Sekunden"
 
-[node name="Grad" type="SpinBox" parent="Einsteller"]
+[node name="Grad" type="OptionButton" parent="Einsteller"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 195.0
 offset_top = 337.0
 offset_right = 303.0
 offset_bottom = 368.0
-max_value = 360.0
-step = 0.5
-suffix = "Grad"
+selected = 0
+item_count = 5
+popup/item_0/text = "Grad"
+popup/item_0/id = 0
+popup/item_1/text = "0°/360°"
+popup/item_1/id = 1
+popup/item_2/text = "90°"
+popup/item_2/id = 2
+popup/item_3/text = "180°"
+popup/item_3/id = 3
+popup/item_4/text = "270°"
+popup/item_4/id = 4
 
 [node name="Sekunden2" type="SpinBox" parent="Einsteller"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 356.0
 offset_top = 338.0
-offset_right = 474.563
+offset_right = 499.0
 offset_bottom = 369.0
 max_value = 60.0
 suffix = "Sekunden"
 
-[node name="Grad2" type="SpinBox" parent="Einsteller"]
+[node name="Grad2" type="OptionButton" parent="Einsteller"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 491.0
-offset_top = 340.0
-offset_right = 599.0
-offset_bottom = 371.0
-max_value = 360.0
-step = 0.5
-suffix = "Grad"
+offset_left = 509.0
+offset_top = 338.0
+offset_right = 617.0
+offset_bottom = 369.0
+selected = 0
+item_count = 5
+popup/item_0/text = "Grad"
+popup/item_0/id = 0
+popup/item_1/text = "0°/360°"
+popup/item_1/id = 1
+popup/item_2/text = "90°"
+popup/item_2/id = 2
+popup/item_3/text = "180°"
+popup/item_3/id = 3
+popup/item_4/text = "270°"
+popup/item_4/id = 4
 
 [node name="Sekunden3" type="SpinBox" parent="Einsteller"]
 texture_filter = 1
 layout_mode = 0
 offset_left = 668.0
 offset_top = 335.0
-offset_right = 786.563
+offset_right = 811.0
 offset_bottom = 366.0
 max_value = 60.0
 suffix = "Sekunden"
 
-[node name="Grad3" type="SpinBox" parent="Einsteller"]
+[node name="Grad3" type="OptionButton" parent="Einsteller"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 817.0
-offset_top = 335.0
-offset_right = 925.0
-offset_bottom = 366.0
-max_value = 360.0
-step = 0.5
-suffix = "Grad"
+offset_left = 815.0
+offset_top = 336.0
+offset_right = 923.0
+offset_bottom = 367.0
+selected = 0
+item_count = 5
+popup/item_0/text = "Grad"
+popup/item_0/id = 0
+popup/item_1/text = "0°/360°"
+popup/item_1/id = 1
+popup/item_2/text = "90°"
+popup/item_2/id = 2
+popup/item_3/text = "180°"
+popup/item_3/id = 3
+popup/item_4/text = "270°"
+popup/item_4/id = 4
 
 [node name="Sekunden4" type="SpinBox" parent="Einsteller"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 988.0
+offset_left = 977.0
 offset_top = 336.0
-offset_right = 1106.56
+offset_right = 1120.0
 offset_bottom = 367.0
 max_value = 60.0
 suffix = "Sekunden"
 
-[node name="Grad4" type="SpinBox" parent="Einsteller"]
+[node name="Grad4" type="OptionButton" parent="Einsteller"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 1111.0
-offset_top = 336.0
-offset_right = 1219.0
-offset_bottom = 367.0
-max_value = 360.0
-step = 0.5
-suffix = "Grad"
+offset_left = 1131.0
+offset_top = 337.0
+offset_right = 1239.0
+offset_bottom = 368.0
+selected = 0
+item_count = 5
+popup/item_0/text = "Grad"
+popup/item_0/id = 0
+popup/item_1/text = "0°/360°"
+popup/item_1/id = 1
+popup/item_2/text = "90°"
+popup/item_2/id = 2
+popup/item_3/text = "180°"
+popup/item_3/id = 3
+popup/item_4/text = "270°"
+popup/item_4/id = 4
 
 [node name="DegreeLens1" type="TextureButton" parent="Einsteller"]
 texture_filter = 1
@@ -214,7 +253,7 @@ layout_mode = 0
 offset_left = 234.0
 offset_top = 294.0
 offset_right = 274.0
-offset_bottom = 334.0
+offset_bottom = 318.6667
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("10_cmbtq")
 texture_hover = ExtResource("11_n0bg0")
@@ -259,7 +298,7 @@ layout_mode = 0
 offset_left = 850.0
 offset_top = 294.0
 offset_right = 890.0
-offset_bottom = 334.0
+offset_bottom = 319.33334
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("10_cmbtq")
 texture_hover = ExtResource("11_n0bg0")
@@ -281,7 +320,7 @@ layout_mode = 0
 offset_left = 1158.0
 offset_top = 294.0
 offset_right = 1198.0
-offset_bottom = 334.0
+offset_bottom = 318.0
 scale = Vector2(1.5, 1.5)
 texture_normal = ExtResource("10_cmbtq")
 texture_hover = ExtResource("11_n0bg0")
@@ -329,13 +368,8 @@ position = Vector2(641, 359)
 [node name="Marker2D" type="Marker2D" parent="Camera2D"]
 position = Vector2(-313, -153)
 
-[node name="Marker2D2" type="Marker2D" parent="Camera2D"]
-position = Vector2(618, -9)
-
-[node name="Marker2D3" type="Marker2D" parent="Camera2D"]
-position = Vector2(-306, 163)
-
 [node name="Diagram" type="TextureRect" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 0
 offset_left = 237.0
@@ -438,29 +472,136 @@ theme_override_font_sizes/normal_font_size = 20
 text = "
 "
 
-[node name="Punkt1" type="Sprite2D" parent="Diagram"]
+[node name="Gradzahl_1" type="Sprite2D" parent="Diagram"]
 texture_filter = 1
-position = Vector2(248, 153)
-scale = Vector2(0.25, 0.25)
+position = Vector2(310, 191.25)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="90_270" type="Sprite2D" parent="Diagram/Gradzahl_1"]
+visible = false
+texture_filter = 1
+position = Vector2(-992, -612)
+scale = Vector2(6, 6)
 texture = ExtResource("18_8juwy")
 
-[node name="Punkt2" type="Sprite2D" parent="Diagram"]
+[node name="180" type="Sprite2D" parent="Diagram/Gradzahl_1"]
+visible = false
 texture_filter = 1
-position = Vector2(357, 152)
-scale = Vector2(0.25, 0.25)
+position = Vector2(-992, 796)
+scale = Vector2(6, 6)
 texture = ExtResource("18_8juwy")
 
-[node name="Punkt3" type="Sprite2D" parent="Diagram"]
+[node name="360_0" type="Sprite2D" parent="Diagram/Gradzahl_1"]
+visible = false
 texture_filter = 1
-position = Vector2(469, 152)
-scale = Vector2(0.25, 0.25)
+position = Vector2(-992, -2004)
+scale = Vector2(6, 6)
 texture = ExtResource("18_8juwy")
 
-[node name="Punkt4" type="Sprite2D" parent="Diagram"]
+[node name="Gradzahl_2" type="Sprite2D" parent="Diagram"]
 texture_filter = 1
-position = Vector2(581, 152)
-scale = Vector2(0.25, 0.25)
+position = Vector2(310, 191.25)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="90_270" type="Sprite2D" parent="Diagram/Gradzahl_2"]
+visible = false
+texture_filter = 1
+position = Vector2(752, -612)
+scale = Vector2(6, 6)
 texture = ExtResource("18_8juwy")
+
+[node name="180" type="Sprite2D" parent="Diagram/Gradzahl_2"]
+visible = false
+texture_filter = 1
+position = Vector2(752, 796)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="360_0" type="Sprite2D" parent="Diagram/Gradzahl_2"]
+visible = false
+texture_filter = 1
+position = Vector2(784, -2004)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="Gradzahl_3" type="Sprite2D" parent="Diagram"]
+texture_filter = 1
+position = Vector2(310, 191.25)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="90_270" type="Sprite2D" parent="Diagram/Gradzahl_3"]
+visible = false
+texture_filter = 1
+position = Vector2(2544, -612)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="180" type="Sprite2D" parent="Diagram/Gradzahl_3"]
+visible = false
+texture_filter = 1
+position = Vector2(2544, 828)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="360_0" type="Sprite2D" parent="Diagram/Gradzahl_3"]
+visible = false
+texture_filter = 1
+position = Vector2(2560, -2004)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="Gradzahl_4" type="Sprite2D" parent="Diagram"]
+texture_filter = 1
+position = Vector2(310, 191.25)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="90_270" type="Sprite2D" parent="Diagram/Gradzahl_4"]
+visible = false
+texture_filter = 1
+position = Vector2(4336, -612)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="180" type="Sprite2D" parent="Diagram/Gradzahl_4"]
+visible = false
+texture_filter = 1
+position = Vector2(4336, 796)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="360_0" type="Sprite2D" parent="Diagram/Gradzahl_4"]
+visible = false
+texture_filter = 1
+position = Vector2(4368, -2004)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="Option1" type="Sprite2D" parent="Diagram"]
+visible = false
+position = Vector2(471, 153)
+texture = ExtResource("19_a8481")
+
+[node name="Option2" type="Sprite2D" parent="Diagram"]
+visible = false
+position = Vector2(470, 151)
+texture = ExtResource("20_2csjj")
+
+[node name="Option3" type="Sprite2D" parent="Diagram"]
+visible = false
+z_index = 7
+position = Vector2(470, 152)
+texture = ExtResource("21_xb1mg")
+
+[node name="Option4" type="Sprite2D" parent="Diagram"]
+visible = false
+position = Vector2(470, 150)
+texture = ExtResource("22_l3sdf")
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(939, 196)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(641, 359)
 
 [connection signal="pressed" from="ScreenshotArea/Zoom_In" to="." method="start_zoom"]
 [connection signal="pressed" from="Notizblock" to="Notizblock" method="Open_Kriterien"]

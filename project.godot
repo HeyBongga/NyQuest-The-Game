@@ -12,7 +12,7 @@ config_version=5
 
 config/name="NyQuest"
 run/main_scene="uid://dobxp8i6xj2no"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+config/features=PackedStringArray("4.5", "GL Compatibility")
 
 [autoload]
 

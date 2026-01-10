@@ -12,6 +12,7 @@ extends Control
 var timer_active := false
 var time := 0.0
 var seconds := 0
+var miliseconds := 0
 
 # Screenshot-Logik
 var screenshot_index := 1          # zählt von 1–4
@@ -24,12 +25,14 @@ var screenshot_paths := []          # merkt sich die Pfade
 func _process(delta):
 	if timer_active:
 		time += delta
+		miliseconds = int(fmod(time,1) * 100)
 		seconds = int(fmod(time, 60))
-		$Seconds.text = "%02d" % seconds
+		$Seconds.text = "%02d." % seconds
+		$Miliseconds.text = "%02d" %miliseconds
 
 # Wird vom Kamera-Button aufgerufen
 func Toggle_Timer():
-	timer_active = not timer_active
+	timer_active = true
 
 	# Timer ausschalten + zurücksetzen
 	if not timer_active:

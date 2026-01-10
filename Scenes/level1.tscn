@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://b1cscmejnwcb3"]
+[gd_scene load_steps=33 format=3 uid="uid://b1cscmejnwcb3"]
 
 [ext_resource type="Shader" uid="uid://cku2yi4knc8xa" path="res://Shaders/smooth_pixels.gdshader" id="1_didp7"]
 [ext_resource type="Script" uid="uid://cpn5hpe44sfdo" path="res://Scripts/level_1.gd" id="2_2a60c"]
@@ -20,7 +20,6 @@
 [ext_resource type="Script" uid="uid://bqgm2dgsnb5qr" path="res://Scripts/camera_switch.gd" id="16_yymuf"]
 [ext_resource type="Texture2D" uid="uid://or202vh8f880" path="res://Sprites/camera_icon_hover.png" id="17_mcj63"]
 [ext_resource type="PackedScene" uid="uid://4epow0munt6q" path="res://Scenes/dialogScene.tscn" id="19_nolpu"]
-[ext_resource type="Script" uid="uid://c3m85jh428fv0" path="res://Scripts/screenshot.gd" id="21_af2a1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2a60c"]
 shader = ExtResource("1_didp7")
@@ -582,68 +581,3 @@ offset_left = 1.0
 offset_top = -6.0
 offset_right = 1283.0
 offset_bottom = 714.0
-
-[node name="ScreenShotarea" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_top = 1.0
-offset_right = 1276.0
-offset_bottom = 717.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-script = ExtResource("21_af2a1")
-
-[node name="Screenshot1" type="TextureRect" parent="ScreenShotarea"]
-layout_mode = 0
-offset_left = 80.0
-offset_top = 141.0
-offset_right = 427.0
-offset_bottom = 617.0
-
-[node name="Screenshot2" type="TextureRect" parent="ScreenShotarea"]
-layout_mode = 0
-offset_left = 484.0
-offset_top = 143.0
-offset_right = 831.0
-offset_bottom = 619.0
-
-[node name="Screenshot3" type="TextureRect" parent="ScreenShotarea"]
-layout_mode = 0
-offset_left = 898.0
-offset_top = 161.0
-offset_right = 1245.0
-offset_bottom = 637.0
-
-[node name="image" type="TextureRect" parent="ScreenShotarea"]
-layout_mode = 0
-offset_left = 444.0
-offset_top = 152.0
-offset_right = 801.0
-offset_bottom = 436.0
-expand_mode = 1
-
-[node name="Button" type="Button" parent="ScreenShotarea"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 206.0
-offset_top = 83.0
-offset_right = 250.0
-offset_bottom = 123.0
-scale = Vector2(2.925, 1.172)
-theme_override_fonts/font = ExtResource("4_bdr3p")
-theme_override_font_sizes/font_size = 7
-icon = ExtResource("17_mcj63")
-
-[node name="Timer" type="Timer" parent="ScreenShotarea"]
-
-[node name="Seconds" type="Label" parent="ScreenShotarea"]
-layout_mode = 0
-offset_left = 105.0
-offset_top = 92.0
-offset_right = 145.0
-offset_bottom = 115.0
-text = "00"
-
-[connection signal="pressed" from="ScreenShotarea/Button" to="ScreenShotarea" method="take_screenshot"]
