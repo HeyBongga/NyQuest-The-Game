@@ -1,6 +1,5 @@
 extends Node
 
-
 func _ready():
 	# sendet ein Signal, dass die Szene fertig aufgebaut ist
 	if GameState.first_boot:

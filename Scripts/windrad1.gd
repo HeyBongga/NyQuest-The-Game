@@ -37,7 +37,6 @@ func _process(delta):
 	#if is_active: 
 		rotor.rotation_degrees += rotation_speed * delta
 
-
 func is_aligned(area):
 	if area == arrow_area and GameplayReady == true:
 		pfeil_normal.visible = false
@@ -45,7 +44,6 @@ func is_aligned(area):
 		marker_normal.visible = false
 		marker_highlight.visible = true
 		can_hit = true
-	
 
 func is_not_aligned(area):
 	if area == arrow_area and GameplayReady == true:
@@ -54,19 +52,17 @@ func is_not_aligned(area):
 		marker_normal.visible = true
 		marker_highlight.visible = false
 		can_hit = false
-	
 
 func visibility():
 	pfeil_normal.visible = false
 	pfeil_highlight.visible = false
-	
 
 func can_check() -> bool:
 	return can_hit
 
 func set_active_state(active: bool):
 	is_active = active
-	if active:
+	if is_active:
 		modulate = Color(1,1,1,1) 
 		CollisionShape.disabled = false
 	else:
@@ -84,20 +80,15 @@ func Camera_is_On():
 	GameplayReady = true
 	if Modulatet == true: 
 		pfeil_normal.visible = false
+		marker_normal.visible = false
 	else:
 		pfeil_normal.visible = true
+		marker_normal.visible = true
 
 func Camera_is_Off():
 	GameplayReady = false
-	
-	
-	
 
 func TurnOff():
 	#Modulatet = true
 	pfeil_normal.visible = false
 	pfeil_highlight.visible = false
-
-	
-	
-	

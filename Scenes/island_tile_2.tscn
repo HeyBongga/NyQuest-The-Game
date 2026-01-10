@@ -43,10 +43,4 @@ tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP3/AAAAAAA
 tile_set = SubResource("TileSet_wrm1d")
 
 [node name="Windrad" parent="." instance=ExtResource("4_g4ovw")]
-position = Vector2(0, -72)
-
-[node name="Windrad2" parent="." instance=ExtResource("4_g4ovw")]
-position = Vector2(-96, 32)
-
-[node name="Windrad3" parent="." instance=ExtResource("4_g4ovw")]
-position = Vector2(96, 48)
+position = Vector2(0, -56)

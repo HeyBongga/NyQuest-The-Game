@@ -86,7 +86,6 @@ script = ExtResource("1_jukch")
 
 [node name="LoadingScreen" type="CanvasLayer" parent="."]
 layer = 2
-visible = false
 script = ExtResource("1_o0rcv")
 
 [node name="ColorRect" type="ColorRect" parent="LoadingScreen"]

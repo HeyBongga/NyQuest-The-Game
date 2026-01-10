@@ -1,13 +1,17 @@
 extends Node
 
+signal level_finished(level_name)
+
+var finished_levels := {}
+
 var first_boot = true
 var tile_index = 0
 
-signal level_done
+var house_ready = true
+var windrad_ready = true
+var labor_ready = true
 
-func status():
-	tile_index += 1
-
-func sig_emitten():
-	print("siggi")
-	level_done.emit(self)
+func finish_level(level_name: String):
+	print("GameState: Level finished:", level_name)
+	finished_levels[level_name] = true
+	level_finished.emit(level_name)

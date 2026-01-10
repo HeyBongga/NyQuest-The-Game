@@ -85,6 +85,7 @@ script = ExtResource("2_2a60c")
 
 [node name="LoadingScreen" type="CanvasLayer" parent="."]
 layer = 2
+visible = false
 script = ExtResource("3_u1b78")
 
 [node name="ColorRect" type="ColorRect" parent="LoadingScreen"]
@@ -171,6 +172,7 @@ texture = ExtResource("3_y4dr7")
 offset = Vector2(68, -39.960785)
 
 [node name="Marker" type="Sprite2D" parent="Windraeder/Windrad1/Rotor"]
+visible = false
 self_modulate = Color(0, 0.11372549, 0.9843137, 1)
 position = Vector2(-148.7746, -390.8786)
 scale = Vector2(1.014, 1.01)
@@ -182,6 +184,7 @@ texture = SubResource("AtlasTexture_wwu6c")
 shape = SubResource("CircleShape2D_didp7")
 
 [node name="Marker2" type="Sprite2D" parent="Windraeder/Windrad1/Rotor"]
+visible = false
 self_modulate = Color(1, 0.9529412, 0, 1)
 position = Vector2(-148.7746, -390.8786)
 scale = Vector2(1.014, 1.01)
@@ -230,6 +233,7 @@ texture = ExtResource("3_y4dr7")
 offset = Vector2(68, -39.960785)
 
 [node name="Marker" type="Sprite2D" parent="Windraeder/Windrad2/Rotor"]
+visible = false
 self_modulate = Color(0, 0.11372549, 0.9843137, 1)
 position = Vector2(-148.7746, -390.8786)
 scale = Vector2(1.014, 1.01)
@@ -241,6 +245,7 @@ texture = SubResource("AtlasTexture_wwu6c")
 shape = SubResource("CircleShape2D_didp7")
 
 [node name="Marker2" type="Sprite2D" parent="Windraeder/Windrad2/Rotor"]
+visible = false
 self_modulate = Color(1, 0.9529412, 0, 1)
 position = Vector2(-148.7746, -390.8786)
 scale = Vector2(1.014, 1.01)
@@ -289,6 +294,7 @@ texture = ExtResource("3_y4dr7")
 offset = Vector2(68, -39.960785)
 
 [node name="Marker" type="Sprite2D" parent="Windraeder/Windrad3/Rotor"]
+visible = false
 self_modulate = Color(0, 0.11372549, 0.9843137, 1)
 position = Vector2(-148.7746, -390.8786)
 scale = Vector2(1.014, 1.01)
@@ -301,6 +307,7 @@ visible = false
 shape = SubResource("CircleShape2D_didp7")
 
 [node name="Marker2" type="Sprite2D" parent="Windraeder/Windrad3/Rotor"]
+visible = false
 self_modulate = Color(1, 0.9529412, 0, 1)
 position = Vector2(-148.7746, -390.8786)
 scale = Vector2(1.014, 1.01)
@@ -339,6 +346,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CheckContainer" type="HBoxContainer" parent="UI"]
+visible = false
+z_index = -1
 use_parent_material = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -359,35 +368,36 @@ size_flags_vertical = 0
 material = SubResource("ShaderMaterial_cpkqv")
 use_parent_material = true
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/checkbox_checked_color = Color(0, 1, 0.203125, 1)
-disabled = true
 button_mask = 0
 
 [node name="CheckBox2" type="CheckBox" parent="UI/CheckContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/checkbox_checked_color = Color(0, 1, 0, 1)
-disabled = true
 button_mask = 0
 
 [node name="CheckBox3" type="CheckBox" parent="UI/CheckContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/checkbox_checked_color = Color(0, 1, 0, 1)
-disabled = true
 button_mask = 0
 
 [node name="CheckBox4" type="CheckBox" parent="UI/CheckContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/checkbox_checked_color = Color(0, 1, 0, 1)
-disabled = true
 button_mask = 0
 
 [node name="CheckBox5" type="CheckBox" parent="UI/CheckContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/checkbox_checked_color = Color(0, 1, 0, 1)
-disabled = true
 button_mask = 0
 
 [node name="Button" type="TextureButton" parent="UI"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(40, 20)
 anchors_preset = 3
@@ -408,7 +418,6 @@ script = ExtResource("16_yymuf")
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
 visible = false
-modulate = Color(1, 1, 1, 0.36862746)
 self_modulate = Color(1, 1, 1, 0)
 z_index = 2
 offset_left = 131.0
@@ -445,7 +454,6 @@ vertical_alignment = 1
 
 [node name="ColorRect2" type="ColorRect" parent="UI"]
 visible = false
-modulate = Color(1, 1, 1, 0.36862746)
 self_modulate = Color(1, 1, 1, 0)
 z_index = 2
 offset_left = 563.0
@@ -482,7 +490,6 @@ vertical_alignment = 1
 
 [node name="ColorRect3" type="ColorRect" parent="UI"]
 visible = false
-modulate = Color(1, 1, 1, 0.36862746)
 self_modulate = Color(1, 1, 1, 0)
 z_index = 2
 offset_left = 1000.0
@@ -570,10 +577,10 @@ color = Color(0.40420002, 0.86, 0.44218332, 0.09803922)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -639.0
-offset_top = -355.0
-offset_right = -636.0
-offset_bottom = -355.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = -640.0
+offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
