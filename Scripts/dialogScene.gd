@@ -10,6 +10,7 @@ signal finished_dialog
 #signal finished_dialog2 # für level 1 nach erster Abtastung
 
 
+
 func _ready():
 	visible = false
 	button.visible = false
