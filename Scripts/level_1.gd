@@ -89,13 +89,17 @@ func reset_checks():
 func go_to_next_windmill():
 	windmills[current_windmill_index].set_active_state(false) 
 	current_windmill_index += 1
-
 	if current_windmill_index >= windmills.size():
 		print("Level Completed!")
-		
 		$UI/CheckContainer.hide()
 		$UI/Button.hide()
+		$AnimatedSprite2D.hide()
 		DialogScene.show_dialog(_dialogLines2level1)
+		for i in range(windmills.size()):
+			windmills[i].set_active_state(false)
+		modulate1.modulate = Color(1,1,1,1) 
+		modulate2.modulate = Color(1,1,1,1) 
+		modulate3.modulate = Color(1,1,1,1)
 		DialogScene.finished_dialog.connect(show_Hertz)
 		return
 	else:
@@ -109,12 +113,12 @@ func show_Hertz():
 	$AnimatedSprite2D.hide()
 	for i in range(windmills.size()):
 		windmills[i].set_active_state(false)
+	modulate1.modulate = Color(1,1,1,1) 
+	modulate2.modulate = Color(1,1,1,1) 
+	modulate3.modulate = Color(1,1,1,1)
 	Frequenz1.visible = true
 	Frequenz2.visible = true
 	Frequenz3.visible = true
-	modulate1 = Color(1,1,1,1) 
-	modulate2 = Color(1,1,1,1) 
-	modulate3 = Color(1,1,1,1) 
 	end_level()
 
 func end_level():

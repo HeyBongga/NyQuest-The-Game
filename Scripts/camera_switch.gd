@@ -16,9 +16,10 @@ func _ready():
 	camera_overlay.modulate.a = 0.0
 
 func _on_cameraButton_pressed():
-	
 	if camera_overlay.visible == false:
 		fade_camera_on()
+		$".".disabled = true
+		$".".modulate = Color(1.0, 1.0, 1.0, 0.5) 
 	else:
 		fade_camera_off()
 		
