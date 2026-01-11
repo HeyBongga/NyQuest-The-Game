@@ -33,7 +33,7 @@ var _dialogLineslevel1 : Array[String] = [
 "So sieht man sich wieder!\nDiesmal wartet eine\nschwierigere Aufgabe auf dich...",
 "Zuerst musst du alle Marker aktivieren.\nErst danach erscheint eine Kamera...",
 "Die Marker aktivierst du\nmit der 'Leertaste'...",
-"Deine Aufgabe:\nMache 4 Bilder von EINER\nUmdrehung des Windrads...",
+"Deine Aufgabe:\nMache 4 Bilder innerhalb EINER\nUmdrehung des Windrads...",
 "Schieße jedes Bild genau dann,\nwenn das leuchtende Rotorblatt\nauf der Höhe eines Markers ist...",
 "Wichtig:\nJedes Bild muss einen\nanderen Marker treffen..",
 "Die Kamera kann 4 Bilder speichern.\nDanach kannst du die Bilder\nin der Fotogalerie auswerten...",

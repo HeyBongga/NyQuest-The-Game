@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dduqj7rmhfe21" path="res://Sprites/Garbage.png" id="25_c7ys4"]
 [ext_resource type="Texture2D" uid="uid://dod35p1285w8n" path="res://Sprites/Garbage_Hover.png" id="26_1w6c6"]
 [ext_resource type="Script" uid="uid://bmornyklu2ipw" path="res://Scripts/garbage.gd" id="27_n147r"]
-[ext_resource type="PackedScene" uid="uid://b1l758a0xo5pm" path="res://foto_galerie.tscn" id="28_1w6c6"]
+[ext_resource type="PackedScene" uid="uid://b1l758a0xo5pm" path="res://Scenes/foto_galerie.tscn" id="28_1w6c6"]
 [ext_resource type="Texture2D" uid="uid://bodyx7vgjvb3u" path="res://Sprites/Controlls_Questionmark.png" id="29_28bxl"]
 [ext_resource type="Texture2D" uid="uid://bifikvsndu3sy" path="res://Sprites/Controlls_Questionmark_Hover.png" id="30_msabw"]
 [ext_resource type="Script" uid="uid://s6xtu0e63qbw" path="res://Scripts/controlls.gd" id="31_oyxnl"]
@@ -92,7 +92,6 @@ script = ExtResource("1_jukch")
 
 [node name="LoadingScreen" type="CanvasLayer" parent="."]
 layer = 2
-visible = false
 script = ExtResource("1_o0rcv")
 
 [node name="ColorRect" type="ColorRect" parent="LoadingScreen"]
