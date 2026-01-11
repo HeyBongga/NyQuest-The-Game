@@ -4,22 +4,28 @@ extends Area2D
 
 signal clicked(this_object)
 
-@onready var animatedSprite := $AnimatedSprite2D
+@onready var animatedSprite := $Sprite2D/AnimatedSprite2D
 
 
 var zoom_scale := Vector2(1.2, 1.2)  # Zielgröße beim Hover
 
 func _ready():
-	print("Windrad ready – warte auf Input")
+	if GameState.windrad_ready:
+		print("Windrad ready – warte auf Input")
+	
 	animatedSprite.play("Windrad_idle")
 
 func on_mouse_entered():
-	animatedSprite.scale = zoom_scale
+	if GameState.windrad_ready:
+		$Sprite2D.scale = zoom_scale
 
 func on_mouse_exited():
-	animatedSprite.scale = Vector2.ONE
+	if GameState.windrad_ready:
+		$Sprite2D.scale = Vector2.ONE
 
 func on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int):
-	if event.is_action_pressed("click_left_mouse"):
-		clicked.emit(self)
-		$CollisionShape2D.disabled=true
+	if GameState.windrad_ready:
+		if event.is_action_pressed("click_left_mouse"):
+			clicked.emit(self)
+			$CollisionShape2D.disabled=true
+			GameState.windrad_ready = false

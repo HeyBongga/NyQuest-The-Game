@@ -3,7 +3,9 @@ extends Node2D
 var current_windmill_index = 0
 var progress = 0
 const MAX_PROGRESS = 5
+
 var GameplayReady  = false
+var start = true
 
 @onready var loadingScreen = $LoadingScreen
 @onready var windmills = $Windraeder.get_children()
@@ -18,7 +20,6 @@ var GameplayReady  = false
 @onready var modulate2 = $Windraeder/Windrad2
 @onready var modulate3 = $Windraeder/Windrad3
 
-
 var _dialogLineslevel1 : Array[String] = [
 	"Schön du hast hierhergefunden,\nfür eine optimale Energieversorgung \nmüssen die Windräder richtig eingestellt sein...",
 	"das erreicht man, indem man zum richtigen\nZeitpunkt die Windräder aufnimmt!\n Insgesamt brauche ich 5 hintereinander\n saubere Aufnahmen...\n",
@@ -29,8 +30,6 @@ var _dialogLines2level1 : Array[String] = [
 	"Nun da du dich an die Kameraansicht gewöhnt\n hast schauen wir uns mal an\nwas für Ergebnisse wir für unsere\nWindräder haben...",
 	"Die Kamera liefert uns die Umdrehungen\npro Sekunde in Hertz oder Hz..."
 	]
-	
-	
 
 func _ready():
 	loadingScreen.show_level_text()
@@ -40,25 +39,26 @@ func _ready():
 	DialogScene.finished_dialog.connect(_on_dialog_finished)
 	reset_checks()
 	feedback_rect.visible = false
-	
+
+func on_level_completed():
+	print("Level1: completed")
+	GameState.finish_level("Level1")
+
 func _on_loading_finished():
   # Erst wenn LoadingScreen fertig ist, Dialog starten
 	DialogScene.show_dialog(_dialogLineslevel1)
-	
+
 func _on_dialog_finished():
-	activate_windmill(0)
+	#activate_windmill(0)
 	var tween = create_tween()
 	CameraVision.visible = true
 	tween.tween_property(CameraVision, "modulate:a", 0, 0) # 0 Sekunde ausblenden
 	await tween.finished
-		
+	
 	var tween2 = create_tween()
 	tween2.tween_property(CameraVision, "modulate:a", 1, 1.0) # 1 Sekunde einblenden
 	await tween2.finished
-	
-		
-		
-		
+
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept") and current_windmill_index < windmills.size() and GameplayReady == true:
 		var wm = windmills[current_windmill_index]
@@ -89,10 +89,17 @@ func reset_checks():
 func go_to_next_windmill():
 	windmills[current_windmill_index].set_active_state(false) 
 	current_windmill_index += 1
-
 	if current_windmill_index >= windmills.size():
 		print("Level Completed!")
+		$UI/CheckContainer.hide()
+		$UI/Button.hide()
+		$AnimatedSprite2D.hide()
 		DialogScene.show_dialog(_dialogLines2level1)
+		for i in range(windmills.size()):
+			windmills[i].set_active_state(false)
+		modulate1.modulate = Color(1,1,1,1) 
+		modulate2.modulate = Color(1,1,1,1) 
+		modulate3.modulate = Color(1,1,1,1)
 		DialogScene.finished_dialog.connect(show_Hertz)
 		return
 	else:
@@ -100,18 +107,25 @@ func go_to_next_windmill():
 		reset_checks()
 		progress = 0
 
-
 func show_Hertz():
-	
+	Camera_is_Off()
+	$UI/Button.hide()
+	$AnimatedSprite2D.hide()
 	for i in range(windmills.size()):
 		windmills[i].set_active_state(false)
+	modulate1.modulate = Color(1,1,1,1) 
+	modulate2.modulate = Color(1,1,1,1) 
+	modulate3.modulate = Color(1,1,1,1)
 	Frequenz1.visible = true
 	Frequenz2.visible = true
 	Frequenz3.visible = true
-	modulate1 = Color(1,1,1,1) 
-	modulate2 = Color(1,1,1,1) 
-	modulate3 = Color(1,1,1,1) 
-	
+	end_level()
+
+func end_level():
+	await get_tree().create_timer(3.0).timeout
+	on_level_completed()
+	get_tree().change_scene_to_file("res://Scenes/mainScene.tscn")
+
 func activate_windmill(idx):
 	for i in range(windmills.size()):
 		windmills[i].set_active_state(i == idx)
@@ -126,7 +140,15 @@ func show_error_flash():
 	tween.connect("finished", func(): feedback_rect.visible = false)
 	
 func Camera_is_On():
-	GameplayReady = true
-	
+	if start:
+		activate_windmill(0)
+		$UI/CheckContainer.show()
+		GameplayReady = true
+		start = false
+	else:
+		$UI/CheckContainer.show()
+		GameplayReady = true
+
 func Camera_is_Off():
+	$UI/CheckContainer.hide()
 	GameplayReady = false

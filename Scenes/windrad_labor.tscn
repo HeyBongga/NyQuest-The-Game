@@ -1,18 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://c676hl1fep4oq"]
+[gd_scene load_steps=8 format=3 uid="uid://ca3kiofywdxr"]
 
-[ext_resource type="Script" uid="uid://bfigk6lyygor5" path="res://Scripts/windrad.gd" id="2_4xja0"]
-[ext_resource type="Texture2D" uid="uid://phcothlb8k4q" path="res://Sprites/windrad_animation.png" id="2_uqdpp"]
+[ext_resource type="Script" uid="uid://bfigk6lyygor5" path="res://Scripts/windrad.gd" id="1_okln6"]
+[ext_resource type="Texture2D" uid="uid://phcothlb8k4q" path="res://Sprites/windrad_animation.png" id="2_tg2c3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4xja0"]
-atlas = ExtResource("2_uqdpp")
+atlas = ExtResource("2_tg2c3")
 region = Rect2(0, 0, 176, 240)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_np62n"]
-atlas = ExtResource("2_uqdpp")
+atlas = ExtResource("2_tg2c3")
 region = Rect2(176, 0, 176, 240)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_euprr"]
-atlas = ExtResource("2_uqdpp")
+atlas = ExtResource("2_tg2c3")
 region = Rect2(352, 0, 176, 240)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yvkqj"]
@@ -39,11 +39,9 @@ height = 50.272865
 [node name="Windrad" type="Area2D"]
 texture_filter = 2
 use_parent_material = true
-script = ExtResource("2_4xja0")
+script = ExtResource("1_okln6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 2
 use_parent_material = true
 position = Vector2(-8, -72)
@@ -70,10 +68,10 @@ metadata/_aseprite_wizard_interface_config_ = {
 "slice_section": false
 }
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Sprite2D"]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 texture_filter = 2
 use_parent_material = true
-position = Vector2(80, 24)
+position = Vector2(120, 16)
 sprite_frames = SubResource("SpriteFrames_yvkqj")
 animation = &"Windrad_idle"
 autoplay = "Windrad_idle"
@@ -97,10 +95,10 @@ metadata/_aseprite_wizard_interface_config_ = {
 "slice_section": false
 }
 
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Sprite2D"]
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
 texture_filter = 2
 use_parent_material = true
-position = Vector2(-112, -8)
+position = Vector2(-128, 8)
 sprite_frames = SubResource("SpriteFrames_yvkqj")
 animation = &"Windrad_idle"
 autoplay = "Windrad_idle"

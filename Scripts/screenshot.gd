@@ -2,7 +2,7 @@ extends Control
 
 # Bereiche, die fotografiert werden
 @onready var Screenshot1 = $Screenshot1
-@onready var FotoOrdner = $FotoOrdner   # (später für Galerie)
+#@onready var FotoOrdner = $FotoOrdner   # (später für Galerie)
 @onready var SzenenWechsel = 0
 
 

@@ -42,7 +42,7 @@ atlas = ExtResource("8_rqhku")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2a60c"]
-radius = 28.3333
+radius = 28.333344
 height = 72.5
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_af2a1"]
@@ -84,7 +84,6 @@ script = ExtResource("2_2a60c")
 
 [node name="LoadingScreen" type="CanvasLayer" parent="."]
 layer = 2
-visible = false
 script = ExtResource("3_u1b78")
 
 [node name="ColorRect" type="ColorRect" parent="LoadingScreen"]
@@ -129,7 +128,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color(0.192157, 0.752941, 0.984314, 1)
+color = Color(0.19215687, 0.7529412, 0.9843137, 1)
 
 [node name="Level_1_Clouds" parent="Background" instance=ExtResource("12_d1mwp")]
 z_index = -1
@@ -158,21 +157,22 @@ script = ExtResource("4_4iphx")
 
 [node name="Grundkoerper" type="Sprite2D" parent="Windraeder/Windrad1"]
 use_parent_material = true
-position = Vector2(269.75, 566.46)
+position = Vector2(269.75, 566.45996)
 scale = Vector2(0.5, 0.35)
 texture = ExtResource("2_lyd6k")
 
 [node name="Rotor" type="Sprite2D" parent="Windraeder/Windrad1"]
 use_parent_material = true
 position = Vector2(268.75, 363.75)
-rotation = -0.234133
+rotation = -0.23413335
 scale = Vector2(0.52, 0.52)
 texture = ExtResource("3_y4dr7")
-offset = Vector2(68, -39.9608)
+offset = Vector2(68, -39.960785)
 
 [node name="Marker" type="Sprite2D" parent="Windraeder/Windrad1/Rotor"]
-self_modulate = Color(0, 0.113725, 0.984314, 1)
-position = Vector2(-148.775, -390.879)
+visible = false
+self_modulate = Color(0, 0.11372549, 0.9843137, 1)
+position = Vector2(-148.7746, -390.8786)
 scale = Vector2(1.014, 1.01)
 texture = SubResource("AtlasTexture_wwu6c")
 
@@ -182,16 +182,17 @@ texture = SubResource("AtlasTexture_wwu6c")
 shape = SubResource("CircleShape2D_didp7")
 
 [node name="Marker2" type="Sprite2D" parent="Windraeder/Windrad1/Rotor"]
-self_modulate = Color(1, 0.952941, 0, 1)
-position = Vector2(-148.775, -390.879)
+visible = false
+self_modulate = Color(1, 0.9529412, 0, 1)
+position = Vector2(-148.7746, -390.8786)
 scale = Vector2(1.014, 1.01)
 texture = SubResource("AtlasTexture_wwu6c")
 
 [node name="Pfeil" type="Sprite2D" parent="Windraeder/Windrad1"]
 visible = false
-self_modulate = Color(0, 0.113725, 0.984314, 1)
+self_modulate = Color(0, 0.11372549, 0.9843137, 1)
 use_parent_material = true
-position = Vector2(263.75, 95)
+position = Vector2(263.74997, 94.99999)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("AtlasTexture_rqhku")
 
@@ -203,35 +204,36 @@ shape = SubResource("CapsuleShape2D_2a60c")
 
 [node name="Pfeil2" type="Sprite2D" parent="Windraeder/Windrad1"]
 visible = false
-self_modulate = Color(1, 0.952941, 0, 1)
+self_modulate = Color(1, 0.9529412, 0, 1)
 use_parent_material = true
-position = Vector2(263.75, 95)
+position = Vector2(263.74997, 94.99999)
 scale = Vector2(3.3, 3.3)
 texture = SubResource("AtlasTexture_bdr3p")
 
 [node name="Windrad2" type="Node2D" parent="Windraeder"]
 use_parent_material = true
-position = Vector2(425, -3)
+position = Vector2(424.99997, -2.9999998)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("8_4iphx")
 
 [node name="Grundkoerper" type="Sprite2D" parent="Windraeder/Windrad2"]
 use_parent_material = true
-position = Vector2(269.75, 566.46)
+position = Vector2(269.75, 566.45996)
 scale = Vector2(0.5, 0.35)
 texture = ExtResource("2_lyd6k")
 
 [node name="Rotor" type="Sprite2D" parent="Windraeder/Windrad2"]
 use_parent_material = true
 position = Vector2(267.5, 363.75)
-rotation = -0.234133
+rotation = -0.23413335
 scale = Vector2(0.52, 0.52)
 texture = ExtResource("3_y4dr7")
-offset = Vector2(68, -39.9608)
+offset = Vector2(68, -39.960785)
 
 [node name="Marker" type="Sprite2D" parent="Windraeder/Windrad2/Rotor"]
-self_modulate = Color(0, 0.113725, 0.984314, 1)
-position = Vector2(-148.775, -390.879)
+visible = false
+self_modulate = Color(0, 0.11372549, 0.9843137, 1)
+position = Vector2(-148.7746, -390.8786)
 scale = Vector2(1.014, 1.01)
 texture = SubResource("AtlasTexture_wwu6c")
 
@@ -241,16 +243,17 @@ texture = SubResource("AtlasTexture_wwu6c")
 shape = SubResource("CircleShape2D_didp7")
 
 [node name="Marker2" type="Sprite2D" parent="Windraeder/Windrad2/Rotor"]
-self_modulate = Color(1, 0.952941, 0, 1)
-position = Vector2(-148.775, -390.879)
+visible = false
+self_modulate = Color(1, 0.9529412, 0, 1)
+position = Vector2(-148.7746, -390.8786)
 scale = Vector2(1.014, 1.01)
 texture = SubResource("AtlasTexture_wwu6c")
 
 [node name="Pfeil" type="Sprite2D" parent="Windraeder/Windrad2"]
 visible = false
-self_modulate = Color(0, 0.113725, 0.984314, 1)
+self_modulate = Color(0, 0.11372549, 0.9843137, 1)
 use_parent_material = true
-position = Vector2(263.75, 95)
+position = Vector2(263.74997, 94.99999)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("AtlasTexture_rqhku")
 
@@ -262,35 +265,36 @@ shape = SubResource("CapsuleShape2D_2a60c")
 
 [node name="Pfeil2" type="Sprite2D" parent="Windraeder/Windrad2"]
 visible = false
-self_modulate = Color(1, 0.952941, 0, 1)
+self_modulate = Color(1, 0.9529412, 0, 1)
 use_parent_material = true
-position = Vector2(263.75, 95)
+position = Vector2(263.74997, 94.99999)
 scale = Vector2(3.3, 3.3)
 texture = SubResource("AtlasTexture_bdr3p")
 
 [node name="Windrad3" type="Node2D" parent="Windraeder"]
 use_parent_material = true
-position = Vector2(847, -1)
+position = Vector2(847, -1.0000001)
 scale = Vector2(0.8, 0.8)
 script = ExtResource("9_jgkgd")
 
 [node name="Grundkoerper" type="Sprite2D" parent="Windraeder/Windrad3"]
 use_parent_material = true
-position = Vector2(269.75, 566.46)
+position = Vector2(269.75, 566.45996)
 scale = Vector2(0.5, 0.35)
 texture = ExtResource("2_lyd6k")
 
 [node name="Rotor" type="Sprite2D" parent="Windraeder/Windrad3"]
 use_parent_material = true
-position = Vector2(268.75, 363.75)
-rotation = -0.234133
+position = Vector2(268.74994, 363.75)
+rotation = -0.23413335
 scale = Vector2(0.52, 0.52)
 texture = ExtResource("3_y4dr7")
-offset = Vector2(68, -39.9608)
+offset = Vector2(68, -39.960785)
 
 [node name="Marker" type="Sprite2D" parent="Windraeder/Windrad3/Rotor"]
-self_modulate = Color(0, 0.113725, 0.984314, 1)
-position = Vector2(-148.775, -390.879)
+visible = false
+self_modulate = Color(0, 0.11372549, 0.9843137, 1)
+position = Vector2(-148.7746, -390.8786)
 scale = Vector2(1.014, 1.01)
 texture = SubResource("AtlasTexture_wwu6c")
 
@@ -301,16 +305,17 @@ visible = false
 shape = SubResource("CircleShape2D_didp7")
 
 [node name="Marker2" type="Sprite2D" parent="Windraeder/Windrad3/Rotor"]
-self_modulate = Color(1, 0.952941, 0, 1)
-position = Vector2(-148.775, -390.879)
+visible = false
+self_modulate = Color(1, 0.9529412, 0, 1)
+position = Vector2(-148.7746, -390.8786)
 scale = Vector2(1.014, 1.01)
 texture = SubResource("AtlasTexture_wwu6c")
 
 [node name="Pfeil" type="Sprite2D" parent="Windraeder/Windrad3"]
 visible = false
-self_modulate = Color(0, 0.113725, 0.984314, 1)
+self_modulate = Color(0, 0.11372549, 0.9843137, 1)
 use_parent_material = true
-position = Vector2(263.75, 95)
+position = Vector2(263.74997, 94.99999)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("AtlasTexture_rqhku")
 
@@ -322,9 +327,9 @@ shape = SubResource("CapsuleShape2D_2a60c")
 
 [node name="Pfeil2" type="Sprite2D" parent="Windraeder/Windrad3"]
 visible = false
-self_modulate = Color(1, 0.952941, 0, 1)
+self_modulate = Color(1, 0.9529412, 0, 1)
 use_parent_material = true
-position = Vector2(263.75, 95)
+position = Vector2(263.74997, 94.99999)
 scale = Vector2(3.3, 3.3)
 texture = SubResource("AtlasTexture_bdr3p")
 
@@ -340,6 +345,7 @@ grow_vertical = 2
 
 [node name="CheckContainer" type="HBoxContainer" parent="UI"]
 visible = false
+z_index = -1
 use_parent_material = true
 anchors_preset = 8
 anchor_left = 0.5
@@ -360,30 +366,36 @@ size_flags_vertical = 0
 material = SubResource("ShaderMaterial_cpkqv")
 use_parent_material = true
 layout_mode = 2
-disabled = true
+mouse_filter = 2
+theme_override_colors/checkbox_checked_color = Color(0, 1, 0.203125, 1)
 button_mask = 0
 
 [node name="CheckBox2" type="CheckBox" parent="UI/CheckContainer"]
 layout_mode = 2
-disabled = true
+mouse_filter = 2
+theme_override_colors/checkbox_checked_color = Color(0, 1, 0, 1)
 button_mask = 0
 
 [node name="CheckBox3" type="CheckBox" parent="UI/CheckContainer"]
 layout_mode = 2
-disabled = true
+mouse_filter = 2
+theme_override_colors/checkbox_checked_color = Color(0, 1, 0, 1)
 button_mask = 0
 
 [node name="CheckBox4" type="CheckBox" parent="UI/CheckContainer"]
 layout_mode = 2
-disabled = true
+mouse_filter = 2
+theme_override_colors/checkbox_checked_color = Color(0, 1, 0, 1)
 button_mask = 0
 
 [node name="CheckBox5" type="CheckBox" parent="UI/CheckContainer"]
 layout_mode = 2
-disabled = true
+mouse_filter = 2
+theme_override_colors/checkbox_checked_color = Color(0, 1, 0, 1)
 button_mask = 0
 
 [node name="Button" type="TextureButton" parent="UI"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(40, 20)
 anchors_preset = 3
@@ -404,28 +416,27 @@ script = ExtResource("16_yymuf")
 
 [node name="ColorRect" type="ColorRect" parent="UI"]
 visible = false
-modulate = Color(1, 1, 1, 0.368627)
 self_modulate = Color(1, 1, 1, 0)
 z_index = 2
 offset_left = 131.0
 offset_top = 86.0
 offset_right = 171.0
-offset_bottom = 126.0
-scale = Vector2(1.30296, 0.925683)
+offset_bottom = 125.99999
+scale = Vector2(1.3029615, 0.9256832)
 
 [node name="Label" type="Label" parent="UI/ColorRect"]
 modulate = Color(0, 0, 0, 1)
-self_modulate = Color(0.0196078, 0.00392157, 0.00392157, 1)
+self_modulate = Color(0.019607844, 0.003921569, 0.003921569, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -26.9074
-offset_top = -5.95632
-offset_right = 29.0926
-offset_bottom = 30.0437
+offset_left = -26.907354
+offset_top = -5.9563246
+offset_right = 29.092644
+offset_bottom = 30.043674
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_spacing = 3
@@ -441,28 +452,27 @@ vertical_alignment = 1
 
 [node name="ColorRect2" type="ColorRect" parent="UI"]
 visible = false
-modulate = Color(1, 1, 1, 0.368627)
 self_modulate = Color(1, 1, 1, 0)
 z_index = 2
 offset_left = 563.0
 offset_top = 84.0
 offset_right = 603.0
 offset_bottom = 124.0
-scale = Vector2(1.30296, 0.925683)
+scale = Vector2(1.3029615, 0.9256832)
 
 [node name="Label" type="Label" parent="UI/ColorRect2"]
 modulate = Color(0, 0, 0, 1)
-self_modulate = Color(0.0196078, 0.00392157, 0.00392157, 1)
+self_modulate = Color(0.019607844, 0.003921569, 0.003921569, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -26.9074
-offset_top = -5.95632
-offset_right = 29.0926
-offset_bottom = 30.0437
+offset_left = -26.907354
+offset_top = -5.9563246
+offset_right = 29.092644
+offset_bottom = 30.043674
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_spacing = 3
@@ -478,28 +488,27 @@ vertical_alignment = 1
 
 [node name="ColorRect3" type="ColorRect" parent="UI"]
 visible = false
-modulate = Color(1, 1, 1, 0.368627)
 self_modulate = Color(1, 1, 1, 0)
 z_index = 2
 offset_left = 1000.0
 offset_top = 88.0
 offset_right = 1040.0
 offset_bottom = 128.0
-scale = Vector2(1.30296, 0.925683)
+scale = Vector2(1.3029615, 0.9256832)
 
 [node name="Label" type="Label" parent="UI/ColorRect3"]
 modulate = Color(0, 0, 0, 1)
-self_modulate = Color(0.0196078, 0.00392157, 0.00392157, 1)
+self_modulate = Color(0.019607844, 0.003921569, 0.003921569, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -28.4423
-offset_top = -8.11688
-offset_right = 27.5577
-offset_bottom = 27.8831
+offset_left = -28.442318
+offset_top = -8.116882
+offset_right = 27.557682
+offset_bottom = 27.883118
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_spacing = 3
@@ -547,7 +556,7 @@ offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0.2, 0, 0.117647)
+color = Color(0, 0.2, 0, 0.11764706)
 
 [node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
 anchors_preset = 15
@@ -560,20 +569,20 @@ offset_bottom = -358.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.4042, 0.86, 0.442183, 0.0980392)
+color = Color(0.40420002, 0.86, 0.44218332, 0.09803922)
 
 [node name="ColorRect3" type="ColorRect" parent="AnimatedSprite2D"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -639.0
-offset_top = -355.0
-offset_right = -636.0
-offset_bottom = -355.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = -640.0
+offset_bottom = -360.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.1, 1, 0, 0.0588235)
+color = Color(0.100000024, 1, 0, 0.05882353)
 
 [node name="DialogScene" parent="." instance=ExtResource("19_nolpu")]
 z_index = 1
