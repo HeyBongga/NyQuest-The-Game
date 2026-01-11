@@ -1,10 +1,12 @@
 extends Node2D
 
-@onready var speed = 1
-@onready var rotation_speed = 360*speed# Grad pro Sekunde
+@onready var speed = 0.75
+@onready var rotation_speed = 360*speed# Grad pro 2 Sekunden
 
 var is_active = false
 var can_hit = false
+var GameplayReady = false
+var start = true
 
 @onready var rotor = $Rotor
 @onready var marker_area = $Rotor/Marker/Area2D
@@ -14,24 +16,22 @@ var can_hit = false
 @onready var pfeil_highlight = $Pfeil2
 @onready var marker_normal = $Rotor/Marker
 @onready var marker_highlight = $Rotor/Marker2
+@onready var CameraVision = $"../../UI/Button"
+@onready var CollisionShape = $Rotor/Marker/Area2D/CollisionShape2D
 
 func _ready():
-	if is_active:
-		pfeil_normal.visible = true
-		pfeil_highlight.visible = false
-		marker_normal.visible = true
-		marker_highlight.visible = false
-	
+	CameraVision.GO.connect(Camera_is_On)
+	CameraVision.TURNOFF.connect(visibility)
+	CameraVision.TURNOFF.connect(Camera_is_Off)
 	marker_area.connect("area_entered", Callable(self, "is_aligned"))
 	marker_area.connect("area_exited", Callable(self, "is_not_aligned"))
 
 func _process(delta):
-	if is_active:
+	#if is_active: 
 		rotor.rotation_degrees += rotation_speed * delta
 
-
 func is_aligned(area):
-	if area == arrow_area:
+	if area == arrow_area and GameplayReady == true:
 		pfeil_normal.visible = false
 		pfeil_highlight.visible = true
 		marker_normal.visible = false
@@ -39,23 +39,35 @@ func is_aligned(area):
 		can_hit = true
 
 func is_not_aligned(area):
-	if area == arrow_area:
+	if area == arrow_area and GameplayReady == true:
 		pfeil_normal.visible = true
 		pfeil_highlight.visible = false
 		marker_normal.visible = true
 		marker_highlight.visible = false
 		can_hit = false
 
+func visibility():
+	pfeil_normal.visible = false
+	pfeil_highlight.visible = false
+
 func can_check() -> bool:
 	return can_hit
 
 func set_active_state(active: bool):
 	is_active = active
-	if active:
+	if is_active:
 		modulate = Color(1,1,1,1) 
-	else:
+		CollisionShape.disabled = false
+	elif not is_active:
 		modulate = Color(1,1,1,0.4)
 		pfeil_normal.visible = false
 		pfeil_highlight.visible = false
 		marker_normal.visible = false
 		marker_highlight.visible = false
+		CollisionShape.disabled = true
+
+func Camera_is_On():
+	GameplayReady = true
+
+func Camera_is_Off():
+	GameplayReady = false

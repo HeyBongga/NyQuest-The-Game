@@ -33,15 +33,17 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uqdpp"]
-radius = 6.1538463
-height = 31.751282
+radius = 23.813461
+height = 50.272865
 
 [node name="Windrad" type="Area2D"]
 texture_filter = 2
 use_parent_material = true
 script = ExtResource("2_4xja0")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
 texture_filter = 2
 use_parent_material = true
 position = Vector2(-8, -72)
@@ -68,10 +70,65 @@ metadata/_aseprite_wizard_interface_config_ = {
 "slice_section": false
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Sprite2D"]
 texture_filter = 2
 use_parent_material = true
-position = Vector2(-1.4210855e-14, -88)
+position = Vector2(80, 24)
+sprite_frames = SubResource("SpriteFrames_yvkqj")
+animation = &"Windrad_idle"
+autoplay = "Windrad_idle"
+offset = Vector2(0, -40)
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"pending_changes": {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://Sprites/windrad_animation.aseprite",
+"source_uid": -1
+},
+"slice_section": false
+}
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Sprite2D"]
+texture_filter = 2
+use_parent_material = true
+position = Vector2(-112, -8)
+sprite_frames = SubResource("SpriteFrames_yvkqj")
+animation = &"Windrad_idle"
+autoplay = "Windrad_idle"
+offset = Vector2(0, -40)
+metadata/_aseprite_wizard_interface_config_ = {
+"animation_section": false,
+"layer_section": false,
+"pending_changes": {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "res://Sprites/windrad_animation.aseprite",
+"source_uid": -1
+},
+"slice_section": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+texture_filter = 2
+use_parent_material = true
+position = Vector2(0, -40.00001)
 scale = Vector2(6.5, 6.047)
 shape = SubResource("CapsuleShape2D_uqdpp")
 

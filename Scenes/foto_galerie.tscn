@@ -1,0 +1,376 @@
+[gd_scene load_steps=20 format=3 uid="uid://b1l758a0xo5pm"]
+
+[ext_resource type="Texture2D" uid="uid://cumiilsjuincu" path="res://Sprites/FotoGalerie.png" id="1_kydde"]
+[ext_resource type="Script" uid="uid://dlvo3yg1xbes7" path="res://Scripts/foto_galerie.gd" id="1_me87o"]
+[ext_resource type="PackedScene" uid="uid://4epow0munt6q" path="res://Scenes/dialogScene.tscn" id="3_e24s7"]
+[ext_resource type="Texture2D" uid="uid://ckwjfndbplh3y" path="res://Sprites/Zoom_On_Camera.png" id="3_n0bg0"]
+[ext_resource type="Texture2D" uid="uid://d28wako37rsri" path="res://Sprites/Notizblock.png" id="4_iieit"]
+[ext_resource type="Texture2D" uid="uid://boyykmehndkuo" path="res://Sprites/Notizblock_Hover.png" id="5_qm57f"]
+[ext_resource type="Texture2D" uid="uid://cej61ygsdr1c0" path="res://Sprites/Kriterienliste.png" id="6_n2e4x"]
+[ext_resource type="Script" uid="uid://bjqjbalfwmw33" path="res://Scripts/notizblock.gd" id="6_qm57f"]
+[ext_resource type="Texture2D" uid="uid://cnkfdw6rb1g7q" path="res://Sprites/Bilder_lassen_Hover.png" id="8_3mxql"]
+[ext_resource type="Texture2D" uid="uid://c006mvwtdc1ia" path="res://Sprites/neue_Bilder_Hover.png" id="9_3hhh4"]
+[ext_resource type="Texture2D" uid="uid://cprtf7ahypunn" path="res://Sprites/Degree_Lens.png" id="10_cmbtq"]
+[ext_resource type="Texture2D" uid="uid://yq1wuwwmaul6" path="res://Sprites/Degree_Lens_Hover.png" id="11_n0bg0"]
+[ext_resource type="Texture2D" uid="uid://cbv2dwc5nw3to" path="res://Sprites/Degree_Lens_active.png" id="12_ns313"]
+[ext_resource type="Texture2D" uid="uid://bm4chxueoaar7" path="res://Sprites/continue_button.png" id="14_vpn5d"]
+[ext_resource type="Texture2D" uid="uid://drjeuk8cekjnh" path="res://Sprites/continue_button_hover.png" id="15_i4x8f"]
+[ext_resource type="Texture2D" uid="uid://ci6bog61ycqt1" path="res://Sprites/Diagram.png" id="16_i4x8f"]
+[ext_resource type="FontFile" uid="uid://bhxhywac85s24" path="res://Fonds/Bagura Font Pack v1.5/Basal.ttf" id="17_ppk2u"]
+[ext_resource type="Texture2D" uid="uid://8l830l7pvm50" path="res://Sprites/Open_Diagram.png" id="18_ttyck"]
+[ext_resource type="Texture2D" uid="uid://bp8f2skqtwcyb" path="res://Sprites/Open_Diagram_Hover.png" id="19_kn40h"]
+
+[node name="FotoGalerie" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 721.0
+script = ExtResource("1_me87o")
+
+[node name="Galerie" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_kydde")
+
+[node name="ScreenshotArea" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 71.0
+offset_right = 290.0
+offset_bottom = 326.0
+expand_mode = 1
+
+[node name="Zoom_In" type="TextureButton" parent="ScreenshotArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+texture_hover = ExtResource("3_n0bg0")
+
+[node name="ScreenshotArea2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 364.0
+offset_top = 71.0
+offset_right = 598.0
+offset_bottom = 326.0
+expand_mode = 1
+
+[node name="ScreenshotArea3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 71.0
+offset_right = 906.0
+offset_bottom = 326.0
+expand_mode = 1
+
+[node name="ScreenshotArea4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 980.0
+offset_top = 71.0
+offset_right = 1214.0
+offset_bottom = 326.0
+expand_mode = 1
+
+[node name="DialogScene" parent="." instance=ExtResource("3_e24s7")]
+visible = false
+z_index = 0
+layout_mode = 1
+
+[node name="Notizblock" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1190.0
+offset_top = 630.0
+offset_right = 1230.0
+offset_bottom = 670.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("4_iieit")
+texture_hover = ExtResource("5_qm57f")
+script = ExtResource("6_qm57f")
+
+[node name="Kriterienliste" type="TextureRect" parent="Notizblock"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -366.0
+offset_top = -147.0
+offset_right = -186.0
+offset_bottom = 33.0
+texture = ExtResource("6_n2e4x")
+
+[node name="BilderLassen" type="TextureButton" parent="Notizblock/Kriterienliste"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 115.5
+offset_right = 162.0
+offset_bottom = 168.5
+texture_hover = ExtResource("8_3mxql")
+
+[node name="NeueBilder" type="TextureButton" parent="Notizblock/Kriterienliste"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 120.0
+offset_right = 87.0
+offset_bottom = 173.0
+texture_hover = ExtResource("9_3hhh4")
+
+[node name="Einsteller" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sekunden" type="SpinBox" parent="Einsteller"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 57.0
+offset_top = 336.0
+offset_right = 175.5625
+offset_bottom = 367.0
+max_value = 60.0
+suffix = "Sekunden"
+
+[node name="Grad" type="SpinBox" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 195.0
+offset_top = 337.0
+offset_right = 303.0
+offset_bottom = 368.0
+max_value = 360.0
+step = 0.5
+suffix = "Grad"
+
+[node name="Sekunden2" type="SpinBox" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 356.0
+offset_top = 338.0
+offset_right = 474.5625
+offset_bottom = 369.0
+max_value = 60.0
+suffix = "Sekunden"
+
+[node name="Grad2" type="SpinBox" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 491.0
+offset_top = 337.0
+offset_right = 599.0
+offset_bottom = 368.0
+max_value = 360.0
+step = 0.5
+suffix = "Grad"
+
+[node name="Sekunden3" type="SpinBox" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 668.0
+offset_top = 335.0
+offset_right = 786.5625
+offset_bottom = 366.0
+max_value = 60.0
+suffix = "Sekunden"
+
+[node name="Grad3" type="SpinBox" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 817.0
+offset_top = 335.0
+offset_right = 925.0
+offset_bottom = 366.0
+max_value = 360.0
+step = 0.5
+suffix = "Grad"
+
+[node name="Sekunden4" type="SpinBox" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 988.0
+offset_top = 336.0
+offset_right = 1106.5625
+offset_bottom = 367.0
+max_value = 60.0
+suffix = "Sekunden"
+
+[node name="Grad4" type="SpinBox" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1111.0
+offset_top = 336.0
+offset_right = 1219.0
+offset_bottom = 367.0
+max_value = 360.0
+step = 0.5
+suffix = "Grad"
+
+[node name="DegreeLens1" type="TextureButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 234.0
+offset_top = 294.0
+offset_right = 274.0
+offset_bottom = 334.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("10_cmbtq")
+texture_hover = ExtResource("11_n0bg0")
+
+[node name="Degree" type="TextureRect" parent="Einsteller/DegreeLens1"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -117.333336
+offset_top = -148.66669
+offset_right = 325.66666
+offset_bottom = 188.33331
+scale = Vector2(0.35, 0.35)
+mouse_filter = 2
+texture = ExtResource("12_ns313")
+
+[node name="DegreeLens2" type="TextureButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 542.0
+offset_top = 294.0
+offset_right = 582.0
+offset_bottom = 334.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("10_cmbtq")
+texture_hover = ExtResource("11_n0bg0")
+
+[node name="Degree" type="TextureRect" parent="Einsteller/DegreeLens2"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -122.0
+offset_top = -147.99998
+offset_right = 321.0
+offset_bottom = 189.00002
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("12_ns313")
+
+[node name="DegreeLens3" type="TextureButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 850.0
+offset_top = 294.0
+offset_right = 890.0
+offset_bottom = 334.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("10_cmbtq")
+texture_hover = ExtResource("11_n0bg0")
+
+[node name="Degree" type="TextureRect" parent="Einsteller/DegreeLens3"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -122.0
+offset_top = -147.99998
+offset_right = 321.0
+offset_bottom = 189.00002
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("12_ns313")
+
+[node name="DegreeLens4" type="TextureButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1158.0
+offset_top = 294.0
+offset_right = 1198.0
+offset_bottom = 334.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("10_cmbtq")
+texture_hover = ExtResource("11_n0bg0")
+
+[node name="Degree" type="TextureRect" parent="Einsteller/DegreeLens4"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -118.666664
+offset_top = -147.99997
+offset_right = 324.33334
+offset_bottom = 189.00003
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("12_ns313")
+
+[node name="GoToNextPic" type="TextureButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 614.99994
+offset_top = 161.0
+offset_right = 654.99994
+offset_bottom = 201.0
+rotation = -1.5608693
+pivot_offset = Vector2(15.975601, 16.733093)
+disabled = true
+texture_normal = ExtResource("14_vpn5d")
+texture_hover = ExtResource("15_i4x8f")
+
+[node name="GoToNextPic2" type="TextureButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1232.0
+offset_top = 166.99998
+offset_right = 1272.0
+offset_bottom = 206.99998
+rotation = -1.5608693
+pivot_offset = Vector2(15.975601, 16.733093)
+disabled = true
+texture_normal = ExtResource("14_vpn5d")
+texture_hover = ExtResource("15_i4x8f")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(641, 359)
+
+[node name="Marker2D" type="Marker2D" parent="Camera2D"]
+position = Vector2(-313, -153)
+
+[node name="Marker2D2" type="Marker2D" parent="Camera2D"]
+position = Vector2(618, -9)
+
+[node name="Marker2D3" type="Marker2D" parent="Camera2D"]
+position = Vector2(-306, 163)
+
+[node name="Diagram" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 240.0
+offset_top = 360.0
+offset_right = 1033.0
+offset_bottom = 660.0
+texture = ExtResource("16_i4x8f")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Diagram"]
+layout_mode = 0
+offset_left = 337.0
+offset_top = 164.0
+offset_right = 377.0
+offset_bottom = 204.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("17_ppk2u")
+
+[node name="Open Diagram" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 369.0
+offset_right = 268.0
+offset_bottom = 409.0
+texture_normal = ExtResource("18_ttyck")
+texture_hover = ExtResource("19_kn40h")
+
+[connection signal="pressed" from="ScreenshotArea/Zoom_In" to="." method="start_zoom"]
+[connection signal="pressed" from="Notizblock" to="Notizblock" method="Open_Kriterien"]
+[connection signal="pressed" from="Notizblock/Kriterienliste/BilderLassen" to="." method="Bilder_Lassen"]
+[connection signal="pressed" from="Notizblock/Kriterienliste/NeueBilder" to="." method="New_Pics"]
+[connection signal="pressed" from="Einsteller/DegreeLens1" to="." method="Open_Degree"]
+[connection signal="pressed" from="Einsteller/DegreeLens2" to="." method="Open_Degree2"]
+[connection signal="pressed" from="Einsteller/DegreeLens3" to="." method="Open_Degree3"]
+[connection signal="pressed" from="Einsteller/DegreeLens4" to="." method="Open_Degree4"]
+[connection signal="pressed" from="Einsteller/GoToNextPic" to="." method="Next_Pic"]
+[connection signal="pressed" from="Einsteller/GoToNextPic2" to="." method="Zoom_out"]

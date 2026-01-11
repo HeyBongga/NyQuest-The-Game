@@ -7,15 +7,20 @@ signal clicked(this_object)
 var zoom_scale := Vector2(1.2, 1.2)  # Zielgröße beim Hover
 
 func _ready():
-	print("House ready – warte auf Input")
+	if GameState.house_ready:
+		print("House ready – warte auf Input")
 
 func on_mouse_entered():
-	sprite.scale = zoom_scale
+	if GameState.house_ready:
+		sprite.scale = zoom_scale
 
 func on_mouse_exited():
-	sprite.scale = Vector2.ONE
+	if GameState.house_ready:
+		sprite.scale = Vector2.ONE
 
 func on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int):
-	if event.is_action_pressed("click_left_mouse"):		
-		clicked.emit(self)
-		$CollisionShape2D.disabled=true
+	if GameState.house_ready:
+		if event.is_action_pressed("click_left_mouse"):		
+			clicked.emit(self)
+			$CollisionShape2D.disabled=true
+			GameState.house_ready = false

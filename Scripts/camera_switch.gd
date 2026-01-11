@@ -1,9 +1,14 @@
 extends TextureButton
 
-@onready var camera_overlay = $AnimatedSprite2D
-@onready var camera_filter1 = $AnimatedSprite2D/ColorRect
-@onready var camera_filter2 = $AnimatedSprite2D/ColorRect2
-@onready var camera_filter3 = $AnimatedSprite2D/ColorRect3
+@onready var camera_overlay = $"../../AnimatedSprite2D"
+@onready var camera_filter1 = $"../../AnimatedSprite2D/ColorRect2"
+@onready var camera_filter2 = $"../../AnimatedSprite2D/ColorRect"
+@onready var camera_filter3 = $"../../AnimatedSprite2D/ColorRect3"
+
+
+signal GO
+signal TURNOFF
+
 
 func _ready():
 	pressed.connect(_on_cameraButton_pressed)
@@ -13,8 +18,11 @@ func _ready():
 func _on_cameraButton_pressed():
 	if camera_overlay.visible == false:
 		fade_camera_on()
+		$".".disabled = true
+		$".".modulate = Color(1.0, 1.0, 1.0, 0.5) 
 	else:
 		fade_camera_off()
+		
 
 func fade_camera_on():
 	var tween = create_tween()
@@ -22,8 +30,10 @@ func fade_camera_on():
 	camera_overlay.play("Camera_on")
 	camera_overlay.modulate.a = 0.0
 	tween.tween_property(camera_overlay, "modulate:a", 1, 1)
+	GO.emit()
 
 func fade_camera_off():
 	var tween = create_tween()
 	tween.tween_property(camera_overlay, "modulate:a", 0.0, 0.4)
 	tween.finished.connect(func(): camera_overlay.visible = false)
+	TURNOFF.emit()

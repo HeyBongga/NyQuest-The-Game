@@ -1,0 +1,426 @@
+[gd_scene load_steps=40 format=3 uid="uid://b8ltkksb8d0vd"]
+
+[ext_resource type="Script" uid="uid://dg4gkfn6eipad" path="res://Scripts/lvl2.gd" id="1_jukch"]
+[ext_resource type="Script" uid="uid://4esbmhihkrec" path="res://Scripts/loadingScreen.gd" id="1_o0rcv"]
+[ext_resource type="FontFile" uid="uid://bhxhywac85s24" path="res://Fonds/Bagura Font Pack v1.5/Basal.ttf" id="2_nm8qd"]
+[ext_resource type="Shader" uid="uid://doyc0e2gwkn5g" path="res://Shaders/blurr.gdshader" id="3_aq45b"]
+[ext_resource type="PackedScene" uid="uid://chxwhf3pcqpt6" path="res://Scenes/Level_1_clouds.tscn" id="4_jukch"]
+[ext_resource type="PackedScene" uid="uid://c6i7sm1p5kdfn" path="res://Scenes/Level_1_cloud_foreground.tscn" id="5_vcnes"]
+[ext_resource type="Texture2D" uid="uid://bq1k7ganyiujk" path="res://Sprites/Grass_scape.png" id="6_3pm5q"]
+[ext_resource type="PackedScene" uid="uid://4epow0munt6q" path="res://Scenes/dialogScene.tscn" id="8_vcnes"]
+[ext_resource type="Script" uid="uid://82jo8o6k0a63" path="res://Scripts/lvl2_DialogScene.gd" id="9_3pm5q"]
+[ext_resource type="Texture2D" uid="uid://h2niseos2bsa" path="res://Sprites/Foto_Ordner.png" id="10_t5h3c"]
+[ext_resource type="Texture2D" uid="uid://blwigysyxdq40" path="res://Sprites/Foto_Ordner-befüllt.png" id="10_ux455"]
+[ext_resource type="Texture2D" uid="uid://d1gkhhkuuo031" path="res://Sprites/Grundgerüst_Windrad.png" id="11_ux455"]
+[ext_resource type="Shader" uid="uid://cku2yi4knc8xa" path="res://Shaders/smooth_pixels.gdshader" id="12_rf6tv"]
+[ext_resource type="Texture2D" uid="uid://bbgtrlrdvf5br" path="res://Sprites/Rotor_lvl2.png" id="13_le08w"]
+[ext_resource type="Texture2D" uid="uid://c0vl6ya7l2lh8" path="res://Sprites/Marker2.png" id="13_p7g2u"]
+[ext_resource type="Texture2D" uid="uid://2ii71e35xupx" path="res://Sprites/Camera.png" id="14_le08w"]
+[ext_resource type="Texture2D" uid="uid://bmkhhfchslxay" path="res://Sprites/Checkpoint.png" id="14_plihj"]
+[ext_resource type="Script" uid="uid://c3m85jh428fv0" path="res://Scripts/screenshot.gd" id="14_ux455"]
+[ext_resource type="Texture2D" uid="uid://cnlganx11ucxo" path="res://Sprites/Camera_flash.png" id="15_ft807"]
+[ext_resource type="Texture2D" uid="uid://d2iswoc6ln5i0" path="res://Sprites/camera_icon.png" id="15_le08w"]
+[ext_resource type="Texture2D" uid="uid://or202vh8f880" path="res://Sprites/camera_icon_hover.png" id="15_rf6tv"]
+[ext_resource type="Texture2D" uid="uid://53l0vedukois" path="res://Sprites/camera view-sheet.png" id="18_ft807"]
+[ext_resource type="Texture2D" uid="uid://hrt3n331702x" path="res://Sprites/Full_Camera.png" id="18_niugw"]
+[ext_resource type="Script" uid="uid://be066vwn0402x" path="res://Scripts/camera_switch2.gd" id="23_plihj"]
+[ext_resource type="Texture2D" uid="uid://dduqj7rmhfe21" path="res://Sprites/Garbage.png" id="25_c7ys4"]
+[ext_resource type="Texture2D" uid="uid://dod35p1285w8n" path="res://Sprites/Garbage_Hover.png" id="26_1w6c6"]
+[ext_resource type="Script" uid="uid://bmornyklu2ipw" path="res://Scripts/garbage.gd" id="27_n147r"]
+[ext_resource type="PackedScene" uid="uid://b1l758a0xo5pm" path="res://Scenes/foto_galerie.tscn" id="28_1w6c6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uj1pa"]
+shader = ExtResource("3_aq45b")
+shader_parameter/radius = 6.0
+shader_parameter/samples = 3
+shader_parameter/milk_alpha = 0.6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ana2u"]
+shader = ExtResource("12_rf6tv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_plihj"]
+shader = ExtResource("12_rf6tv")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_plihj"]
+radius = 19.604675
+height = 130.29367
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_plihj"]
+radius = 35.022316
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_niugw"]
+radius = 30.233467
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ivlg"]
+radius = 30.923292
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1mwp"]
+atlas = ExtResource("18_ft807")
+region = Rect2(0, 0, 1280, 720)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1b78"]
+atlas = ExtResource("18_ft807")
+region = Rect2(1280, 0, 1280, 720)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ana2u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1mwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1b78")
+}],
+"loop": true,
+"name": &"Camera_on",
+"speed": 1.0
+}]
+
+[sub_resource type="Environment" id="Environment_niugw"]
+background_mode = 3
+glow_enabled = true
+glow_hdr_threshold = 0.3
+
+[node name="lvl2" type="Node2D"]
+script = ExtResource("1_jukch")
+
+[node name="LoadingScreen" type="CanvasLayer" parent="."]
+layer = 2
+script = ExtResource("1_o0rcv")
+
+[node name="ColorRect" type="ColorRect" parent="LoadingScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="LoadingScreen/ColorRect"]
+layout_mode = 0
+offset_left = 473.0
+offset_top = 306.0
+offset_right = 806.0
+offset_bottom = 406.0
+theme_override_fonts/font = ExtResource("2_nm8qd")
+theme_override_font_sizes/font_size = 100
+text = "LEVEL - 2"
+
+[node name="ColorRect2" type="ColorRect" parent="LoadingScreen"]
+visible = false
+material = SubResource("ShaderMaterial_uj1pa")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+z_index = -10
+y_sort_enabled = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.19215687, 0.7529412, 0.9843137, 1)
+
+[node name="Level_1_Clouds" parent="Background" instance=ExtResource("4_jukch")]
+z_index = -1
+
+[node name="Foreground" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Level_1_clouds2" parent="Foreground" instance=ExtResource("5_vcnes")]
+
+[node name="Sprite0001" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, 180)
+scale = Vector2(1.0007813, 0.75)
+texture = ExtResource("6_3pm5q")
+centered = false
+
+[node name="DialogScene" parent="." instance=ExtResource("8_vcnes")]
+z_index = 4
+offset_right = 1280.0
+offset_bottom = 725.0
+script = ExtResource("9_3pm5q")
+
+[node name="Windrad1" type="Node2D" parent="."]
+use_parent_material = true
+position = Vector2(413.99997, 24)
+scale = Vector2(0.8, 0.8)
+
+[node name="Grundkoerper" type="Sprite2D" parent="Windrad1"]
+texture_filter = 1
+use_parent_material = true
+position = Vector2(265, 538.75)
+scale = Vector2(4, 4)
+texture = ExtResource("11_ux455")
+
+[node name="Rotor" type="Sprite2D" parent="Windrad1"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_ana2u")
+use_parent_material = true
+position = Vector2(263.75003, 275.00003)
+rotation = -0.04089774
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("13_le08w")
+offset = Vector2(0.9758148, 9.272179)
+
+[node name="MarkerGlow" type="Sprite2D" parent="Windrad1/Rotor"]
+self_modulate = Color(3.2368753, 3.2368753, 3.2368753, 1)
+texture_filter = 1
+material = SubResource("ShaderMaterial_plihj")
+position = Vector2(-76.51516, -34.67313)
+rotation = 0.009072317
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("13_p7g2u")
+offset = Vector2(31.722061, 36.543587)
+
+[node name="MarkerGlowArea" type="Area2D" parent="Windrad1/Rotor/MarkerGlow"]
+position = Vector2(32.721573, 36.575424)
+scale = Vector2(1.0000001, 1.0000001)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Windrad1/Rotor/MarkerGlow/MarkerGlowArea"]
+position = Vector2(-51.553467, 0.8600011)
+rotation = 1.5498811
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("CapsuleShape2D_plihj")
+
+[node name="Marker2D" type="Marker2D" parent="Windrad1"]
+position = Vector2(265, 447.49997)
+
+[node name="Marker1" type="Sprite2D" parent="Windrad1"]
+visible = false
+position = Vector2(271.25, 62.50003)
+texture = ExtResource("14_plihj")
+
+[node name="MarkerArea1" type="Area2D" parent="Windrad1/Marker1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Windrad1/Marker1/MarkerArea1"]
+shape = SubResource("CircleShape2D_plihj")
+
+[node name="Marker2" type="Sprite2D" parent="Windrad1"]
+visible = false
+position = Vector2(516.25, 290)
+texture = ExtResource("14_plihj")
+
+[node name="MarkerArea2" type="Area2D" parent="Windrad1/Marker2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Windrad1/Marker2/MarkerArea2"]
+visible = false
+shape = SubResource("CircleShape2D_niugw")
+
+[node name="Marker3" type="Sprite2D" parent="Windrad1"]
+visible = false
+position = Vector2(267.5, 536.25)
+texture = ExtResource("14_plihj")
+
+[node name="MarkerArea3" type="Area2D" parent="Windrad1/Marker3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Windrad1/Marker3/MarkerArea3"]
+shape = SubResource("CircleShape2D_6ivlg")
+
+[node name="Marker4" type="Sprite2D" parent="Windrad1"]
+visible = false
+position = Vector2(3.75, 285)
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("14_plihj")
+
+[node name="MarkerArea4" type="Area2D" parent="Windrad1/Marker4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Windrad1/Marker4/MarkerArea4"]
+shape = SubResource("CircleShape2D_6ivlg")
+
+[node name="ScreenShotarea" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1276.0
+offset_bottom = 716.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("14_ux455")
+
+[node name="Screenshot1" type="TextureRect" parent="ScreenShotarea"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 56.0
+offset_right = 908.0
+offset_bottom = 644.0
+
+[node name="image" type="TextureRect" parent="ScreenShotarea"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 157.0
+offset_right = 364.0
+offset_bottom = 494.0
+expand_mode = 1
+
+[node name="Kamera" type="TextureButton" parent="ScreenShotarea"]
+visible = false
+z_index = 2
+texture_filter = 1
+layout_mode = 0
+offset_left = 1035.0
+offset_top = 581.0
+offset_right = 1254.0
+offset_bottom = 751.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("14_le08w")
+texture_hover = ExtResource("15_ft807")
+texture_disabled = ExtResource("18_niugw")
+
+[node name="Timer" type="Timer" parent="ScreenShotarea"]
+
+[node name="Seconds" type="Label" parent="ScreenShotarea"]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 83.0
+offset_right = 371.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.14194772, 0.05736947, 0.0415894, 0)
+theme_override_font_sizes/font_size = 35
+text = "00"
+
+[node name="FotoOrdner" type="TextureButton" parent="ScreenShotarea"]
+visible = false
+z_index = 5
+layout_mode = 0
+offset_left = 51.0
+offset_top = 592.0
+offset_right = 179.0
+offset_bottom = 713.0
+scale = Vector2(0.75, 0.75)
+texture_normal = ExtResource("10_t5h3c")
+texture_hover = ExtResource("10_ux455")
+
+[node name="Feedback" type="ColorRect" parent="ScreenShotarea"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 512
+visibility_layer = 512
+z_index = 1
+position = Vector2(638, 358)
+sprite_frames = SubResource("SpriteFrames_ana2u")
+animation = &"Camera_on"
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {
+"embed_tex": true,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"scale": "1.0",
+"should_round_fps": true,
+"slice": "",
+"source": "",
+"source_uid": -1
+},
+"slice_section": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="AnimatedSprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -638.0
+offset_top = -358.0
+offset_right = -638.0
+offset_bottom = -358.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0.2, 0, 0.11764706)
+
+[node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -638.0
+offset_top = -358.0
+offset_right = -638.0
+offset_bottom = -358.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.40420002, 0.86, 0.44218332, 0.09803922)
+
+[node name="ColorRect3" type="ColorRect" parent="AnimatedSprite2D"]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -638.0
+offset_top = -358.0
+offset_right = -638.0
+offset_bottom = -358.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.100000024, 1, 0, 0.05882353)
+
+[node name="Videokamera" type="TextureButton" parent="."]
+z_index = 1
+texture_filter = 1
+custom_minimum_size = Vector2(40, 20)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1141.0
+offset_top = 590.0
+offset_right = 1236.0
+offset_bottom = 674.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+texture_normal = ExtResource("15_le08w")
+texture_hover = ExtResource("15_rf6tv")
+script = ExtResource("23_plihj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_niugw")
+
+[node name="Garbage" type="TextureButton" parent="."]
+z_index = 1
+texture_filter = 1
+offset_left = 174.0
+offset_top = 577.00006
+offset_right = 221.0
+offset_bottom = 641.00006
+scale = Vector2(1.75, 1.75)
+texture_normal = ExtResource("25_c7ys4")
+texture_hover = ExtResource("26_1w6c6")
+script = ExtResource("27_n147r")
+
+[node name="FotoGalerie" parent="." instance=ExtResource("28_1w6c6")]
+visible = false
+z_index = 5
+offset_bottom = 720.0
+
+[connection signal="pressed" from="ScreenShotarea/Kamera" to="ScreenShotarea" method="take_screenshot"]
+[connection signal="pressed" from="ScreenShotarea/FotoOrdner" to="ScreenShotarea" method="load_last_screenshot"]
+[connection signal="pressed" from="ScreenShotarea/FotoOrdner" to="FotoGalerie" method="is_ready"]
+[connection signal="pressed" from="Videokamera" to="ScreenShotarea" method="Toggle_Timer"]
+[connection signal="pressed" from="Garbage" to="ScreenShotarea" method="delete_photos"]
