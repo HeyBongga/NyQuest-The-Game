@@ -30,14 +30,18 @@ var missed_rotations := 0
 
 # === Dialog ===
 var _dialogLineslevel1 : Array[String] = [
-	"So sieht man sich wieder! Ich brauche\nwieder einmal deine Hilfe! Aber diesmal\nist es etwas...komplizierter...",
-	"Die Windräder im richtigen Moment aufnehmen\nwar einfach für dich, ich weiß :)\nJetzt machst du das auch\nABER...",
-	"Dieses Mal musst du gleichzeitig ein passendes\nBild aufnehmen und auswerten.\n Die Auswertung der Bilder erfolgt, wenn\ndu alle Bilder gemacht hast...",
-	"Du kannst erst Bilder schießen, wenn du die\nMarker alle aktiviert hast...",
-	"Versuche 3 Bilder vom Windrad zu machen!\nAchte darauf, dass du das Bild dann schießt,\nwenn das leuchtende Rotorblatt auf der Höhe\nder jweiligen Marker ist...",
-	"Die Kamera kann insgesamt 3 Bilder aufnehmen,\nwenn du glaubst deine Bilder sind gut\ngehe in deine Fotogalerie und werte sie aus\nEntweder sie sind gut, oder du musst sie\n eventuell nochmal machen...", 
-	"Du kannst jederzeit, neue Bilder aufnehmen,\ndrücke einfach auf die Mülltonne,\naber es werden alle gelöscht...",
-	"Viel Erfolg!"
+"So sieht man sich wieder!\nDiesmal wartet eine\nschwierigere Aufgabe auf dich...",
+"Zuerst musst du alle Marker aktivieren.\nErst danach erscheint eine Kamera...",
+"Die Marker aktivierst du\nmit der 'Leertaste'...",
+"Deine Aufgabe:\nMache 4 Bilder innerhalb EINER\nUmdrehung des Windrads...",
+"Schieße jedes Bild genau dann,\nwenn das leuchtende Rotorblatt\nauf der Höhe eines Markers ist...",
+"Wichtig:\nJedes Bild muss einen\nanderen Marker treffen..",
+"Die Kamera kann 4 Bilder speichern.\nDanach kannst du die Bilder\nin der Fotogalerie auswerten...",
+"Du kannst Bilder jederzeit löschen\nund neu aufnehmen.\nDabei werden alle gelöscht...",
+"Viel Erfolg!"
+
+
+
 ]
 
 func _ready():

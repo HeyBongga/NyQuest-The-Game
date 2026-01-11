@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b8ltkksb8d0vd"]
+[gd_scene load_steps=46 format=3 uid="uid://b8ltkksb8d0vd"]
 
 [ext_resource type="Script" uid="uid://dg4gkfn6eipad" path="res://Scripts/lvl2.gd" id="1_jukch"]
 [ext_resource type="Script" uid="uid://4esbmhihkrec" path="res://Scripts/loadingScreen.gd" id="1_o0rcv"]
@@ -23,11 +23,17 @@
 [ext_resource type="Texture2D" uid="uid://or202vh8f880" path="res://Sprites/camera_icon_hover.png" id="15_rf6tv"]
 [ext_resource type="Texture2D" uid="uid://53l0vedukois" path="res://Sprites/camera view-sheet.png" id="18_ft807"]
 [ext_resource type="Texture2D" uid="uid://hrt3n331702x" path="res://Sprites/Full_Camera.png" id="18_niugw"]
+[ext_resource type="Texture2D" uid="uid://cniy1fuqgsqky" path="res://Sprites/Sanduhr.png" id="19_msabw"]
 [ext_resource type="Script" uid="uid://be066vwn0402x" path="res://Scripts/camera_switch2.gd" id="23_plihj"]
 [ext_resource type="Texture2D" uid="uid://dduqj7rmhfe21" path="res://Sprites/Garbage.png" id="25_c7ys4"]
 [ext_resource type="Texture2D" uid="uid://dod35p1285w8n" path="res://Sprites/Garbage_Hover.png" id="26_1w6c6"]
 [ext_resource type="Script" uid="uid://bmornyklu2ipw" path="res://Scripts/garbage.gd" id="27_n147r"]
 [ext_resource type="PackedScene" uid="uid://b1l758a0xo5pm" path="res://Scenes/foto_galerie.tscn" id="28_1w6c6"]
+[ext_resource type="Texture2D" uid="uid://bodyx7vgjvb3u" path="res://Sprites/Controlls_Questionmark.png" id="29_28bxl"]
+[ext_resource type="Texture2D" uid="uid://bifikvsndu3sy" path="res://Sprites/Controlls_Questionmark_Hover.png" id="30_msabw"]
+[ext_resource type="Script" uid="uid://s6xtu0e63qbw" path="res://Scripts/controlls.gd" id="31_oyxnl"]
+[ext_resource type="Texture2D" uid="uid://dum7lj6etcbs7" path="res://Sprites/How_to_play.png" id="32_twa2s"]
+[ext_resource type="Texture2D" uid="uid://cfxcn1q8y72h5" path="res://Sprites/How_to_play_Hover.png" id="33_sfsk5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uj1pa"]
 shader = ExtResource("3_aq45b")
@@ -42,17 +48,17 @@ shader = ExtResource("12_rf6tv")
 shader = ExtResource("12_rf6tv")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_plihj"]
-radius = 19.604675
-height = 130.29367
+radius = 19.6047
+height = 130.294
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_plihj"]
-radius = 35.022316
+radius = 35.0223
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_niugw"]
-radius = 30.233467
+radius = 30.2335
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ivlg"]
-radius = 30.923292
+radius = 30.9233
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1mwp"]
 atlas = ExtResource("18_ft807")
@@ -130,7 +136,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color(0.19215687, 0.7529412, 0.9843137, 1)
+color = Color(0.192157, 0.752941, 0.984314, 1)
 
 [node name="Level_1_Clouds" parent="Background" instance=ExtResource("4_jukch")]
 z_index = -1
@@ -143,7 +149,7 @@ layer = -1
 [node name="Sprite0001" type="Sprite2D" parent="."]
 z_index = 1
 position = Vector2(0, 180)
-scale = Vector2(1.0007813, 0.75)
+scale = Vector2(1.00078, 0.75)
 texture = ExtResource("6_3pm5q")
 centered = false
 
@@ -155,7 +161,7 @@ script = ExtResource("9_3pm5q")
 
 [node name="Windrad1" type="Node2D" parent="."]
 use_parent_material = true
-position = Vector2(413.99997, 24)
+position = Vector2(414, 24)
 scale = Vector2(0.8, 0.8)
 
 [node name="Grundkoerper" type="Sprite2D" parent="Windrad1"]
@@ -169,38 +175,35 @@ texture = ExtResource("11_ux455")
 texture_filter = 1
 material = SubResource("ShaderMaterial_ana2u")
 use_parent_material = true
-position = Vector2(263.75003, 275.00003)
-rotation = -0.04089774
+position = Vector2(263.75, 275)
+rotation = -0.0408977
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("13_le08w")
-offset = Vector2(0.9758148, 9.272179)
+offset = Vector2(0.975815, 9.27218)
 
 [node name="MarkerGlow" type="Sprite2D" parent="Windrad1/Rotor"]
-self_modulate = Color(3.2368753, 3.2368753, 3.2368753, 1)
+self_modulate = Color(3.23688, 3.23688, 3.23688, 1)
 texture_filter = 1
 material = SubResource("ShaderMaterial_plihj")
-position = Vector2(-76.51516, -34.67313)
-rotation = 0.009072317
-scale = Vector2(0.99999994, 0.99999994)
+position = Vector2(-76.5152, -34.6731)
+rotation = 0.00907232
 texture = ExtResource("13_p7g2u")
-offset = Vector2(31.722061, 36.543587)
+offset = Vector2(31.7221, 36.5436)
 
 [node name="MarkerGlowArea" type="Area2D" parent="Windrad1/Rotor/MarkerGlow"]
-position = Vector2(32.721573, 36.575424)
-scale = Vector2(1.0000001, 1.0000001)
+position = Vector2(32.7216, 36.5754)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Windrad1/Rotor/MarkerGlow/MarkerGlowArea"]
-position = Vector2(-51.553467, 0.8600011)
-rotation = 1.5498811
-scale = Vector2(0.9999998, 0.9999998)
+position = Vector2(-51.5535, 0.860001)
+rotation = 1.54988
 shape = SubResource("CapsuleShape2D_plihj")
 
 [node name="Marker2D" type="Marker2D" parent="Windrad1"]
-position = Vector2(265, 447.49997)
+position = Vector2(265, 447.5)
 
 [node name="Marker1" type="Sprite2D" parent="Windrad1"]
 visible = false
-position = Vector2(271.25, 62.50003)
+position = Vector2(271.25, 62.5)
 texture = ExtResource("14_plihj")
 
 [node name="MarkerArea1" type="Area2D" parent="Windrad1/Marker1"]
@@ -232,7 +235,6 @@ shape = SubResource("CircleShape2D_6ivlg")
 [node name="Marker4" type="Sprite2D" parent="Windrad1"]
 visible = false
 position = Vector2(3.75, 285)
-scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("14_plihj")
 
 [node name="MarkerArea4" type="Area2D" parent="Windrad1/Marker4"]
@@ -283,12 +285,33 @@ texture_disabled = ExtResource("18_niugw")
 
 [node name="Seconds" type="Label" parent="ScreenShotarea"]
 layout_mode = 0
-offset_left = 331.0
-offset_top = 83.0
-offset_right = 371.0
-offset_bottom = 132.0
+offset_left = 384.0
+offset_top = 86.0
+offset_right = 450.0
+offset_bottom = 135.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0.14194772, 0.05736947, 0.0415894, 0)
+theme_override_colors/font_shadow_color = Color(0.141948, 0.0573695, 0.0415894, 0)
+theme_override_font_sizes/font_size = 35
+text = "00."
+
+[node name="Sanduhr" type="TextureRect" parent="ScreenShotarea/Seconds"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -57.0
+offset_top = -13.0
+offset_right = 7.0
+offset_bottom = 74.0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("19_msabw")
+
+[node name="Miliseconds" type="Label" parent="ScreenShotarea"]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 86.0
+offset_right = 501.0
+offset_bottom = 135.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.141948, 0.0573695, 0.0415894, 0)
 theme_override_font_sizes/font_size = 35
 text = "00"
 
@@ -296,10 +319,10 @@ text = "00"
 visible = false
 z_index = 5
 layout_mode = 0
-offset_left = 51.0
-offset_top = 592.0
-offset_right = 179.0
-offset_bottom = 713.0
+offset_left = 159.0
+offset_top = 605.0
+offset_right = 287.0
+offset_bottom = 726.0
 scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("10_t5h3c")
 texture_hover = ExtResource("10_ux455")
@@ -350,7 +373,7 @@ offset_bottom = -358.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0.2, 0, 0.11764706)
+color = Color(0, 0.2, 0, 0.117647)
 
 [node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D"]
 anchors_preset = 15
@@ -363,7 +386,7 @@ offset_bottom = -358.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.40420002, 0.86, 0.44218332, 0.09803922)
+color = Color(0.4042, 0.86, 0.442183, 0.0980392)
 
 [node name="ColorRect3" type="ColorRect" parent="AnimatedSprite2D"]
 texture_filter = 1
@@ -377,7 +400,7 @@ offset_bottom = -358.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.100000024, 1, 0, 0.05882353)
+color = Color(0.1, 1, 0, 0.0588235)
 
 [node name="Videokamera" type="TextureButton" parent="."]
 z_index = 1
@@ -405,10 +428,10 @@ environment = SubResource("Environment_niugw")
 [node name="Garbage" type="TextureButton" parent="."]
 z_index = 1
 texture_filter = 1
-offset_left = 174.0
-offset_top = 577.00006
-offset_right = 221.0
-offset_bottom = 641.00006
+offset_left = 20.000015
+offset_top = 597.0
+offset_right = 67.000015
+offset_bottom = 661.0
 scale = Vector2(1.75, 1.75)
 texture_normal = ExtResource("25_c7ys4")
 texture_hover = ExtResource("26_1w6c6")
@@ -419,8 +442,32 @@ visible = false
 z_index = 5
 offset_bottom = 720.0
 
+[node name="Controlls" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 1168.0
+offset_top = 70.0
+offset_right = 1208.0
+offset_bottom = 110.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("29_28bxl")
+texture_hover = ExtResource("30_msabw")
+script = ExtResource("31_oyxnl")
+
+[node name="How_to_Play" type="TextureButton" parent="Controlls"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -193.0
+offset_top = 44.0
+offset_right = 44.0
+offset_bottom = 206.0
+texture_normal = ExtResource("32_twa2s")
+texture_hover = ExtResource("33_sfsk5")
+
+[connection signal="pressed" from="ScreenShotarea/Kamera" to="ScreenShotarea" method="Toggle_Timer"]
 [connection signal="pressed" from="ScreenShotarea/Kamera" to="ScreenShotarea" method="take_screenshot"]
 [connection signal="pressed" from="ScreenShotarea/FotoOrdner" to="ScreenShotarea" method="load_last_screenshot"]
 [connection signal="pressed" from="ScreenShotarea/FotoOrdner" to="FotoGalerie" method="is_ready"]
-[connection signal="pressed" from="Videokamera" to="ScreenShotarea" method="Toggle_Timer"]
 [connection signal="pressed" from="Garbage" to="ScreenShotarea" method="delete_photos"]
+[connection signal="pressed" from="Controlls" to="Controlls" method="_on_pressed"]
+[connection signal="pressed" from="Controlls/How_to_Play" to="Controlls" method="_on_how_to_play_pressed"]
