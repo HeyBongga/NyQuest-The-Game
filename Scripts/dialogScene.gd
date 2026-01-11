@@ -8,6 +8,7 @@ extends Control
 
 signal finished_dialog
 
+
 func _ready():
 	visible = false
 	button.visible = false

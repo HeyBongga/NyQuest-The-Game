@@ -1,0 +1,615 @@
+[gd_scene load_steps=23 format=3 uid="uid://b1l758a0xo5pm"]
+
+[ext_resource type="Texture2D" uid="uid://cumiilsjuincu" path="res://Sprites/FotoGalerie.png" id="1_kydde"]
+[ext_resource type="Script" uid="uid://dlvo3yg1xbes7" path="res://Scripts/foto_galerie.gd" id="1_me87o"]
+[ext_resource type="PackedScene" uid="uid://4epow0munt6q" path="res://Scenes/dialogScene.tscn" id="3_e24s7"]
+[ext_resource type="Texture2D" uid="uid://ckwjfndbplh3y" path="res://Sprites/Zoom_On_Camera.png" id="3_n0bg0"]
+[ext_resource type="Texture2D" uid="uid://d28wako37rsri" path="res://Sprites/Notizblock.png" id="4_iieit"]
+[ext_resource type="Texture2D" uid="uid://boyykmehndkuo" path="res://Sprites/Notizblock_Hover.png" id="5_qm57f"]
+[ext_resource type="Texture2D" uid="uid://cej61ygsdr1c0" path="res://Sprites/Kriterienliste.png" id="6_n2e4x"]
+[ext_resource type="Script" uid="uid://bjqjbalfwmw33" path="res://Scripts/notizblock.gd" id="6_qm57f"]
+[ext_resource type="Texture2D" uid="uid://cnkfdw6rb1g7q" path="res://Sprites/Bilder_lassen_Hover.png" id="8_3mxql"]
+[ext_resource type="Texture2D" uid="uid://c006mvwtdc1ia" path="res://Sprites/neue_Bilder_Hover.png" id="9_3hhh4"]
+[ext_resource type="Texture2D" uid="uid://cprtf7ahypunn" path="res://Sprites/Degree_Lens.png" id="10_cmbtq"]
+[ext_resource type="Texture2D" uid="uid://yq1wuwwmaul6" path="res://Sprites/Degree_Lens_Hover.png" id="11_n0bg0"]
+[ext_resource type="Texture2D" uid="uid://cbv2dwc5nw3to" path="res://Sprites/Degree_Lens_active.png" id="12_ns313"]
+[ext_resource type="Texture2D" uid="uid://bm4chxueoaar7" path="res://Sprites/continue_button.png" id="14_vpn5d"]
+[ext_resource type="Texture2D" uid="uid://drjeuk8cekjnh" path="res://Sprites/continue_button_hover.png" id="15_i4x8f"]
+[ext_resource type="Texture2D" uid="uid://ci6bog61ycqt1" path="res://Sprites/Diagram.png" id="16_i4x8f"]
+[ext_resource type="FontFile" uid="uid://bhxhywac85s24" path="res://Fonds/Bagura Font Pack v1.5/Basal.ttf" id="17_ppk2u"]
+[ext_resource type="Texture2D" uid="uid://dkv83xx4a5epa" path="res://Sprites/Punkt.png" id="18_8juwy"]
+[ext_resource type="Texture2D" uid="uid://lofgyqo0dscs" path="res://Sprites/Sinus.png" id="19_a8481"]
+[ext_resource type="Texture2D" uid="uid://exj7vwuyip8a" path="res://Sprites/Cosinus.png" id="20_2csjj"]
+[ext_resource type="Texture2D" uid="uid://cnrpymvh4cerx" path="res://Sprites/Option3.png" id="21_xb1mg"]
+[ext_resource type="Texture2D" uid="uid://bn2cdp4soqq7x" path="res://Sprites/Option4.png" id="22_l3sdf"]
+
+[node name="FotoGalerie" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 721.0
+script = ExtResource("1_me87o")
+
+[node name="Galerie" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_kydde")
+
+[node name="ScreenshotArea" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 71.0
+offset_right = 290.0
+offset_bottom = 326.0
+expand_mode = 1
+
+[node name="Zoom_In" type="TextureButton" parent="ScreenshotArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+texture_hover = ExtResource("3_n0bg0")
+
+[node name="ScreenshotArea2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 364.0
+offset_top = 71.0
+offset_right = 598.0
+offset_bottom = 326.0
+expand_mode = 1
+
+[node name="ScreenshotArea3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 672.0
+offset_top = 71.0
+offset_right = 906.0
+offset_bottom = 326.0
+expand_mode = 1
+
+[node name="ScreenshotArea4" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 980.0
+offset_top = 71.0
+offset_right = 1214.0
+offset_bottom = 326.0
+expand_mode = 1
+
+[node name="DialogScene" parent="." instance=ExtResource("3_e24s7")]
+visible = false
+z_index = 0
+layout_mode = 1
+
+[node name="Notizblock" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1190.0
+offset_top = 630.0
+offset_right = 1230.0
+offset_bottom = 670.0
+scale = Vector2(2, 2)
+texture_normal = ExtResource("4_iieit")
+texture_hover = ExtResource("5_qm57f")
+script = ExtResource("6_qm57f")
+
+[node name="Kriterienliste" type="TextureRect" parent="Notizblock"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -366.0
+offset_top = -147.0
+offset_right = -186.0
+offset_bottom = 33.0
+texture = ExtResource("6_n2e4x")
+
+[node name="BilderLassen" type="TextureButton" parent="Notizblock/Kriterienliste"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 115.5
+offset_right = 162.0
+offset_bottom = 168.5
+texture_hover = ExtResource("8_3mxql")
+
+[node name="NeueBilder" type="TextureButton" parent="Notizblock/Kriterienliste"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 120.0
+offset_right = 87.0
+offset_bottom = 173.0
+texture_hover = ExtResource("9_3hhh4")
+
+[node name="Einsteller" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sekunden" type="SpinBox" parent="Einsteller"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 50.0
+offset_top = 336.0
+offset_right = 193.0
+offset_bottom = 367.0
+max_value = 60.0
+suffix = "Sekunden"
+
+[node name="Grad" type="OptionButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 195.0
+offset_top = 337.0
+offset_right = 303.0
+offset_bottom = 368.0
+selected = 0
+item_count = 5
+popup/item_0/text = "Grad"
+popup/item_0/id = 0
+popup/item_1/text = "0°/360°"
+popup/item_1/id = 1
+popup/item_2/text = "90°"
+popup/item_2/id = 2
+popup/item_3/text = "180°"
+popup/item_3/id = 3
+popup/item_4/text = "270°"
+popup/item_4/id = 4
+
+[node name="Sekunden2" type="SpinBox" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 356.0
+offset_top = 338.0
+offset_right = 499.0
+offset_bottom = 369.0
+max_value = 60.0
+suffix = "Sekunden"
+
+[node name="Grad2" type="OptionButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 509.0
+offset_top = 338.0
+offset_right = 617.0
+offset_bottom = 369.0
+selected = 0
+item_count = 5
+popup/item_0/text = "Grad"
+popup/item_0/id = 0
+popup/item_1/text = "0°/360°"
+popup/item_1/id = 1
+popup/item_2/text = "90°"
+popup/item_2/id = 2
+popup/item_3/text = "180°"
+popup/item_3/id = 3
+popup/item_4/text = "270°"
+popup/item_4/id = 4
+
+[node name="Sekunden3" type="SpinBox" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 668.0
+offset_top = 335.0
+offset_right = 811.0
+offset_bottom = 366.0
+max_value = 60.0
+suffix = "Sekunden"
+
+[node name="Grad3" type="OptionButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 815.0
+offset_top = 336.0
+offset_right = 923.0
+offset_bottom = 367.0
+selected = 0
+item_count = 5
+popup/item_0/text = "Grad"
+popup/item_0/id = 0
+popup/item_1/text = "0°/360°"
+popup/item_1/id = 1
+popup/item_2/text = "90°"
+popup/item_2/id = 2
+popup/item_3/text = "180°"
+popup/item_3/id = 3
+popup/item_4/text = "270°"
+popup/item_4/id = 4
+
+[node name="Sekunden4" type="SpinBox" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 977.0
+offset_top = 336.0
+offset_right = 1120.0
+offset_bottom = 367.0
+max_value = 60.0
+suffix = "Sekunden"
+
+[node name="Grad4" type="OptionButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1131.0
+offset_top = 337.0
+offset_right = 1239.0
+offset_bottom = 368.0
+selected = 0
+item_count = 5
+popup/item_0/text = "Grad"
+popup/item_0/id = 0
+popup/item_1/text = "0°/360°"
+popup/item_1/id = 1
+popup/item_2/text = "90°"
+popup/item_2/id = 2
+popup/item_3/text = "180°"
+popup/item_3/id = 3
+popup/item_4/text = "270°"
+popup/item_4/id = 4
+
+[node name="DegreeLens1" type="TextureButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 234.0
+offset_top = 294.0
+offset_right = 274.0
+offset_bottom = 318.6667
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("10_cmbtq")
+texture_hover = ExtResource("11_n0bg0")
+
+[node name="Degree" type="TextureRect" parent="Einsteller/DegreeLens1"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -117.333
+offset_top = -148.667
+offset_right = 325.667
+offset_bottom = 188.333
+scale = Vector2(0.35, 0.35)
+mouse_filter = 2
+texture = ExtResource("12_ns313")
+
+[node name="DegreeLens2" type="TextureButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 542.0
+offset_top = 294.0
+offset_right = 582.0
+offset_bottom = 320.667
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("10_cmbtq")
+texture_hover = ExtResource("11_n0bg0")
+
+[node name="Degree" type="TextureRect" parent="Einsteller/DegreeLens2"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -122.0
+offset_top = -148.0
+offset_right = 321.0
+offset_bottom = 189.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("12_ns313")
+
+[node name="DegreeLens3" type="TextureButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 850.0
+offset_top = 294.0
+offset_right = 890.0
+offset_bottom = 319.33334
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("10_cmbtq")
+texture_hover = ExtResource("11_n0bg0")
+
+[node name="Degree" type="TextureRect" parent="Einsteller/DegreeLens3"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -122.0
+offset_top = -148.0
+offset_right = 321.0
+offset_bottom = 189.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("12_ns313")
+
+[node name="DegreeLens4" type="TextureButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1158.0
+offset_top = 294.0
+offset_right = 1198.0
+offset_bottom = 318.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("10_cmbtq")
+texture_hover = ExtResource("11_n0bg0")
+
+[node name="Degree" type="TextureRect" parent="Einsteller/DegreeLens4"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = -118.667
+offset_top = -148.0
+offset_right = 324.333
+offset_bottom = 189.0
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("12_ns313")
+
+[node name="GoToNextPic" type="TextureButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 615.0
+offset_top = 161.0
+offset_right = 655.0
+offset_bottom = 201.0
+rotation = -1.56087
+pivot_offset = Vector2(15.9756, 16.7331)
+disabled = true
+texture_normal = ExtResource("14_vpn5d")
+texture_hover = ExtResource("15_i4x8f")
+
+[node name="GoToNextPic2" type="TextureButton" parent="Einsteller"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1232.0
+offset_top = 167.0
+offset_right = 1272.0
+offset_bottom = 207.0
+rotation = -1.56087
+pivot_offset = Vector2(15.9756, 16.7331)
+disabled = true
+texture_normal = ExtResource("14_vpn5d")
+texture_hover = ExtResource("15_i4x8f")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(641, 359)
+
+[node name="Marker2D" type="Marker2D" parent="Camera2D"]
+position = Vector2(-313, -153)
+
+[node name="Diagram" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 237.0
+offset_top = 358.0
+offset_right = 1030.0
+offset_bottom = 658.0
+texture = ExtResource("16_i4x8f")
+
+[node name="Grad1" type="RichTextLabel" parent="Diagram"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 142.0
+offset_right = 269.0
+offset_bottom = 165.0
+pivot_offset = Vector2(18, 11)
+theme_override_colors/default_color = Color(0.760203, 3.70607e-06, 4.81307e-07, 1)
+theme_override_fonts/normal_font = ExtResource("17_ppk2u")
+theme_override_font_sizes/normal_font_size = 20
+text = "
+"
+
+[node name="Grad2" type="RichTextLabel" parent="Diagram"]
+layout_mode = 0
+offset_left = 332.0
+offset_top = 142.0
+offset_right = 383.0
+offset_bottom = 165.0
+pivot_offset = Vector2(25, 11)
+theme_override_colors/default_color = Color(0.760203, 3.70607e-06, 4.81307e-07, 1)
+theme_override_fonts/normal_font = ExtResource("17_ppk2u")
+theme_override_font_sizes/normal_font_size = 20
+
+[node name="Grad3" type="RichTextLabel" parent="Diagram"]
+layout_mode = 0
+offset_left = 469.0
+offset_top = 141.0
+offset_right = 522.0
+offset_bottom = 164.0
+pivot_offset = Vector2(25, 11)
+theme_override_colors/default_color = Color(0.760203, 3.70607e-06, 4.81307e-07, 1)
+theme_override_fonts/normal_font = ExtResource("17_ppk2u")
+theme_override_font_sizes/normal_font_size = 20
+
+[node name="Grad4" type="RichTextLabel" parent="Diagram"]
+layout_mode = 0
+offset_left = 580.0
+offset_top = 141.0
+offset_right = 626.0
+offset_bottom = 164.0
+pivot_offset = Vector2(22, 11)
+theme_override_colors/default_color = Color(0.760203, 3.70607e-06, 4.81307e-07, 1)
+theme_override_fonts/normal_font = ExtResource("17_ppk2u")
+theme_override_font_sizes/normal_font_size = 20
+
+[node name="Zeitpunkt1" type="RichTextLabel" parent="Diagram"]
+layout_mode = 0
+offset_left = 255.0
+offset_top = 158.0
+offset_right = 308.0
+offset_bottom = 181.0
+theme_override_colors/default_color = Color(0.160784, 0.301961, 0.552941, 1)
+theme_override_fonts/normal_font = ExtResource("17_ppk2u")
+theme_override_font_sizes/normal_font_size = 20
+text = "
+"
+
+[node name="Zeitpunkt2" type="RichTextLabel" parent="Diagram"]
+layout_mode = 0
+offset_left = 362.0
+offset_top = 158.0
+offset_right = 415.0
+offset_bottom = 181.0
+theme_override_colors/default_color = Color(0.160784, 0.301961, 0.552941, 1)
+theme_override_fonts/normal_font = ExtResource("17_ppk2u")
+theme_override_font_sizes/normal_font_size = 20
+text = "
+"
+
+[node name="Zeitpunkt3" type="RichTextLabel" parent="Diagram"]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 158.0
+offset_right = 523.0
+offset_bottom = 181.0
+theme_override_colors/default_color = Color(0.160784, 0.301961, 0.552941, 1)
+theme_override_fonts/normal_font = ExtResource("17_ppk2u")
+theme_override_font_sizes/normal_font_size = 20
+text = "
+"
+
+[node name="Zeitpunkt4" type="RichTextLabel" parent="Diagram"]
+layout_mode = 0
+offset_left = 587.0
+offset_top = 158.0
+offset_right = 636.0
+offset_bottom = 181.0
+theme_override_colors/default_color = Color(0.160784, 0.301961, 0.552941, 1)
+theme_override_fonts/normal_font = ExtResource("17_ppk2u")
+theme_override_font_sizes/normal_font_size = 20
+text = "
+"
+
+[node name="Gradzahl_1" type="Sprite2D" parent="Diagram"]
+texture_filter = 1
+position = Vector2(310, 191.25)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="90_270" type="Sprite2D" parent="Diagram/Gradzahl_1"]
+visible = false
+texture_filter = 1
+position = Vector2(-992, -612)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="180" type="Sprite2D" parent="Diagram/Gradzahl_1"]
+visible = false
+texture_filter = 1
+position = Vector2(-992, 796)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="360_0" type="Sprite2D" parent="Diagram/Gradzahl_1"]
+visible = false
+texture_filter = 1
+position = Vector2(-992, -2004)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="Gradzahl_2" type="Sprite2D" parent="Diagram"]
+texture_filter = 1
+position = Vector2(310, 191.25)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="90_270" type="Sprite2D" parent="Diagram/Gradzahl_2"]
+visible = false
+texture_filter = 1
+position = Vector2(752, -612)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="180" type="Sprite2D" parent="Diagram/Gradzahl_2"]
+visible = false
+texture_filter = 1
+position = Vector2(752, 796)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="360_0" type="Sprite2D" parent="Diagram/Gradzahl_2"]
+visible = false
+texture_filter = 1
+position = Vector2(784, -2004)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="Gradzahl_3" type="Sprite2D" parent="Diagram"]
+texture_filter = 1
+position = Vector2(310, 191.25)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="90_270" type="Sprite2D" parent="Diagram/Gradzahl_3"]
+visible = false
+texture_filter = 1
+position = Vector2(2544, -612)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="180" type="Sprite2D" parent="Diagram/Gradzahl_3"]
+visible = false
+texture_filter = 1
+position = Vector2(2544, 828)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="360_0" type="Sprite2D" parent="Diagram/Gradzahl_3"]
+visible = false
+texture_filter = 1
+position = Vector2(2560, -2004)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="Gradzahl_4" type="Sprite2D" parent="Diagram"]
+texture_filter = 1
+position = Vector2(310, 191.25)
+scale = Vector2(0.0625, 0.0625)
+
+[node name="90_270" type="Sprite2D" parent="Diagram/Gradzahl_4"]
+visible = false
+texture_filter = 1
+position = Vector2(4336, -612)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="180" type="Sprite2D" parent="Diagram/Gradzahl_4"]
+visible = false
+texture_filter = 1
+position = Vector2(4336, 796)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="360_0" type="Sprite2D" parent="Diagram/Gradzahl_4"]
+visible = false
+texture_filter = 1
+position = Vector2(4368, -2004)
+scale = Vector2(6, 6)
+texture = ExtResource("18_8juwy")
+
+[node name="Option1" type="Sprite2D" parent="Diagram"]
+visible = false
+position = Vector2(471, 153)
+texture = ExtResource("19_a8481")
+
+[node name="Option2" type="Sprite2D" parent="Diagram"]
+visible = false
+position = Vector2(470, 151)
+texture = ExtResource("20_2csjj")
+
+[node name="Option3" type="Sprite2D" parent="Diagram"]
+visible = false
+z_index = 7
+position = Vector2(470, 152)
+texture = ExtResource("21_xb1mg")
+
+[node name="Option4" type="Sprite2D" parent="Diagram"]
+visible = false
+position = Vector2(470, 150)
+texture = ExtResource("22_l3sdf")
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(939, 196)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(641, 359)
+
+[connection signal="pressed" from="ScreenshotArea/Zoom_In" to="." method="start_zoom"]
+[connection signal="pressed" from="Notizblock" to="Notizblock" method="Open_Kriterien"]
+[connection signal="pressed" from="Notizblock/Kriterienliste/BilderLassen" to="." method="Bilder_Lassen"]
+[connection signal="pressed" from="Notizblock/Kriterienliste/NeueBilder" to="." method="New_Pics"]
+[connection signal="pressed" from="Einsteller/DegreeLens1" to="." method="Open_Degree"]
+[connection signal="pressed" from="Einsteller/DegreeLens2" to="." method="Open_Degree2"]
+[connection signal="pressed" from="Einsteller/DegreeLens3" to="." method="Open_Degree3"]
+[connection signal="pressed" from="Einsteller/DegreeLens4" to="." method="Open_Degree4"]
+[connection signal="pressed" from="Einsteller/GoToNextPic" to="." method="Next_Pic"]
+[connection signal="pressed" from="Einsteller/GoToNextPic2" to="." method="Zoom_out"]

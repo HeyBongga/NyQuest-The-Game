@@ -58,6 +58,7 @@ click_left_mouse={
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/lossless_compression/force_png=true
+viewport/hdr_2d=true
 textures/decals/filter=1
 textures/light_projectors/filter=1
 2d/snap/snap_2d_transforms_to_pixel=true

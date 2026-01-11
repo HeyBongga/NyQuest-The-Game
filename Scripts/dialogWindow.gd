@@ -2,6 +2,7 @@ extends MarginContainer
 
 signal finished_all_lines
 
+
 @export var textBox : NinePatchRect
 @onready var label = $NinePatchRect/Label
 @onready var timer = $letterDisplayTimer
