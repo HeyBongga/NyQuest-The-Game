@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b1l758a0xo5pm"]
+[gd_scene load_steps=26 format=3 uid="uid://b1l758a0xo5pm"]
 
 [ext_resource type="Texture2D" uid="uid://cumiilsjuincu" path="res://Sprites/FotoGalerie.png" id="1_kydde"]
 [ext_resource type="Script" uid="uid://dlvo3yg1xbes7" path="res://Scripts/foto_galerie.gd" id="1_me87o"]
@@ -22,6 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://exj7vwuyip8a" path="res://Sprites/Cosinus.png" id="20_2csjj"]
 [ext_resource type="Texture2D" uid="uid://cnrpymvh4cerx" path="res://Sprites/Option3.png" id="21_xb1mg"]
 [ext_resource type="Texture2D" uid="uid://bn2cdp4soqq7x" path="res://Sprites/Option4.png" id="22_l3sdf"]
+[ext_resource type="Texture2D" uid="uid://dwf5btw21oumu" path="res://Sprites/Auswahlbox.png" id="23_l3sdf"]
+[ext_resource type="Script" uid="uid://dguomikquoff" path="res://Scripts/auswahlbox.gd" id="24_si3vp"]
+[ext_resource type="Texture2D" uid="uid://cd53k67u8rup1" path="res://Sprites/Auswahl_marker.png" id="25_4dbud"]
 
 [node name="FotoGalerie" type="Control"]
 layout_mode = 3
@@ -123,6 +126,7 @@ offset_bottom = 173.0
 texture_hover = ExtResource("9_3hhh4")
 
 [node name="Einsteller" type="Control" parent="."]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -603,6 +607,106 @@ position = Vector2(939, 196)
 [node name="Marker2D3" type="Marker2D" parent="."]
 position = Vector2(641, 359)
 
+[node name="Auswahlbox" type="TextureRect" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_left = 382.00003
+offset_top = 463.0
+offset_right = 749.0
+offset_bottom = 616.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("23_l3sdf")
+script = ExtResource("24_si3vp")
+
+[node name="Auswahl" type="TextureButton" parent="Auswahlbox"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 36.0
+offset_right = 236.0
+offset_bottom = 68.0
+texture_hover = ExtResource("25_4dbud")
+
+[node name="Auswahl_text" type="Label" parent="Auswahlbox/Auswahl"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 45.0
+offset_right = 192.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("17_ppk2u")
+theme_override_font_sizes/font_size = 20
+text = "sinus bzw. cosinus"
+
+[node name="richtige Antwort" type="Label" parent="Auswahlbox/Auswahl/Auswahl_text"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_right = 147.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.25946596, 0.8498917, 0.068872795, 1)
+theme_override_fonts/font = ExtResource("17_ppk2u")
+theme_override_font_sizes/font_size = 20
+text = "sinus bzw. cosinus"
+
+[node name="Auswahl2" type="TextureButton" parent="Auswahlbox"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 72.0
+offset_right = 187.0
+offset_bottom = 104.0
+texture_hover = ExtResource("25_4dbud")
+
+[node name="Auswahl2_text" type="Label" parent="Auswahlbox/Auswahl2"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 44.0
+offset_right = 166.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("17_ppk2u")
+theme_override_font_sizes/font_size = 20
+text = "eine Parabel"
+
+[node name="falsche Antwort" type="Label" parent="Auswahlbox/Auswahl2/Auswahl2_text"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_right = 122.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.82676923, 0.22529256, 0.24504316, 1)
+theme_override_fonts/font = ExtResource("17_ppk2u")
+theme_override_font_sizes/font_size = 20
+text = "eine Parabel"
+
+[node name="Auswahl3" type="TextureButton" parent="Auswahlbox"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 109.0
+offset_right = 204.0
+offset_bottom = 141.0
+texture_hover = ExtResource("25_4dbud")
+
+[node name="Auswahl3_text" type="Label" parent="Auswahlbox/Auswahl3"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 43.0
+offset_top = 3.0
+offset_right = 165.0
+offset_bottom = 26.0
+theme_override_fonts/font = ExtResource("17_ppk2u")
+theme_override_font_sizes/font_size = 20
+text = "Keine Ahnung :)"
+
+[node name="falsche Antwort" type="Label" parent="Auswahlbox/Auswahl3/Auswahl3_text"]
+visible = false
+texture_filter = 1
+layout_mode = 0
+offset_right = 122.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.827451, 0.22352941, 0.24313726, 1)
+theme_override_fonts/font = ExtResource("17_ppk2u")
+theme_override_font_sizes/font_size = 20
+text = "Keine Ahnung :)"
+
 [connection signal="pressed" from="ScreenshotArea/Zoom_In" to="." method="start_zoom"]
 [connection signal="pressed" from="Notizblock" to="Notizblock" method="Open_Kriterien"]
 [connection signal="pressed" from="Notizblock/Kriterienliste/BilderLassen" to="." method="Bilder_Lassen"]
@@ -613,3 +717,6 @@ position = Vector2(641, 359)
 [connection signal="pressed" from="Einsteller/DegreeLens4" to="." method="Open_Degree4"]
 [connection signal="pressed" from="Einsteller/GoToNextPic" to="." method="Next_Pic"]
 [connection signal="pressed" from="Einsteller/GoToNextPic2" to="." method="Zoom_out"]
+[connection signal="pressed" from="Auswahlbox/Auswahl" to="Auswahlbox" method="handle_correct_answer"]
+[connection signal="pressed" from="Auswahlbox/Auswahl2" to="Auswahlbox" method="handle_wrong_answer"]
+[connection signal="pressed" from="Auswahlbox/Auswahl3" to="Auswahlbox" method="handle_wrong_answer2"]

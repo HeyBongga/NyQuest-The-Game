@@ -21,14 +21,14 @@ var start = true
 @onready var modulate3 = $Windraeder/Windrad3
 
 var _dialogLineslevel1 : Array[String] = [
-	"Schön du hast hierhergefunden,\nfür eine optimale Energieversorgung \nmüssen die Windräder richtig eingestellt sein...",
-	"das erreicht man, indem man zum richtigen\nZeitpunkt die Windräder aufnimmt!\n Insgesamt brauche ich 5 hintereinander\n saubere Aufnahmen...\n",
+	"Schön du hast hierhergefunden.\nFür eine optimale Energieversorgung\nmüssen die Windräder richtig eingestellt sein...",
+	"das erreicht man, indem man zum richtigen\nZeitpunkt die Windräder aufnimmt!\nInsgesamt brauche ich 5 hintereinander\n saubere Aufnahmen...\n",
 	"Als Hilfe kannst du die Kamera Vision \nverwenden und das richtige Timing finden.\nDenkst du, du schaffst das?"
 	]
 var _dialogLines2level1 : Array[String] = [
-	"Niemand hat behauptet es wäre schwer :D\nund du hast es trotzdem geschafft!\nDas nenn ich Durchaltevermögen\nSpaß beiseite...",
-	"Nun da du dich an die Kameraansicht gewöhnt\n hast schauen wir uns mal an\nwas für Ergebnisse wir für unsere\nWindräder haben...",
-	"Die Kamera liefert uns die Umdrehungen\npro Sekunde in Hertz oder Hz..."
+	"Nun da du dich an die Kameraansicht gewöhnt\nhast schauen wir uns an,\nwelche Daten wir für\nunsere Windräder erfasst haben und\nwie wir sie interpretieren können...",
+	"Die Kamera liefert uns die Umdrehungen\npro Sekunde in Hertz oder Hz\nDie Aufnahme eines Signals zu\neinem gewissen Zeitpunkt nennt\nman Abtastung\nMit einer passenden Abtastung\nkann ein Signal interpretiert werden...",
+	"Treffe mich im Labor wieder,\ndann schauen wir uns das\ngenauer an. Ich erwarte dich..."
 	]
 
 func _ready():
@@ -122,7 +122,7 @@ func show_Hertz():
 	end_level()
 
 func end_level():
-	await get_tree().create_timer(3.0).timeout
+	await get_tree().create_timer(5).timeout
 	on_level_completed()
 	get_tree().change_scene_to_file("res://Scenes/mainScene.tscn")
 

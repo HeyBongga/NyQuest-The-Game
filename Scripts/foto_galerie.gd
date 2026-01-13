@@ -55,30 +55,26 @@ var screenshot_paths := [
 ]
 
 var _dialogLinesFotogalerie : Array[String] = [
-	"Hier sind wir in der Fotogalerie, jetzt schauen\nwir uns die Bilder an und du kannst sagen,\nob du sie behalten willst oder neue\nschießen möchtest...",
+	"Hier sind wir in der Fotogalerie. Jetzt schauen\nwir uns die Bilder an und du kannst sagen,\nob du sie behalten willst oder neue\nschießen möchtest...",
 	"Als Hilfestellung für die Bilderauswahl habe ich\ndir eine Kriterienliste zusammengestellt, die dir\nhelfen soll..."
 ]
 
 var _dialogLinesFotogalerie2 : Array[String] = [
-	"Du bist also zufrieden mit den Bilder.\nSuper! Lass sie und auswerten!\nGebe den Zeitpunkt der Messung und die\n Stellung des Rotoblatts in Grad ein...",
+	"Du bist also zufrieden mit den Bilder.\nSuper! Lass sie uns auswerten!\nGebe den Zeitpunkt der Messung und die\n Stellung des Rotoblatts in Grad ein...",
 	"Verwende die DegreeLens als Hilfe!\nSchließe die Textbox und\nKlicke auf das erste Bild!"
 ]
 
 var _dialogLinesFotogalerie3 : Array[String] = [
-	"Hoffentlich hast du brauchbare Werte,\ndann schauen wir mal, ob sie was taugen\nhierfür tragen wir die Werte in ein Diagramm ein\n",
+	"Hoffentlich hast du brauchbare Werte,\ndann schauen wir mal, ob sie was taugen.\nHierfür tragen wir die Werte in ein \nDiagramm ein...\n",
 	]
 	
-var _dialogLinesFotogalerie4 : Array[String] = [
-	"Na das sieht ja mal... interessant aus\nIch mache nur einen letzten feinschliff\n..."
-	]
+
 var _dialogLinesFotogalerie5 : Array[String] = [
 	"Hehey Nyquist himself, das sieht sehr gut aus.\nKommen dir diese Punkte irgendwie bekannt\nvor?\nFällt dir eine bestimmte Funktion ein,\nwenn du diese Punkte miteinander verbinden\nwürdest...",
-	 "Stell es dir mal vor"
+	 "Stell es dir mal vor..."
 	]
 
-var _dialogLinesFotogalerie6 : Array[String] = [
-	 "Kommen dir diese Punkte irgendwie Bekannt vor?\n Fällt dir eine bestimmte Funktion ein,\nwenn du diese Punkte miteinander verbinden würdest? Stell es dir mal vor"
-	]
+
 
 
 var _dialogLinesFotogalerie7 : Array[String] = [
@@ -153,20 +149,18 @@ func start_zoom():
 	)
 	
 func Open_Degree():
-	$Einsteller/DegreeLens1/Degree.visible = true
-	$Einsteller/DegreeLens1.disabled = true
+	
+	$Einsteller/DegreeLens1/Degree.visible = !$Einsteller/DegreeLens1/Degree.visible
+	
 	
 func Open_Degree2():
-	$Einsteller/DegreeLens2/Degree.visible = true
-	$Einsteller/DegreeLens2.disabled = true
+	$Einsteller/DegreeLens2/Degree.visible = !$Einsteller/DegreeLens2/Degree.visible
 	
 func Open_Degree3():
-	$Einsteller/DegreeLens3/Degree.visible = true
-	$Einsteller/DegreeLens3.disabled = true
+	$Einsteller/DegreeLens3/Degree.visible = !$Einsteller/DegreeLens3/Degree.visible
 	
 func Open_Degree4():
-	$Einsteller/DegreeLens4/Degree.visible = true
-	$Einsteller/DegreeLens4.disabled = true
+	$Einsteller/DegreeLens4/Degree.visible = !$Einsteller/DegreeLens4/Degree.visible
 	
 	
 func Next_Pic():
@@ -271,6 +265,15 @@ func Show_Diagram():
 		opener += 1
 		DialogScene.show_dialog(_dialogLinesFotogalerie5)
 		DialogScene.finished_dialog.connect(Create_Wave)
+		DialogScene.finished_dialog.connect(Open_Auswahl)
+	
+
+func Open_Auswahl():
+	await get_tree().create_timer(5).timeout
+	if opener == 2:
+		$Auswahlbox.visible = true
+		opener +=1
+	
 
 func Create_Wave():
 	print("ich war hier")

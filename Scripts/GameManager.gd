@@ -62,7 +62,7 @@ func on_object_clicked(object):
 func handle_house_clicked():
 	var _dialogLines : Array[String] = [
 	"Willkommen auf Nyquest! \nGut, dass du da bist...",
-	"Hier gibt es eine Menge zutun \nund wir brauchen dringend deine Hilfe...",
+	"Hier gibt es eine Menge zu tun \nund wir brauchen dringend deine Hilfe...",
 	"Erkunde einfach mal die Insel \nund schaue wo dein Wissen von Nöten ist...",
 	"Ich bin übriegens Sigfried Signal, aber du \nkannst mich Sigi nennen. Bis zum nächsten Mal!",
 	]
