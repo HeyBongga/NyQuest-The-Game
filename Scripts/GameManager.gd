@@ -8,13 +8,18 @@ var tile_scenes : Array = []
 #Signalobjekte
 var interactables : Array = []
 
+var _dialogLines1 : Array[String] = [
+	"Danke für deine Hilfe!\nUnd vielen Dank für das Spielen\nunserer kleinen Demo.\n",
+	]
+
 func _enter_tree():
 	print("GameManager CONNECT")
 	GameState.level_finished.connect(_on_level_finished)
 	if GameState.finished_levels.has("Level1"):
 		_on_level_finished("Level1")
-	dialogScene.finished_dialog.connect(spawn_next_tile)
-	
+	if GameState.tile_index < 3:
+		dialogScene.finished_dialog.connect(spawn_next_tile)
+
 func _exit_tree():
 	if GameState.level_finished.is_connected(_on_level_finished):
 		GameState.level_finished.disconnect(_on_level_finished)
@@ -56,6 +61,8 @@ func on_object_clicked(object):
 			handle_windrad_clicked()
 		"labor":
 			handle_labor_clicked()
+		"construction":
+			handle_construction_clicked()
 		_:
 			print("Unbekannter Objekt-Typ:", object.objectType)
 
@@ -75,6 +82,9 @@ func handle_windrad_clicked():
 func handle_labor_clicked():
 	get_tree().change_scene_to_file("res://Scenes/lvl2.tscn")
 
+func handle_construction_clicked():
+	get_tree().change_scene_to_file("res://Scenes/credits.tscn")
+
 func spawn_next_tile():
 	if GameState.tile_index > tile_scenes.size():
 		print("nope")
@@ -85,6 +95,8 @@ func spawn_next_tile():
 		tile.visible = true
 		animate_tile(tile)
 		GameState.tile_index += 1
+		if GameState.tile_index == tile_scenes.size():
+			dialogScene.show_dialog(_dialogLines1)
 
 func animate_tile(tile):
 	var tween = create_tween()

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://un32vc3l15s3" path="res://Scenes/island_tile_1.tscn" id="2_8j60k"]
 [ext_resource type="PackedScene" uid="uid://7cjdqmiyhfw3" path="res://Scenes/island_tile_2.tscn" id="3_fo5ed"]
 [ext_resource type="PackedScene" uid="uid://b1ym21knux8qs" path="res://Scenes/island_tile_3.tscn" id="4_8j60k"]
-[ext_resource type="Script" uid="uid://b1bl6qfufoba7" path="res://Scripts/island_tile_2.gd" id="4_fo5ed"]
+[ext_resource type="PackedScene" uid="uid://bf2r5g2ll06yp" path="res://Scenes/island_tile_4.tscn" id="5_fo5ed"]
 
 [node name="World" type="Node2D"]
 
@@ -21,7 +21,9 @@ position = Vector2(640, 360)
 
 [node name="islandTile2" parent="islandRoot" instance=ExtResource("3_fo5ed")]
 position = Vector2(-272, -136)
-script = ExtResource("4_fo5ed")
 
 [node name="islandTile3" parent="islandRoot" instance=ExtResource("4_8j60k")]
 position = Vector2(-544, 0)
+
+[node name="islandTile4" parent="islandRoot" instance=ExtResource("5_fo5ed")]
+position = Vector2(270, -135)

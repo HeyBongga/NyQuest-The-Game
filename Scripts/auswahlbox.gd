@@ -6,6 +6,7 @@ func handle_correct_answer():
 	$Auswahl.disabled = true
 	await get_tree().create_timer(10).timeout
 	get_tree().change_scene_to_file("res://Scenes/mainScene.tscn")
+
 func handle_wrong_answer():
 	$"Auswahl2/Auswahl2_text/falsche Antwort".visible = true
 	$Auswahl2.disabled = true

@@ -10,6 +10,7 @@ var tile_index = 0
 var house_ready = true
 var windrad_ready = true
 var labor_ready = true
+var construction_ready = true
 
 func finish_level(level_name: String):
 	print("GameState: Level finished:", level_name)

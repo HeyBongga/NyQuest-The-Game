@@ -7,9 +7,6 @@ extends Control
 @onready var dialog_lines : Array[String]
 
 signal finished_dialog
-#signal finished_dialog2 # für level 1 nach erster Abtastung
-
-
 
 func _ready():
 	visible = false

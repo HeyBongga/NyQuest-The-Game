@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2a3ybl66ywvn"]
+
+[ext_resource type="Script" uid="uid://d1mm74t2nhcyb" path="res://Scripts/Constructionsite.gd" id="1_y71ls"]
+[ext_resource type="Texture2D" uid="uid://divav0cbfr2uk" path="res://Sprites/Construction_sign.png" id="2_rtqli"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ju4fg"]
+size = Vector2(216, 72)
+
+[node name="construction" type="Area2D"]
+script = ExtResource("1_y71ls")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("2_rtqli")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-4, 4)
+shape = SubResource("RectangleShape2D_ju4fg")
+
+[connection signal="input_event" from="." to="." method="on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="on_mouse_exited"]

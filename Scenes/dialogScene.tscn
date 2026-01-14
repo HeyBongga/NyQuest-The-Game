@@ -5,14 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://bm4chxueoaar7" path="res://Sprites/continue_button.png" id="3_bs08y"]
 [ext_resource type="Texture2D" uid="uid://df0sn8b3vqc55" path="res://Sprites/Sigfried_Signal.png" id="4_655ow"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_655ow"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o44vb"]
+texture = ExtResource("3_bs08y")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_655ow"]
 texture = ExtResource("3_bs08y")
 modulate_color = Color(0, 0, 0, 0.470588)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o44vb"]
-texture = ExtResource("3_bs08y")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_655ow"]
 
 [node name="DialogScene" type="Control" node_paths=PackedStringArray("button", "dialogWindow")]
 z_index = -1
@@ -56,10 +56,10 @@ size_flags_vertical = 4
 custom_minimum_size = Vector2(30, 10)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_655ow")
-theme_override_styles/hover = SubResource("StyleBoxTexture_655ow")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_655ow")
 theme_override_styles/normal = SubResource("StyleBoxTexture_o44vb")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_655ow")
+theme_override_styles/hover = SubResource("StyleBoxTexture_655ow")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_655ow")
 
 [node name="DialogChar" type="Sprite2D" parent="."]
 texture_filter = 1
