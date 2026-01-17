@@ -28,4 +28,5 @@ func on_input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int):
 		if event.is_action_pressed("click_left_mouse"):
 			clicked.emit(self)
 			$CollisionShape2D.disabled=true
+			$"../New_Zeichen".hide()
 			GameState.windrad_ready = false

@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://un32vc3l15s3"]
+[gd_scene load_steps=15 format=4 uid="uid://un32vc3l15s3"]
 
 [ext_resource type="Script" uid="uid://djl1pik584xy8" path="res://Scripts/island_tile_1.gd" id="1_0b4it"]
 [ext_resource type="Texture2D" uid="uid://dv5nhueb8xflk" path="res://Sprites/Tile_01.png" id="1_4mh3o"]
 [ext_resource type="Texture2D" uid="uid://doirb81p24u44" path="res://Sprites/House.png" id="2_t7t6b"]
 [ext_resource type="PackedScene" uid="uid://dq5vo6ldhg5kw" path="res://Scenes/House.tscn" id="3_t7t6b"]
+[ext_resource type="Shader" uid="uid://cku2yi4knc8xa" path="res://Shaders/smooth_pixels.gdshader" id="5_kvg3i"]
+[ext_resource type="Texture2D" uid="uid://in8m0mpv6js7" path="res://Sprites/New_Zeichen.png" id="6_wpb21"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3dryh"]
 texture = ExtResource("1_4mh3o")
@@ -29,6 +31,99 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_3dryh")
 sources/2 = SubResource("TileSetAtlasSource_wowpa")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iwm87"]
+shader = ExtResource("5_kvg3i")
+
+[sub_resource type="Animation" id="Animation_hkqne"]
+resource_name = "Zeichen_Bounce"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("New_Zeichen/Zeichen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.5000211, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -16), Vector2(0, -16), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("New_Zeichen/Zeichen:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.5000211, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("New_Zeichen/Zeichen:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1.8247963, 1.8247963, 1.8247963, 1), Color(2.454227, 2.454227, 2.454227, 1), Color(1.353256, 1.353256, 1.353256, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kvg3i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("New_Zeichen/Zeichen:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("New_Zeichen/Zeichen:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.5, 2.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("New_Zeichen/Zeichen:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1.8247963, 1.8247963, 1.8247963, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fp5qs"]
+_data = {
+&"RESET": SubResource("Animation_kvg3i"),
+&"Zeichen_Bounce": SubResource("Animation_hkqne")
+}
+
+[sub_resource type="Environment" id="Environment_kvg3i"]
+background_mode = 3
+glow_enabled = true
+glow_hdr_threshold = 0.3
+
 [node name="islandTile1" type="Node2D"]
 use_parent_material = true
 script = ExtResource("1_0b4it")
@@ -42,5 +137,25 @@ tile_set = SubResource("TileSet_wrm1d")
 
 [node name="House" parent="." instance=ExtResource("3_t7t6b")]
 texture_filter = 1
+
+[node name="New_Zeichen" type="Node2D" parent="."]
+visible = false
+position = Vector2(64, -88)
+scale = Vector2(2, 2)
+
+[node name="Zeichen" type="Sprite2D" parent="New_Zeichen"]
+modulate = Color(1.8247963, 1.8247963, 1.8247963, 1)
+material = SubResource("ShaderMaterial_iwm87")
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("6_wpb21")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="New_Zeichen/Zeichen"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_fp5qs")
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="New_Zeichen"]
+environment = SubResource("Environment_kvg3i")
 
 [connection signal="clicked" from="House" to="." method="on_object_clicked"]
